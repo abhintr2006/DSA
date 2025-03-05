@@ -116,7 +116,7 @@
                             <li><a href="#program12">Program 12</a></li>
                         </ul>
                     </li>
-                    <li><a href="#code-compiler">Code Compiler</a></li>
+                    <li><a href="#" onclick="openCodeCompiler()">Code Compiler</a></li>
                 </ul>
             </nav>
         </div>
@@ -140,6 +140,10 @@
     <script>
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function openCodeCompiler() {
+            window.open('code-compiler.html', '_blank');
         }
 
         document.getElementById("theme-toggle").addEventListener("click", function() {
