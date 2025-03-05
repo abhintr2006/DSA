@@ -5,10 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSA Learning Hub</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            transition: background-color 0.5s ease-in-out;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .navbar li a {
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .navbar li a:hover {
+            transform: scale(1.1);
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: #444;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>DSA Learning Hub</h1>
+        <h1 class="fade-in">DSA Learning Hub</h1>
         <button id="theme-toggle">🌙 Dark Mode</button>
         <nav>
             <ul class="navbar">
@@ -45,17 +88,17 @@
         </nav>
     </header>
 
-    <section id="home">
+    <section id="home" class="fade-in">
         <h2>Welcome to DSA Learning Hub</h2>
         <p>Your one-stop destination to master Data Structures and Algorithms.</p>
     </section>
 
-    <section id="notes">
+    <section id="notes" class="fade-in">
         <h2>Study Notes</h2>
         <p>Comprehensive notes on DSA concepts from the VTU syllabus.</p>
     </section>
 
-    <section id="programs">
+    <section id="programs" class="fade-in">
         <h2>Programs & Outputs</h2>
         <p>Collection of DSA programs with explanations and outputs.</p>
     </section>
