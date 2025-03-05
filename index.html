@@ -58,12 +58,6 @@
             padding: 20px;
         }
 
-        #search-box {
-            padding: 5px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
         .dark-mode {
             background: #222;
             color: white;
@@ -73,7 +67,6 @@
 <body>
     <header>
         <h1 class="fade-in">DSA Learning Hub</h1>
-        <input type="text" id="search-box" placeholder="Search notes or programs...">
         <button id="theme-toggle">🌙 Dark Mode</button>
         <nav>
             <ul class="navbar">
@@ -106,6 +99,8 @@
                         <li><a href="#program12">Program 12</a></li>
                     </ul>
                 </li>
+                <li><a href="#feedback" onclick="scrollToSection('feedback')">Contact & Feedback</a></li>
+                <li><a href="#compiler" onclick="scrollToSection('compiler')">Interactive Code Compiler</a></li>
             </ul>
         </nav>
     </header>
