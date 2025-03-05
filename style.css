@@ -1,8 +1,15 @@
-body {
-    font-family: Arial, sans-serif;
+/* Reset styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    color: #333;
+    transition: background 0.3s ease;
 }
 
 header {
@@ -10,19 +17,36 @@ header {
     color: white;
     padding: 15px;
     text-align: center;
+    position: relative;
+}
+
+h1 {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+#theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    padding: 5px 10px;
+    background: #555;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 .navbar {
     list-style: none;
-    padding: 0;
-    margin: 0;
     text-align: center;
     background: #444;
+    padding: 10px 0;
 }
 
 .navbar li {
-    display: inline;
-    margin: 0 15px;
+    display: inline-block;
+    position: relative;
 }
 
 .navbar li a {
@@ -35,6 +59,39 @@ header {
 .navbar li a:hover {
     background: #555;
     border-radius: 5px;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background: #444;
+    min-width: 200px;
+    list-style: none;
+    top: 100%;
+    left: 0;
+    padding: 0;
+    z-index: 1000;
+    border-radius: 5px;
+}
+
+.dropdown-menu li {
+    display: block;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px;
+    text-align: left;
+    color: white;
+}
+
+.dropdown-menu li a:hover {
+    background: #555;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
 
 section {
@@ -51,4 +108,31 @@ footer {
     background: #333;
     color: white;
     margin-top: 20px;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: #222;
+    color: white;
+}
+
+.dark-mode header {
+    background: #111;
+}
+
+.dark-mode .navbar {
+    background: #222;
+}
+
+.dark-mode .dropdown-menu {
+    background: #222;
+}
+
+.dark-mode section {
+    background: #333;
+    color: white;
+}
+
+.dark-mode footer {
+    background: #111;
 }
