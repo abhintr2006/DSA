@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="style.css">
     <style>
         body {
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #f4f4f4, #ddd);
-            color: #333;
-            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
         }
 
         .fade-in {
@@ -44,7 +43,6 @@
 
         .navbar li a {
             transition: background 0.3s, transform 0.3s;
-            color: #333;
         }
 
         .navbar li a:hover {
@@ -76,36 +74,7 @@
             display: flex;
             justify-content: center;
         }
-
-        /* Remove dark mode related styles */
-        header {
-            background: #fff;
-        }
-
-        button {
-            background-color: #444;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #555;
-        }
-
-        section {
-            padding: 20px;
-            border-radius: 5px;
-            margin: 10px;
-        }
-
-        footer {
-            background: #fff;
-            color: #333;
-            padding: 10px;
-            text-align: center;
-        }
+        
     </style>
 </head>
 <body>
@@ -127,21 +96,23 @@
                     </li>
                     <li class="dropdown">
                         <a href="#">Programs & Outputs ▾</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="program1.html">Program 1</a></li>
-                            <li><a href="program2.html">Program 2</a></li>
-                            <li><a href="program3.html">Program 3</a></li>
-                            <li><a href="program4.html">Program 4</a></li>
-                            <li><a href="program5A.html">Program 5A</a></li>
-                            <li><a href="program5B.html">Program 5B</a></li>
-                            <li><a href="program6.html">Program 6</a></li>
-                            <li><a href="program7.html">Program 7</a></li>
-                            <li><a href="program8.html">Program 8</a></li>
-                            <li><a href="program9.html">Program 9</a></li>
-                            <li><a href="program10.html">Program 10</a></li>
-                            <li><a href="program11.html">Program 11</a></li>
-                            <li><a href="program12.html">Program 12</a></li>
-                        </ul>
+                  <ul class="dropdown-menu">
+    <li><a href="program1.html">Program 1</a></li>
+    <li><a href="program2.html">Program 2</a></li>
+    <li><a href="program3.html">Program 3</a></li>
+    <li><a href="program4.html">Program 4</a></li>
+    <li><a href="program5A.html">Program 5A</a></li>
+    <li><a href="program5B.html">Program 5B</a></li>
+    <li><a href="program6.html">Program 6</a></li>
+    <li><a href="program7.html">Program 7</a></li>
+    <li><a href="program8.html">Program 8</a></li>
+    <li><a href="program9.html">Program 9</a></li>
+    <li><a href="program10.html">Program 10</a></li>
+    <li><a href="program11.html">Program 11</a></li>
+    <li><a href="program12.html">Program 12</a></li>
+</ul>
+
+
                     </li>
                     <li><a href="#" onclick="openCodeCompiler()">Code Compiler</a></li>
                 </ul>
@@ -170,7 +141,7 @@
 
         function openCodeCompiler() {
             window.open('code-compiler.html', '_blank');
-        }
+        });
     </script>
     <script src="script.js"></script>
 </body>
