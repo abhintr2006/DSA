@@ -49,21 +49,39 @@
         
         <h2>Code:</h2>
         <pre>
-#include &lt;stdio.h&gt;
-int main() {
-    int arr[] = {1, 2, 3, 4, 5};
-    int n = sizeof(arr)/sizeof(arr[0]);
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-    return 0;
+#include <stdio.h>
+
+void tower(int n, int source, int temp, int destination)
+{
+    if (n == 0)
+        return;
+    tower(n - 1, source, destination, temp);
+    printf("\nMove disc %d from %c to %c", n, source, destination);
+    tower(n - 1, temp, source, destination);
+}
+void main()
+{
+    int n;
+    printf("\nEnter the number of discs: \n");
+    scanf("%d", & n);
+    tower(n, 'A', 'B', 'C');
+    printf("\n\nTotal Number of moves are: %d", (int) pow(2, n) - 1);
 }
         </pre>
         
         <h2>Output:</h2>
         <pre>
-1 2 3 4 5
-        </pre>
+Enter the number of discs: 3
+
+Move disc 1 from A to C
+Move disc 2 from A to B
+Move disc 1 from C to B
+Move disc 3 from A to C
+Move disc 1 from B to A
+Move disc 2 from B to C
+Move disc 1 from A to C
+
+Total Number of moves are: 7        </pre>
         
         <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
