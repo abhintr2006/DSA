@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <style>
         body {
-            transition: background-color 0.5s ease-in-out;
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #f4f4f4, #ddd);
         }
@@ -53,19 +53,27 @@
 
         header {
             display: flex;
-            justify-content: flex-start;
+            justify-content: space-between;
             align-items: center;
             padding: 20px;
         }
 
-        header h1 {
-            margin-left: 0;
+        #search-box {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .dark-mode {
+            background: #222;
+            color: white;
         }
     </style>
 </head>
 <body>
     <header>
         <h1 class="fade-in">DSA Learning Hub</h1>
+        <input type="text" id="search-box" placeholder="Search notes or programs...">
         <button id="theme-toggle">🌙 Dark Mode</button>
         <nav>
             <ul class="navbar">
@@ -112,6 +120,23 @@
         <p>Collection of DSA programs with explanations and outputs.</p>
     </section>
 
+    <section id="feedback" class="fade-in">
+        <h2>Contact & Feedback</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Feedback"></textarea>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <section id="compiler" class="fade-in">
+        <h2>Interactive Code Compiler</h2>
+        <textarea id="code-editor" rows="5" placeholder="Write your code here..."></textarea>
+        <button onclick="runCode()">Run Code</button>
+        <pre id="output"></pre>
+    </section>
+
     <footer>
         <p>&copy; 2025 DSA Learning Hub</p>
     </footer>
@@ -119,6 +144,15 @@
     <script>
         function scrollToSection(sectionId) {
             document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        document.getElementById("theme-toggle").addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+        });
+
+        function runCode() {
+            let code = document.getElementById("code-editor").value;
+            document.getElementById("output").innerText = eval(code);
         }
     </script>
     <script src="script.js"></script>
