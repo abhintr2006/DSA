@@ -7,35 +7,46 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>DSA Learning Hub</h1>
-        <nav>
+    <div class="sidebar">
+        <h2>DSA Hub</h2>
+        <ul>
+            <li><a href="#study-notes">📖 Study Notes</a></li>
+            <li><a href="#programs">💻 Programs</a></li>
+        </ul>
+        <button id="theme-toggle">🌙 Dark Mode</button>
+    </div>
+
+    <div class="content">
+        <header>
+            <h1>DSA Learning Hub</h1>
+        </header>
+
+        <section id="study-notes">
+            <h2>Study Notes</h2>
+            <p>Comprehensive notes on DSA concepts from the VTU syllabus.</p>
             <ul>
-                <li><a href="#notes">Study Notes</a></li>
-                <li><a href="#programs">Programs & Outputs</a></li>
-                <li><a href="#blog">Blog</a></li>
+                <li><a href="#">Arrays & Linked Lists</a></li>
+                <li><a href="#">Stacks & Queues</a></li>
+                <li><a href="#">Trees & Graphs</a></li>
+                <li><a href="#">Sorting & Searching</a></li>
             </ul>
-        </nav>
-    </header>
-    
-    <section id="notes">
-        <h2>Study Notes</h2>
-        <p>Comprehensive notes on DSA concepts from the VTU syllabus.</p>
-    </section>
+        </section>
 
-    <section id="programs">
-        <h2>Programs & Outputs</h2>
-        <p>Collection of DSA programs with explanations and outputs.</p>
-    </section>
+        <section id="programs">
+            <h2>Programs</h2>
+            <p>Collection of DSA programs with explanations and outputs.</p>
+            <ul>
+                <li><a href="#">Binary Search Algorithm</a></li>
+                <li><a href="#">Merge Sort Implementation</a></li>
+                <li><a href="#">Graph Traversal (BFS & DFS)</a></li>
+                <li><a href="#">Dynamic Programming Examples</a></li>
+            </ul>
+        </section>
 
-    <section id="blog">
-        <h2>Blog</h2>
-        <p>Latest discussions, tips, and tricks in DSA.</p>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 DSA Learning Hub</p>
-    </footer>
+        <footer>
+            <p>&copy; 2025 DSA Learning Hub</p>
+        </footer>
+    </div>
 
     <script src="script.js"></script>
 </body>
