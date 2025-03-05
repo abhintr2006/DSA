@@ -74,7 +74,11 @@
             display: flex;
             justify-content: center;
         }
-        
+
+        .dark-mode {
+            background: #222;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -118,6 +122,7 @@
                 </ul>
             </nav>
         </div>
+        <button id="theme-toggle">🌙 Dark Mode</button>
     </header>
 
     <section id="notes" class="fade-in">
@@ -141,6 +146,10 @@
 
         function openCodeCompiler() {
             window.open('code-compiler.html', '_blank');
+        }
+
+        document.getElementById("theme-toggle").addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
         });
     </script>
     <script src="script.js"></script>
