@@ -35,10 +35,9 @@
             justify-content: center;
             align-items: center;
             list-style: none;
-            padding: 0;
+            padding: 10px;
             background: #333;
             border-radius: 10px;
-            padding: 10px;
         }
 
         .nav-container {
@@ -48,6 +47,7 @@
         }
 
         .navbar li {
+            position: relative;
             margin: 0 15px;
         }
 
@@ -69,14 +69,16 @@
             position: absolute;
             background: #444;
             box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-            transition: opacity 0.3s ease-in-out;
             border-radius: 5px;
             padding: 10px;
+            list-style: none;
+            top: 100%;
+            left: 0;
+            min-width: 150px;
         }
 
         .dropdown:hover .dropdown-menu {
             display: block;
-            opacity: 1;
         }
 
         header {
@@ -155,7 +157,8 @@
             </nav>
         </div>
         <button id="theme-toggle" class="theme-toggle-button">
-            Light Mode <img id="theme-icon" src="images/sun-icon.png" alt="Sun Icon">
+            <span id="theme-text">Light Mode</span>
+            <img id="theme-icon" src="images/sun-icon.png" alt="Sun Icon">
         </button>
     </header>
 
@@ -163,12 +166,14 @@
         document.getElementById("theme-toggle").addEventListener("click", function() {
             document.body.classList.toggle("dark-mode");
             const themeIcon = document.getElementById("theme-icon");
+            const themeText = document.getElementById("theme-text");
+            
             if (document.body.classList.contains("dark-mode")) {
                 themeIcon.src = "images/moon-icon.png";
-                this.innerHTML = 'Dark Mode <img id="theme-icon" src="images/moon-icon.png" alt="Moon Icon">';
+                themeText.textContent = "Dark Mode";
             } else {
                 themeIcon.src = "images/sun-icon.png";
-                this.innerHTML = 'Light Mode <img id="theme-icon" src="images/sun-icon.png" alt="Sun Icon">';
+                themeText.textContent = "Light Mode";
             }
         });
     </script>
