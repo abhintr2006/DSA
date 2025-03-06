@@ -79,6 +79,21 @@
             background: #222;
             color: white;
         }
+
+        .theme-toggle-button {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 20px;
+        }
+
+        .theme-toggle-button img {
+            width: 20px;
+            height: 20px;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -100,29 +115,29 @@
                     </li>
                     <li class="dropdown">
                         <a href="#">Programs & Outputs ▾</a>
-                  <ul class="dropdown-menu">
-    <li><a href="program1.html">Program 1</a></li>
-    <li><a href="program2.html">Program 2</a></li>
-    <li><a href="program3.html">Program 3</a></li>
-    <li><a href="program4.html">Program 4</a></li>
-    <li><a href="program5A.html">Program 5A</a></li>
-    <li><a href="program5B.html">Program 5B</a></li>
-    <li><a href="program6.html">Program 6</a></li>
-    <li><a href="program7.html">Program 7</a></li>
-    <li><a href="program8.html">Program 8</a></li>
-    <li><a href="program9.html">Program 9</a></li>
-    <li><a href="program10.html">Program 10</a></li>
-    <li><a href="program11.html">Program 11</a></li>
-    <li><a href="program12.html">Program 12</a></li>
-</ul>
-
-
+                        <ul class="dropdown-menu">
+                            <li><a href="program1.html">Program 1</a></li>
+                            <li><a href="program2.html">Program 2</a></li>
+                            <li><a href="program3.html">Program 3</a></li>
+                            <li><a href="program4.html">Program 4</a></li>
+                            <li><a href="program5A.html">Program 5A</a></li>
+                            <li><a href="program5B.html">Program 5B</a></li>
+                            <li><a href="program6.html">Program 6</a></li>
+                            <li><a href="program7.html">Program 7</a></li>
+                            <li><a href="program8.html">Program 8</a></li>
+                            <li><a href="program9.html">Program 9</a></li>
+                            <li><a href="program10.html">Program 10</a></li>
+                            <li><a href="program11.html">Program 11</a></li>
+                            <li><a href="program12.html">Program 12</a></li>
+                        </ul>
                     </li>
                     <li><a href="#" onclick="openCodeCompiler()">Code Compiler</a></li>
                 </ul>
             </nav>
         </div>
-        
+        <button id="theme-toggle" class="theme-toggle-button">
+            Light Mode <img id="theme-icon" src="images/sun-icon.png" alt="Sun Icon">
+        </button>
     </header>
 
     <section id="notes" class="fade-in">
@@ -150,6 +165,14 @@
 
         document.getElementById("theme-toggle").addEventListener("click", function() {
             document.body.classList.toggle("dark-mode");
+            const themeIcon = document.getElementById("theme-icon");
+            if (document.body.classList.contains("dark-mode")) {
+                themeIcon.src = "images/moon-icon.png";
+                this.innerHTML = 'Dark Mode <img id="theme-icon" src="images/moon-icon.png" alt="Moon Icon">';
+            } else {
+                themeIcon.src = "images/sun-icon.png";
+                this.innerHTML = 'Light Mode <img id="theme-icon" src="images/sun-icon.png" alt="Sun Icon">';
+            }
         });
     </script>
     <script src="script.js"></script>
