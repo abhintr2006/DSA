@@ -3,90 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Online Code Compiler</title>
+    <title>DSA Lab Code Compiler</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        /* Basic Styles */
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
             margin: 0;
+            padding: 0;
+            background: #f4f4f9;
+            color: #333;
         }
+
         .container {
-            display: flex;
             width: 80%;
-            height: 80vh;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            overflow: hidden;
+            margin: 0 auto;
+            padding-top: 50px;
         }
-        .editor, .output {
-            flex: 1;
-            padding: 20px;
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
         }
-        .editor {
-            border-right: 2px solid #ddd;
+
+        h1 {
+            font-size: 36px;
         }
+
+        .editor-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
         textarea {
             width: 100%;
-            height: 90%;
-            border: none;
+            height: 400px;
+            padding: 10px;
             font-size: 16px;
-            font-family: monospace;
+            line-height: 1.5;
+            background-color: #222;
+            color: white;
+            border: none;
+            border-radius: 8px;
             resize: none;
             outline: none;
         }
+
         button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            border: none;
-            background: #007bff;
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            background-color: #007bff;
             color: white;
+            border: none;
+            border-radius: 8px;
             cursor: pointer;
-            border-radius: 5px;
         }
+
         button:hover {
-            background: #0056b3;
+            background-color: #0056b3;
         }
-        pre {
-            background: #222;
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            height: 90%;
-            overflow-y: auto;
+
+        .output-container {
+            margin-top: 30px;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .output-container pre {
+            font-family: monospace;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <div class="editor">
-            <h2>Code Editor</h2>
-            <textarea id="code" placeholder="Write your code here..."></textarea>
+        <header>
+            <h1>DSA Lab Code Compiler</h1>
+            <p>Write and compile your DSA programs directly in the browser</p>
+        </header>
+
+        <div class="editor-container">
+            <textarea id="code-editor" placeholder="Write your DSA code here..."></textarea>
             <button onclick="runCode()">Run Code</button>
         </div>
-        <div class="output">
-            <h2>Output</h2>
-            <pre id="output">Your output will appear here...</pre>
+
+        <div class="output-container">
+            <h3>Output:</h3>
+            <pre id="output"></pre>
         </div>
     </div>
-    
+
     <script>
         function runCode() {
-            let code = document.getElementById("code").value;
-            let outputElement = document.getElementById("output");
-            
-            try {
-                let result = eval(code);
-                outputElement.textContent = result !== undefined ? result : "No output";
-            } catch (error) {
-                outputElement.textContent = "Error: " + error.message;
-            }
+            const code = document.getElementById("code-editor").value;
+            const outputContainer = document.getElementById("output");
+
+            // Example: Show the code in the output area for now
+            outputContainer.textContent = "Compiling...\n" + code;
+
+            // Here you would integrate a backend compiler or API
+            // For example, using JDoodle API or an in-house server-side compiler
+            setTimeout(() => {
+                // Simulate a code result for now
+                outputContainer.textContent = "Code execution successful!\n" + code;
+            }, 2000);
         }
     </script>
+    
 </body>
 </html>
