@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSA Learning Hub</title>
-    <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
+    <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon"> <!-- Favicon added here -->
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -75,10 +75,13 @@
             top: 100%;
             left: 0;
             min-width: 150px;
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
         }
 
         .dropdown:hover .dropdown-menu {
             display: block;
+            opacity: 1;
         }
 
         header {
@@ -91,6 +94,10 @@
         .dark-mode {
             background: #222;
             color: white;
+        }
+
+        .dark-mode .navbar, .dark-mode .dropdown-menu {
+            background: #111;
         }
 
         .theme-toggle-button {
@@ -163,6 +170,10 @@
     </header>
 
     <script>
+        function openCodeCompiler() {
+            alert("Code Compiler feature coming soon!");
+        }
+
         document.getElementById("theme-toggle").addEventListener("click", function() {
             document.body.classList.toggle("dark-mode");
             const themeIcon = document.getElementById("theme-icon");
