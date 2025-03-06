@@ -4,165 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSA Learning Hub</title>
-    <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
+    <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon"> <!-- Favicon added here -->
     <link rel="stylesheet" href="style.css">
     <style>
-        /* General Body Styles */
         body {
-            margin: 0;
-            padding: 0;
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #f4f4f4, #ddd);
         }
-
-        /* Header Animation: Rotating and Bouncing */
-        .header-fade-in {
+        .fade-in {
             opacity: 0;
-            transform: rotate(-30deg);
-            animation: headerRotateBounce 1.5s ease-out forwards;
+            transform: translateY(20px);
+            animation: fadeIn 1s ease-in-out forwards;
         }
-
-        @keyframes headerRotateBounce {
-            0% {
+        @keyframes fadeIn {
+            from {
                 opacity: 0;
-                transform: rotate(-30deg);
+                transform: translateY(20px);
             }
-            50% {
+            to {
                 opacity: 1;
-                transform: rotate(15deg);
-            }
-            100% {
-                opacity: 1;
-                transform: rotate(0deg);
+                transform: translateY(0);
             }
         }
-
-        /* Navbar Animation: Scaling and Fading In */
         .navbar {
             display: flex;
             justify-content: center;
             list-style: none;
             padding: 0;
-            opacity: 0;
-            animation: navbarScaleFade 1.5s ease-out forwards;
-        }
-
-        @keyframes navbarScaleFade {
-            0% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
         }
 
         .navbar li {
             margin: 0 15px;
         }
-
-        /* Navbar Links Animation: Fade In and Scale */
         .navbar li a {
             transition: background 0.3s, transform 0.3s;
-            opacity: 0;
-            animation: linkFadeScale 1s ease-out forwards;
-        }
-
-        @keyframes linkFadeScale {
-            0% {
-                opacity: 0;
-                transform: scale(0.5);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
         }
 
         .navbar li a:hover {
             transform: scale(1.1);
-            color: #007bff;
         }
 
-        /* Dropdown Menu Animation: Slide In */
         .dropdown-menu {
             display: none;
             position: absolute;
             background: #444;
             box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
             transition: opacity 0.3s ease-in-out;
-            transform: translateX(-20px);
-            opacity: 0;
-            animation: dropdownSlideIn 0.5s ease-out forwards;
-        }
-
-        @keyframes dropdownSlideIn {
-            0% {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
 
         .dropdown:hover .dropdown-menu {
             display: block;
+            opacity: 1;
         }
 
-        /* Section Animation: Zoom In and Fade */
-        section {
-            opacity: 0;
-            transform: scale(0.8);
-            animation: sectionZoomFade 1.5s ease-out forwards;
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
         }
 
-        @keyframes sectionZoomFade {
-            0% {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+        .nav-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
         }
 
-        section:nth-of-type(1) {
-            animation-delay: 0.3s;
-        }
-
-        section:nth-of-type(2) {
-            animation-delay: 0.6s;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        /* Button Animation: Scale and Color Change */
-        button {
-            padding: 10px 20px;
-            border: none;
-            background: #007bff;
+        .dark-mode {
+            background: #222;
             color: white;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-
-        button:hover {
-            background: #0056b3;
-            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
-    <header class="header-fade-in">
-        <h1>DSA Learning Hub</h1>
+    <header>
+        <h1 class="fade-in">DSA Learning Hub</h1>
         <div class="nav-container">
             <nav>
                 <ul class="navbar">
@@ -179,34 +96,37 @@
                     </li>
                     <li class="dropdown">
                         <a href="#">Programs & Outputs ▾</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="program1.html">Program 1</a></li>
-                            <li><a href="program2.html">Program 2</a></li>
-                            <li><a href="program3.html">Program 3</a></li>
-                            <li><a href="program4.html">Program 4</a></li>
-                            <li><a href="program5A.html">Program 5A</a></li>
-                            <li><a href="program5B.html">Program 5B</a></li>
-                            <li><a href="program6.html">Program 6</a></li>
-                            <li><a href="program7.html">Program 7</a></li>
-                            <li><a href="program8.html">Program 8</a></li>
-                            <li><a href="program9.html">Program 9</a></li>
-                            <li><a href="program10.html">Program 10</a></li>
-                            <li><a href="program11.html">Program 11</a></li>
-                            <li><a href="program12.html">Program 12</a></li>
-                        </ul>
+                  <ul class="dropdown-menu">
+    <li><a href="program1.html">Program 1</a></li>
+    <li><a href="program2.html">Program 2</a></li>
+    <li><a href="program3.html">Program 3</a></li>
+    <li><a href="program4.html">Program 4</a></li>
+    <li><a href="program5A.html">Program 5A</a></li>
+    <li><a href="program5B.html">Program 5B</a></li>
+    <li><a href="program6.html">Program 6</a></li>
+    <li><a href="program7.html">Program 7</a></li>
+    <li><a href="program8.html">Program 8</a></li>
+    <li><a href="program9.html">Program 9</a></li>
+    <li><a href="program10.html">Program 10</a></li>
+    <li><a href="program11.html">Program 11</a></li>
+    <li><a href="program12.html">Program 12</a></li>
+</ul>
+
+
                     </li>
                     <li><a href="#" onclick="openCodeCompiler()">Code Compiler</a></li>
                 </ul>
             </nav>
         </div>
+        <button id="theme-toggle">🌙 Dark Mode</button>
     </header>
 
-    <section id="notes">
+    <section id="notes" class="fade-in">
         <h2>Study Notes</h2>
         <p>Comprehensive notes on DSA concepts from the VTU syllabus.</p>
     </section>
 
-    <section id="programs">
+    <section id="programs" class="fade-in">
         <h2>Programs & Outputs</h2>
         <p>Collection of DSA programs with explanations and outputs.</p>
     </section>
@@ -223,6 +143,11 @@
         function openCodeCompiler() {
             window.open('code-compiler.html', '_blank');
         }
+
+        document.getElementById("theme-toggle").addEventListener("click", function() {
+            document.body.classList.toggle("dark-mode");
+        });
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
