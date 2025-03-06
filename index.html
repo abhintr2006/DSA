@@ -10,15 +10,19 @@
         body {
             transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
+            background: linear-gradient(135deg, #f4f4f4, #ddd); /* Default background */
             color: #333; /* Default text color */
+            margin: 0;
+            padding: 0;
         }
 
+        /* Dark mode styles */
         body.dark-mode {
             background: linear-gradient(135deg, #1f1f1f, #333); /* Dark mode background */
             color: white; /* Dark mode text color */
         }
 
+        /* Fade-in effect for elements */
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -36,11 +40,13 @@
             }
         }
 
+        /* Navbar styling */
         .navbar {
             display: flex;
             justify-content: center;
             list-style: none;
             padding: 0;
+            background-color: #fff; /* Default navbar background */
         }
 
         .navbar li {
@@ -50,20 +56,23 @@
         .navbar li a {
             transition: background 0.3s, transform 0.3s;
             color: inherit; /* Ensure text color is inherited */
+            text-decoration: none;
         }
 
         .navbar li a:hover {
             transform: scale(1.1);
         }
 
-        .navbar li a:visited {
-            color: inherit; /* Ensure visited links retain text color */
+        /* Dark mode navbar */
+        body.dark-mode .navbar {
+            background-color: #222; /* Dark mode navbar background */
         }
 
-        .navbar.dark-mode a {
+        body.dark-mode .navbar li a {
             color: white; /* Dark mode navbar text color */
         }
 
+        /* Dropdown menu */
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -73,7 +82,7 @@
         }
 
         .dropdown-menu a {
-            color: white; /* Make dropdown menu text white */
+            color: white; /* Dark mode dropdown menu text color */
         }
 
         .dropdown:hover .dropdown-menu {
@@ -81,33 +90,52 @@
             opacity: 1;
         }
 
+        /* Header styling */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px;
-            transition: background-color 0.3s ease-in-out;
             background-color: #f4f4f4; /* Default header background */
         }
 
-        header.dark-mode {
+        /* Dark mode header */
+        body.dark-mode header {
             background-color: #222; /* Dark mode header background */
         }
 
-        .nav-container {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
-        }
-
+        /* Button for dark mode toggle */
         .dark-mode button {
             background-color: #444; /* Dark mode button background */
             color: white;
         }
 
+        /* Links and hover effects */
         .dark-mode .navbar li a:hover {
             color: #ddd; /* Change hover color in dark mode */
         }
+
+        /* Footer styling */
+        footer {
+            background-color: #f4f4f4; /* Default footer background */
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Dark mode footer */
+        body.dark-mode footer {
+            background-color: #333; /* Dark mode footer background */
+        }
+
+        /* Section text color */
+        section {
+            padding: 20px;
+        }
+
+        body.dark-mode section {
+            color: white; /* Dark mode section text color */
+        }
+
     </style>
 </head>
 <body>
@@ -149,25 +177,11 @@
                 </ul>
             </nav>
         </div>
+        <button id="theme-toggle">🌙 Dark Mode</button>
     </header>
+
     <section id="notes" class="fade-in">
         <h2>Study Notes</h2>
-        <p>Comprehensive notes on DSA concepts from the VTU syllabus.</p>
-    </section>
-
-    <section id="programs" class="fade-in">
-        <h2>Programs & Outputs</h2>
-        <p>Collection of DSA programs with explanations and outputs.</p>
-
-             <h2>Study Notes</h2>
-        <p>Comprehensive notes on DSA concepts from the VTU syllabus.</p>
-    </section>
-
-    <section id="programs" class="fade-in">
-        <h2>Programs & Outputs</h2>
-        <p>Collection of DSA programs with explanations and outputs.</p>
-
-             <h2>Study Notes</h2>
         <p>Comprehensive notes on DSA concepts from the VTU syllabus.</p>
     </section>
 
@@ -189,10 +203,9 @@
             window.open('code-compiler.html', '_blank');
         }
 
+        // Dark mode toggle functionality
         document.getElementById("theme-toggle").addEventListener("click", function() {
             document.body.classList.toggle("dark-mode");
-            document.querySelector("header").classList.toggle("dark-mode");
-            document.querySelector(".navbar").classList.toggle("dark-mode");
         });
     </script>
     <script src="script.js"></script>
