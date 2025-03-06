@@ -11,12 +11,20 @@
             transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #f4f4f4, #ddd);
+            color: #333; /* Default text color */
         }
+
+        body.dark-mode {
+            background: linear-gradient(135deg, #1f1f1f, #333); /* Dark mode background */
+            color: white; /* Dark mode text color */
+        }
+
         .fade-in {
             opacity: 0;
             transform: translateY(20px);
             animation: fadeIn 1s ease-in-out forwards;
         }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -27,6 +35,7 @@
                 transform: translateY(0);
             }
         }
+
         .navbar {
             display: flex;
             justify-content: center;
@@ -37,12 +46,22 @@
         .navbar li {
             margin: 0 15px;
         }
+
         .navbar li a {
             transition: background 0.3s, transform 0.3s;
+            color: inherit; /* Ensure text color is inherited */
         }
 
         .navbar li a:hover {
             transform: scale(1.1);
+        }
+
+        .navbar li a:visited {
+            color: inherit; /* Ensure visited links retain text color */
+        }
+
+        .navbar.dark-mode a {
+            color: white; /* Dark mode navbar text color */
         }
 
         .dropdown-menu {
@@ -51,6 +70,10 @@
             background: #444;
             box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
             transition: opacity 0.3s ease-in-out;
+        }
+
+        .dropdown-menu a {
+            color: white; /* Make dropdown menu text white */
         }
 
         .dropdown:hover .dropdown-menu {
@@ -63,6 +86,12 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px;
+            transition: background-color 0.3s ease-in-out;
+            background-color: #f4f4f4; /* Default header background */
+        }
+
+        header.dark-mode {
+            background-color: #222; /* Dark mode header background */
         }
 
         .nav-container {
@@ -71,9 +100,13 @@
             justify-content: center;
         }
 
-        .dark-mode {
-            background: #222;
+        .dark-mode button {
+            background-color: #444; /* Dark mode button background */
             color: white;
+        }
+
+        .dark-mode .navbar li a:hover {
+            color: #ddd; /* Change hover color in dark mode */
         }
     </style>
 </head>
@@ -96,28 +129,27 @@
                     </li>
                     <li class="dropdown">
                         <a href="#">Programs & Outputs ▾</a>
-                  <ul class="dropdown-menu">
-    <li><a href="program1.html">Program 1</a></li>
-    <li><a href="program2.html">Program 2</a></li>
-    <li><a href="program3.html">Program 3</a></li>
-    <li><a href="program4.html">Program 4</a></li>
-    <li><a href="program5A.html">Program 5A</a></li>
-    <li><a href="program5B.html">Program 5B</a></li>
-    <li><a href="program6.html">Program 6</a></li>
-    <li><a href="program7.html">Program 7</a></li>
-    <li><a href="program8.html">Program 8</a></li>
-    <li><a href="program9.html">Program 9</a></li>
-    <li><a href="program10.html">Program 10</a></li>
-    <li><a href="program11.html">Program 11</a></li>
-    <li><a href="program12.html">Program 12</a></li>
-</ul>
-
-
+                        <ul class="dropdown-menu">
+                            <li><a href="program1.html">Program 1</a></li>
+                            <li><a href="program2.html">Program 2</a></li>
+                            <li><a href="program3.html">Program 3</a></li>
+                            <li><a href="program4.html">Program 4</a></li>
+                            <li><a href="program5A.html">Program 5A</a></li>
+                            <li><a href="program5B.html">Program 5B</a></li>
+                            <li><a href="program6.html">Program 6</a></li>
+                            <li><a href="program7.html">Program 7</a></li>
+                            <li><a href="program8.html">Program 8</a></li>
+                            <li><a href="program9.html">Program 9</a></li>
+                            <li><a href="program10.html">Program 10</a></li>
+                            <li><a href="program11.html">Program 11</a></li>
+                            <li><a href="program12.html">Program 12</a></li>
+                        </ul>
                     </li>
                     <li><a href="#" onclick="openCodeCompiler()">Code Compiler</a></li>
                 </ul>
             </nav>
         </div>
+        <button id="theme-toggle">🌙 Dark Mode</button>
     </header>
 
     <section id="notes" class="fade-in">
@@ -145,6 +177,8 @@
 
         document.getElementById("theme-toggle").addEventListener("click", function() {
             document.body.classList.toggle("dark-mode");
+            document.querySelector("header").classList.toggle("dark-mode");
+            document.querySelector(".navbar").classList.toggle("dark-mode");
         });
     </script>
     <script src="script.js"></script>
