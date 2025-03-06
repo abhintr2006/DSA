@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSA Learning Hub</title>
-    <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon"> <!-- Favicon added here -->
+    <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -29,163 +29,32 @@
                 transform: translateY(0);
             }
         }
-
-        .navbar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            list-style: none;
-            padding: 10px;
-            background: #333;
-            border-radius: 10px;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .navbar li {
-            position: relative;
-            margin: 0 15px;
-        }
-
-        .navbar li a {
-            text-decoration: none;
-            color: white;
-            padding: 10px 15px;
-            transition: background 0.3s, transform 0.3s;
-            border-radius: 5px;
-        }
-
-        .navbar li a:hover {
-            transform: scale(1.1);
-            background: #555;
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            background: #444;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
-            border-radius: 5px;
-            padding: 10px;
-            list-style: none;
-            top: 100%;
-            left: 0;
-            min-width: 150px;
-            transition: opacity 0.3s ease-in-out;
-            opacity: 0;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block;
-            opacity: 1;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .dark-mode {
-            background: #222;
-            color: white;
-        }
-
-        .dark-mode .navbar, .dark-mode .dropdown-menu {
-            background: #111;
-        }
-
-        .theme-toggle-button {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            border: none;
-            background: none;
-            font-size: 20px;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        .theme-toggle-button:hover {
-            background: #555;
-        }
-
-        .theme-toggle-button img {
-            width: 20px;
-            height: 20px;
-            margin-left: 10px;
-        }
     </style>
 </head>
 <body>
     <header>
         <h1 class="fade-in">DSA Learning Hub</h1>
-        <div class="nav-container">
-            <nav>
-                <ul class="navbar">
-                    <li><a href="#home" onclick="scrollToSection('home')">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#">Study Notes ▾</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#module1">Module 1</a></li>
-                            <li><a href="#module2">Module 2</a></li>
-                            <li><a href="#module3">Module 3</a></li>
-                            <li><a href="#module4">Module 4</a></li>
-                            <li><a href="#module5">Module 5</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#">Programs & Outputs ▾</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="program1.html">Program 1</a></li>
-                            <li><a href="program2.html">Program 2</a></li>
-                            <li><a href="program3.html">Program 3</a></li>
-                            <li><a href="program4.html">Program 4</a></li>
-                            <li><a href="program5A.html">Program 5A</a></li>
-                            <li><a href="program5B.html">Program 5B</a></li>
-                            <li><a href="program6.html">Program 6</a></li>
-                            <li><a href="program7.html">Program 7</a></li>
-                            <li><a href="program8.html">Program 8</a></li>
-                            <li><a href="program9.html">Program 9</a></li>
-                            <li><a href="program10.html">Program 10</a></li>
-                            <li><a href="program11.html">Program 11</a></li>
-                            <li><a href="program12.html">Program 12</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" onclick="openCodeCompiler()">Code Compiler</a></li>
-                </ul>
-            </nav>
-        </div>
-        <button id="theme-toggle" class="theme-toggle-button">
-            <span id="theme-text">Light Mode</span>
-            <img id="theme-icon" src="images/sun-icon.png" alt="Sun Icon">
-        </button>
+        <nav>
+            <ul>
+                <li><a href="#home" onclick="scrollToSection('home')">Home</a></li>
+                <li><a href="#notes">Study Notes</a></li>
+                <li><a href="#programs">Programs & Outputs</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle">Toggle Theme</button>
     </header>
 
     <script>
-        function openCodeCompiler() {
-            alert("Code Compiler feature coming soon!");
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
         document.getElementById("theme-toggle").addEventListener("click", function() {
             document.body.classList.toggle("dark-mode");
-            const themeIcon = document.getElementById("theme-icon");
-            const themeText = document.getElementById("theme-text");
-            
-            if (document.body.classList.contains("dark-mode")) {
-                themeIcon.src = "images/moon-icon.png";
-                themeText.textContent = "Dark Mode";
-            } else {
-                themeIcon.src = "images/sun-icon.png";
-                themeText.textContent = "Light Mode";
-            }
         });
     </script>
 </body>
