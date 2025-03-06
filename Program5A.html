@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 1 - DSA Learning Hub</title>
+    <title>Program 5A - Develop a Program in C for the following Stack Applications.</title>
     <link rel="stylesheet" href="style.css">
     <style>
         body {
@@ -48,21 +48,18 @@
         <p><strong>Description:</strong> This program demonstrates a basic implementation of an array traversal.</p>
         
         <h2>Code:</h2>
+                <pre>
 #include&lt;stdio.h&gt;
-
 #include&lt;stdlib.h&gt;
 #include&lt;math.h&gt;
-
 int i, top = -1;
 int op1, op2, res, s[20];
 char postfix[90], symb;
-
 void push(int item)
 {
     top = top + 1;
     s[top] = item;
 }
-
 int pop()
 {
     int item;
@@ -70,7 +67,6 @@ int pop()
     top = top - 1;
     return item;
 }
-
 void main()
 {
     printf("\nEnter a valid postfix expression:\n");
@@ -116,14 +112,14 @@ void main()
     printf("\n Result = %d", res);
 }
         </pre>
-        
         <h2>Output:</h2>
         <pre>
 Enter a valid postfix expression:
 623+-382/+*2$3+
-Result = 52        </pre>
+Result = 52        
+    </pre>
         
-        <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
+<button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
 </body>
 </html>
