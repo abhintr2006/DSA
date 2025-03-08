@@ -4,52 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSA Learning Hub</title>
-    <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon"> <!-- Favicon added here -->
+    <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <style>
+        /* General Styles */
         body {
-            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1e1e2f, #3a3a55);
+            color: #fff;
+            transition: all 0.3s ease-in-out;
         }
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1s ease-in-out forwards;
-        }
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+
+        /* Navbar */
         .navbar {
             display: flex;
             justify-content: center;
             list-style: none;
-            padding: 0;
+            padding: 15px 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .navbar li {
-            margin: 0 15px;
+            margin: 0 20px;
+            position: relative;
         }
+
         .navbar li a {
-            transition: background 0.3s, transform 0.3s;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1em;
+            padding: 10px 15px;
+            transition: all 0.3s;
+            display: inline-block;
         }
 
         .navbar li a:hover {
+            background: #ff9800;
+            border-radius: 5px;
             transform: scale(1.1);
         }
 
+        /* Dropdown Menu */
         .dropdown-menu {
             display: none;
             position: absolute;
-            background: #444;
-            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 8px;
+            padding: 10px 0;
+            list-style: none;
+            min-width: 180px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+            opacity: 0;
             transition: opacity 0.3s ease-in-out;
         }
 
@@ -58,67 +70,118 @@
             opacity: 1;
         }
 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
+        .dropdown-menu li {
+            text-align: center;
+            padding: 10px 0;
         }
 
-        .nav-container {
-            flex-grow: 1;
-            display: flex;
-            justify-content: center;
+        .dropdown-menu li a {
+            color: #fff;
+            display: block;
+            padding: 10px;
+            transition: background 0.3s;
+        }
+
+        .dropdown-menu li a:hover {
+            background: #ff9800;
+            border-radius: 5px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        /* Sections */
+        section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+            color: #ff9800;
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            margin-top: 30px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1 class="fade-in">DSA Learning Hub</h1>
-        <div class="nav-container">
-            <nav>
-                <ul class="navbar">
-                    <li><a href="#home" onclick="scrollToSection('home')">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#">Study Notes ▾</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#module1">Module 1</a></li>
-                            <li><a href="#module2">Module 2</a></li>
-                            <li><a href="#module3">Module 3</a></li>
-                            <li><a href="#module4">Module 4</a></li>
-                            <li><a href="#module5">Module 5</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#">Programs & Outputs ▾</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="program1.html">Program 1</a></li>
-                            <li><a href="program2.html">Program 2</a></li>
-                            <li><a href="program3.html">Program 3</a></li>
-                            <li><a href="program4.html">Program 4</a></li>
-                            <li><a href="program5A.html">Program 5A</a></li>
-                            <li><a href="program5B.html">Program 5B</a></li>
-                            <li><a href="program6.html">Program 6</a></li>
-                            <li><a href="program7.html">Program 7</a></li>
-                            <li><a href="program8.html">Program 8</a></li>
-                            <li><a href="program9.html">Program 9</a></li>
-                            <li><a href="program10.html">Program 10</a></li>
-                            <li><a href="program11.html">Program 11</a></li>
-                            <li><a href="program12.html">Program 12</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" onclick="openCodeCompiler()">Code Compiler</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>DSA Learning Hub</h1>
     </header>
 
-    <section id="notes" class="fade-in">
+    <nav>
+        <ul class="navbar">
+            <li><a href="#home" onclick="scrollToSection('home')">Home</a></li>
+            <li class="dropdown">
+                <a href="#">Study Notes ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#module1">Module 1</a></li>
+                    <li><a href="#module2">Module 2</a></li>
+                    <li><a href="#module3">Module 3</a></li>
+                    <li><a href="#module4">Module 4</a></li>
+                    <li><a href="#module5">Module 5</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">Programs & Outputs ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="program1.html">Program 1</a></li>
+                    <li><a href="program2.html">Program 2</a></li>
+                    <li><a href="program3.html">Program 3</a></li>
+                    <li><a href="program4.html">Program 4</a></li>
+                    <li><a href="program5A.html">Program 5A</a></li>
+                    <li><a href="program5B.html">Program 5B</a></li>
+                    <li><a href="program6.html">Program 6</a></li>
+                    <li><a href="program7.html">Program 7</a></li>
+                    <li><a href="program8.html">Program 8</a></li>
+                </ul>
+            </li>
+            <li><a href="#" onclick="openCodeCompiler()">Code Compiler</a></li>
+        </ul>
+    </nav>
+
+    <section id="notes">
         <h2>Study Notes</h2>
         <p>Comprehensive notes on DSA concepts from the VTU syllabus.</p>
     </section>
 
-    <section id="programs" class="fade-in">
+    <section id="programs">
         <h2>Programs & Outputs</h2>
         <p>Collection of DSA programs with explanations and outputs.</p>
     </section>
