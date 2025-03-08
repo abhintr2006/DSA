@@ -5,120 +5,134 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DSA Learning Hub</title>
     <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
     <style>
-        /* General Styles */
-        body {
-            font-family: 'Poppins', sans-serif;
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Reset Styles */
+        * {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #1e1e2f, #3a3a55);
-            color: #fff;
-            transition: all 0.3s ease-in-out;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Body Styling */
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
         }
 
         /* Navbar */
         .navbar {
             display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 15px 0;
-            background: rgba(0, 0, 0, 0.7);
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
-            position: sticky;
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease-in-out;
         }
 
-        .navbar li {
-            margin: 0 20px;
-            position: relative;
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        .navbar li a {
+        .navbar h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ff9800;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
             text-decoration: none;
             color: #fff;
-            font-size: 1.1em;
-            padding: 10px 15px;
-            transition: all 0.3s;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #ff9800;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 150px 10% 80px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .btn {
             display: inline-block;
-        }
-
-        .navbar li a:hover {
-            background: #ff9800;
-            border-radius: 5px;
-            transform: scale(1.1);
-        }
-
-        /* Dropdown Menu */
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            border-radius: 8px;
-            padding: 10px 0;
-            list-style: none;
-            min-width: 180px;
-            box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        }
-
-        .dropdown:hover .dropdown-menu {
-            display: block;
-            opacity: 1;
-        }
-
-        .dropdown-menu li {
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        .dropdown-menu li a {
+            padding: 12px 25px;
+            font-size: 1.2rem;
             color: #fff;
-            display: block;
-            padding: 10px;
-            transition: background 0.3s;
-        }
-
-        .dropdown-menu li a:hover {
             background: #ff9800;
-            border-radius: 5px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
         }
 
-        /* Header */
-        header {
+        .btn:hover {
+            background: #e68a00;
+        }
+
+        /* Section Styling */
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px 5%;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 12px;
             text-align: center;
-            padding: 50px 20px;
+            width: 320px;
+            transition: transform 0.3s;
         }
 
-        h1 {
-            font-size: 2.5em;
-            margin: 0;
-            letter-spacing: 1px;
+        .card:hover {
+            transform: translateY(-10px);
         }
 
-        /* Sections */
-        section {
-            padding: 60px 20px;
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeIn 1s ease-in-out forwards;
-        }
-
-        h2 {
-            font-size: 2em;
+        .card h3 {
+            font-size: 1.8rem;
             margin-bottom: 10px;
             color: #ff9800;
         }
 
-        p {
-            font-size: 1.1em;
-            line-height: 1.6;
+        .card p {
+            font-size: 1rem;
             color: #ddd;
         }
 
@@ -126,78 +140,81 @@
         footer {
             text-align: center;
             padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(5px);
-            margin-top: 30px;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin-top: 50px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>DSA Learning Hub</h1>
-    </header>
 
-    <nav>
-        <ul class="navbar">
-            <li><a href="#home" onclick="scrollToSection('home')">Home</a></li>
-            <li class="dropdown">
-                <a href="#">Study Notes ▾</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#module1">Module 1</a></li>
-                    <li><a href="#module2">Module 2</a></li>
-                    <li><a href="#module3">Module 3</a></li>
-                    <li><a href="#module4">Module 4</a></li>
-                    <li><a href="#module5">Module 5</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#">Programs & Outputs ▾</a>
-                <ul class="dropdown-menu">
-                    <li><a href="program1.html">Program 1</a></li>
-                    <li><a href="program2.html">Program 2</a></li>
-                    <li><a href="program3.html">Program 3</a></li>
-                    <li><a href="program4.html">Program 4</a></li>
-                    <li><a href="program5A.html">Program 5A</a></li>
-                    <li><a href="program5B.html">Program 5B</a></li>
-                    <li><a href="program6.html">Program 6</a></li>
-                    <li><a href="program7.html">Program 7</a></li>
-                    <li><a href="program8.html">Program 8</a></li>
-                </ul>
-            </li>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1>DSA Learning Hub</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#notes">Study Notes</a></li>
+            <li><a href="#programs">Programs</a></li>
             <li><a href="#" onclick="openCodeCompiler()">Code Compiler</a></li>
         </ul>
     </nav>
 
-    <section id="notes">
-        <h2>Study Notes</h2>
-        <p>Comprehensive notes on DSA concepts from the VTU syllabus.</p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>Master Data Structures & Algorithms</h2>
+        <p>Explore comprehensive study materials and coding programs to ace DSA.</p>
+        <a href="#notes" class="btn">Get Started</a>
     </section>
 
-    <section id="programs">
-        <h2>Programs & Outputs</h2>
-        <p>Collection of DSA programs with explanations and outputs.</p>
+    <!-- Study Notes Section -->
+    <section class="container" id="notes">
+        <div class="card">
+            <h3>Module 1</h3>
+            <p>Introduction to Data Structures, complexity analysis, and basics of algorithms.</p>
+        </div>
+        <div class="card">
+            <h3>Module 2</h3>
+            <p>Linked Lists, Stacks, and Queues with implementation examples.</p>
+        </div>
+        <div class="card">
+            <h3>Module 3</h3>
+            <p>Trees, Binary Search Trees, Heaps, and Graphs explained in depth.</p>
+        </div>
     </section>
 
+    <!-- Programs Section -->
+    <section class="container" id="programs">
+        <div class="card">
+            <h3>Sorting Algorithms</h3>
+            <p>Bubble Sort, Merge Sort, Quick Sort, and more with implementation.</p>
+        </div>
+        <div class="card">
+            <h3>Graph Algorithms</h3>
+            <p>BFS, DFS, Dijkstra's, Floyd Warshall, and Minimum Spanning Tree.</p>
+        </div>
+        <div class="card">
+            <h3>Dynamic Programming</h3>
+            <p>Knapsack, LCS, Fibonacci, and advanced DP concepts.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 DSA Learning Hub</p>
     </footer>
 
+    <!-- JavaScript for Navbar Effect -->
     <script>
-        function scrollToSection(sectionId) {
-            document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
-        }
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
 
         function openCodeCompiler() {
             window.open('code-compiler.html', '_blank');
         }
     </script>
+
 </body>
 </html>
+
