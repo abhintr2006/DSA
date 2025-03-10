@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 2 - String oprations.</title>
+    <title>Program 4 - Converting an Infix Expression to Postfix Expression</title>
     <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
@@ -105,83 +105,141 @@
     <h1>DSA Learning Hub</h1>
     </nav>
     <div class="container">
-        <h1>Program 2: String Operations </h1>
-        <p><strong>Description:</strong> This program demonstrates the basic operations in a string.</p>
+        <h1>Program 4: Converting an Infix Expression to Postfix Expression.</h1>
+        <p><strong>Description:</strong> This program demonstrates the conversion of an Infix Expression to a Postfix Expression.
+        </p>
         <h2>Program:</h2>
         <pre>
 #include&lt;stdio.h&gt;
-char str[50], pat[20], rep[20], res[50];
-int c = 0, m = 0, i = 0, j = 0, k, flag = 0;
-void stringmatch()
-{
-    while (str[c] != '\0')
-    {
-        if (str[m] == pat[i])
-        {
-            i++;
-            m++;
-            if (pat[i] == '\0')
+#include&lt;stdlib.h&gt;
+void evaluate();
+void push(char);
+char pop();
+int prec(char);
+char infix[30], postfix[30], stack[30];
+int top = -1;
+void main(){
+    printf("\n Enter the valid infix expression:");
+    scanf("%s", infix);
+    evaluate();
+    printf("\nThe entered infix expression is :\n %s \n", infix);
+    printf("\nThe corresponding postfix expression is :\n %s \n", postfix);
+}
+void evaluate(){
+    int i = 0, j = 0;
+    char symb, temp;
+    push('#');
+    for (i = 0; infix[i] != '\0'; i++){
+        symb = infix[i];
+        switch (symb){
+        case '(':
+            push(symb);
+            break;
+        case ')':
+            temp = pop();
+            while (temp != '(')
             {
-                flag = 1;
-                for (k = 0; rep[k] != '\0'; k++, j++)
-                {
-                    res[j] = rep[k];
-                }
-                i = 0;
-                c = m;
+                postfix[j] = temp;
+                j++;
+                temp = pop();
             }
-        }
-        else
-        {
-            res[j] = str[c];
+            break;
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+        case '%':
+        case '^':
+        case '$':
+            while (prec(stack[top]) >= prec(symb))
+            {
+                temp = pop();
+                postfix[j] = temp;
+                j++;
+            }
+            push(symb);
+            break;
+        default:
+            postfix[j] = symb;
             j++;
-            c++;
-            m = c;
-            i = 0;
         }
     }
-    res[j] = '\0';
+    while (top > 0)
+    {
+        temp = pop();
+        postfix[j] = temp;
+        j++;
+    }
+    postfix[j] = '\0';
 }
-void main()
+
+void push(char item)
 {
-    printf("Enter the main string:");
-    gets(str);
-    printf("\nEnter the pat string:");
-    gets(pat);
-    printf("\nEnter the replace string:");
-    gets(rep);
-    printf("\nThe string before pattern match is:\n %s", str);
-    stringmatch();
-    if (flag == 1)
-        printf("\nThe string after pattern match and replace is: \n %s ", res);
-    else
-        printf("\nPattern string is not found");
+    top = top + 1;
+    stack[top] = item;
+}
+
+char pop()
+{
+    char item;
+    item = stack[top];
+    top = top - 1;
+    return item;
+}
+int prec(char symb)
+{
+    int p;
+    switch (symb)
+    {
+    case '#':
+        p = -1;
+        break;
+    case '(':
+    case ')':
+        p = 0;
+        break;
+    case '+':
+    case '-':
+        p = 1;
+        break;
+    case '*':
+    case '/':
+    case '%':
+        p = 2;
+        break;
+
+    case '^':
+    case '$':
+        p = 3;
+        break;
+    }
+    return p;
 }
         </pre>
         <h2>Output:</h2>
         <pre>
 **************************OUTPUT 1*******************************
 
-Enter the main string:Designed by vtucode
+Enter the main string:Designed by Pranav
 
-Enter the pat string:vtucode
+Enter the pat string:Pranav
 
-Enter the replace string:Braham
+Enter the replace string: CS&BS 4TH SEM
 
 The string before pattern match is:
-Designed by vtucode
+Designed by Pranav
  
 The string after pattern match and replace is: 
-Designed by Braham
+Designed by CS&BS 4TH SEM
  
  
 **************************OUTPUT 2*******************************
  
 Enter the main string:Designed by Developer
 
-Enter the pat string:vtucode
+Enter the pat string:Student
 
-Enter the replace string:Braham
+Enter the replace string:CS&BS 4TH SEM
 
 The string before pattern match is:
 Designed by Developer
