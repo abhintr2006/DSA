@@ -190,15 +190,19 @@
                     <li><a href="program12.html">Program 12</a></li>
                 </ul>
             </li>
-            <li><a href="code-compiler.html">Code Compiler</a></li>
+            <li><a href="#" onclick="openCodeCompiler()">Code Compiler</a></li>
         </ul>
         <button id="theme-toggle">🌙 Dark Mode</button>
     </nav>
+    
+    <!-- Hero Section -->
     <section class="hero" id="home">
         <h2>Master Data Structures & Algorithms</h2>
         <p>Explore comprehensive study materials and coding programs to ace DSA.</p>
         <a href="#notes" class="btn">Get Started</a>
     </section>
+
+    <!-- Footer -->
     <footer>
         <p>&copy; 2025 DSA Learning Hub</p>
     </footer>
@@ -228,6 +232,26 @@
                 }
             });
         });
+
+        // Open the dropdown menu when clicking on it
+        document.querySelector(".dropdown").addEventListener("click", function() {
+            const dropdownMenu = this.querySelector(".dropdown-menu");
+            dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+        });
+
+        // Close dropdown when clicking outside of it
+        window.addEventListener("click", function(event) {
+            const dropdown = document.querySelector(".dropdown");
+            const dropdownMenu = document.querySelector(".dropdown-menu");
+            if (!dropdown.contains(event.target)) {
+                dropdownMenu.style.display = "none";
+            }
+        });
+
+        // Function to open the code compiler (placeholder)
+        function openCodeCompiler() {
+            alert('Code Compiler functionality will be added here!');
+        }
     </script>
 </body>
 </html>
