@@ -1,512 +1,193 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 1 - DSA Learning Hub</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Program 2 - String oprations.</title>
+    <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
             padding: 20px;
             text-align: center;
         }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ff9800;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .navbar ul li a:hover {
+            color: #ff9800;
+        }
+
         .container {
             max-width: 800px;
             margin: auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            margin-top: 80px;
         }
+
         pre {
-            background: #222;
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: left;
-            overflow-x: auto;
-        }
+     background: #222;
+     color: #fff;
+     padding: 20px;
+     border-radius: 5px;
+     text-align: left;
+     overflow-x: auto;
+     font-size: 1.1rem;
+     max-height: 600px;
+     white-space: pre-wrap;
+    }
         button {
             margin-top: 20px;
             padding: 10px 20px;
             border: none;
-            background: #007bff;
+            background: #ff9800;
             color: white;
             cursor: pointer;
             border-radius: 5px;
+            transition: 0.3s;
         }
+
         button:hover {
-            background: #0056b3;
+            background: #e68a00;
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+    <h1>DSA Learning Hub</h1>
+    </nav>
     <div class="container">
-        <h1>Program 1: Sample DSA Program</h1>
-        <p><strong>Description:</strong> This program demonstrates a basic implementation of an array traversal.</p>
-        
-        <h2>Code:</h2>
+        <h1>Program 2: String Operations </h1>
+        <p><strong>Description:</strong> This program demonstrates the basic operations in a string.</p>
+        <h2>Program:</h2>
         <pre>
 #include&lt;stdio.h&gt;
-
-#include&lt;stdlib.h&gt;
-
-struct node
+char str[50], pat[20], rep[20], res[50];
+int c = 0, m = 0, i = 0, j = 0, k, flag = 0;
+void stringmatch()
 {
-    char ssn[25], name[25], dept[10], designation[25];
-    int sal;
-    long int phone;
-    struct node * llink;
-    struct node * rlink;
-};
-typedef struct node * NODE;
-
-NODE first = NULL;
-int count = 0;
-
-NODE create()
-{
-    NODE enode;
-    enode = (NODE) malloc(sizeof(struct node));
-    if (enode == NULL)
+    while (str[c] != '\0')
     {
-        printf("\n Running out of memory ");
-        exit(0);
-    }
-    printf("\n Enter the ssn,Name,Department,Designation,Salary,PhoneNo of the employee: \n");
-    scanf("%s %s %s %s %d %ld", enode -> ssn, enode -> name, enode -> dept, enode -> designation, & enode -> sal, & enode -> phone);
-    enode -> llink = NULL;
-    enode -> rlink = NULL;
-    count++;
-    return enode;
-}
-
-NODE insertfront()
-{
-    NODE temp;
-    temp = create();
-    if (first == NULL)
-    {
-        return temp;
-    }
-    temp -> rlink = first;
-    first -> llink = temp;
-    return temp;
-}
-
-void display()
-{
-    NODE cur;
-    int nodeno = 1;
-    cur = first;
-    if (cur == NULL)
-        printf("\nNo Contents to display in DLL ");
-    while (cur != NULL)
-    {
-        printf("\nENode:%d|SSN:%s| |Name:%s| |Department:%s| |Designation:%s| |Salary:%d| |Phone no:%ld|", nodeno, cur -> ssn, cur -> name, cur -> dept, cur -> designation, cur -> sal, cur -> phone);
-        cur = cur -> rlink;
-        nodeno++;
-    }
-    printf("\nNo of employee nodes is %d", count);
-}
-
-NODE deletefront()
-{
-    NODE temp;
-    if (first == NULL)
-    {
-        printf("\nDoubly Linked List is empty ");
-        return NULL;
-    }
-    if (first -> rlink == NULL)
-    {
-        printf("\nThe employee node with the ssn:%s is deleted ", first -> ssn);
-        free(first);
-        count--;
-        return NULL;
-    }
-    temp = first;
-    first = first -> rlink;
-    temp -> rlink = NULL;
-    first -> llink = NULL;
-    printf("\nThe employee node with the ssn:%s is deleted ", temp -> ssn);
-    free(temp);
-    count--;
-    return first;
-}
-
-NODE insertend()
-{
-    NODE cur, temp;
-    temp = create();
-
-    if (first == NULL)
-    {
-        return temp;
-    }
-    cur = first;
-    while (cur -> rlink != NULL)
-    {
-        cur = cur -> rlink;
-    }
-
-    cur -> rlink = temp;
-    temp -> llink = cur;
-    return first;
-}
-
-NODE deleteend()
-{
-    NODE prev, cur;
-    if (first == NULL)
-    {
-        printf("\nDoubly Linked List is empty ");
-        return NULL;
-    }
-
-    if (first -> rlink == NULL)
-    {
-        printf("\nThe employee node with the ssn:%s is deleted ", first -> ssn);
-        free(first);
-        count--;
-        return NULL;
-    }
-
-    prev = NULL;
-    cur = first;
-
-    while (cur -> rlink != NULL)
-    {
-        prev = cur;
-        cur = cur -> rlink;
-    }
-
-    cur -> llink = NULL;
-    printf("\nThe employee node with the ssn:%s is deleted ", cur -> ssn);
-    free(cur);
-    prev -> rlink = NULL;
-    count--;
-    return first;
-}
-
-void deqdemo()
-{
-    int ch;
-    while (1)
-    {
-        printf("\nDemo Double Ended Queue Operation ");
-        printf("\n1:InsertQueueFront\n 2: DeleteQueueFront\n 3:InsertQueueRear\n 4:DeleteQueueRear\n 5:DisplayStatus\n 6: Exit \n");
-        scanf("%d", & ch);
-
-        switch (ch)
+        if (str[m] == pat[i])
         {
-        case 1:
-            first = insertfront();
-            break;
-        case 2:
-            first = deletefront();
-            break;
-        case 3:
-            first = insertend();
-            break;
-        case 4:
-            first = deleteend();
-            break;
-        case 5:
-            display();
-            break;
-        default:
-            return;
+            i++;
+            m++;
+            if (pat[i] == '\0')
+            {
+                flag = 1;
+                for (k = 0; rep[k] != '\0'; k++, j++)
+                {
+                    res[j] = rep[k];
+                }
+                i = 0;
+                c = m;
+            }
+        }
+        else
+        {
+            res[j] = str[c];
+            j++;
+            c++;
+            m = c;
+            i = 0;
         }
     }
+    res[j] = '\0';
 }
-
 void main()
 {
-    int ch, i, n;
-    while (1)
-    {
-        printf("\n\n--------Menu--------");
-        printf("\n1:Create DLL of Employee Nodes ");
-        printf("\n2:DisplayStatus");
-        printf("\n3:InsertAtEnd");
-        printf("\n4:DeleteAtEnd");
-        printf("\n5:InsertAtFront");
-        printf("\n6:DeleteAtFront");
-        printf("\n7:Double Ended Queue Demo using DLL ");
-        printf("\n8:Exit \n");
-        printf("\nPlease enter your choice: ");
-        scanf("%d", & ch);
-
-        switch (ch)
-        {
-        case 1:
-            printf("\nEnter the no of Employees: ");
-            scanf("%d", & n);
-            for (i = 1; i <= n; i++)
-                first = insertend();
-            break;
-
-        case 2:
-            display();
-            break;
-
-        case 3:
-            first = insertend();
-            break;
-
-        case 4:
-            first = deleteend();
-            break;
-
-        case 5:
-            first = insertfront();
-            break;
-
-        case 6:
-            first = deletefront();
-            break;
-
-        case 7:
-            deqdemo();
-            break;
-
-        case 8:
-            exit(0);
-        default:
-            printf("\nPlease Enter the valid choice ");
-        }
-    }
+    printf("Enter the main string:");
+    gets(str);
+    printf("\nEnter the pat string:");
+    gets(pat);
+    printf("\nEnter the replace string:");
+    gets(rep);
+    printf("\nThe string before pattern match is:\n %s", str);
+    stringmatch();
+    if (flag == 1)
+        printf("\nThe string after pattern match and replace is: \n %s ", res);
+    else
+        printf("\nPattern string is not found");
 }
         </pre>
-                </pre>
-
         <h2>Output:</h2>
         <pre>
---------Menu--------
-1:Create DLL of Employee Nodes
-2:DisplayStatus
-3:InsertAtEnd
-4:DeleteAtEnd
-5:InsertAtFront
-6:DeleteAtFront
-7:Double Ended Queue Demo using DLL
-8:Exit
-Please enter your choice: 1
-Enter the no of Employees: 2
+**************************OUTPUT 1*******************************
 
-Enter the ssn,Name,Department,Designation,Salary,PhoneNo of the employee:
-1EPL
-Braham
-Developer
-Senior
-13627
-8476283712
+Enter the main string:Designed by vtucode
 
-Enter the ssn,Name,Department,Designation,Salary,PhoneNo of the employee:
-2EPL
-Aman
-Trader
-Manager
-20000
-2763578156
+Enter the pat string:vtucode
 
---------Menu--------
-1:Create DLL of Employee Nodes
-2:DisplayStatus
-3:InsertAtEnd
-4:DeleteAtEnd
-5:InsertAtFront
-6:DeleteAtFront
-7:Double Ended Queue Demo using DLL
-8:Exit
-Please enter your choice: 2
+Enter the replace string:Braham
 
-|ENode:1| |SSN:1EPL| |Name:Braham| |Department:Developer| |Designation:Senior | |Salary:13627| |Phone no:8476283712|
-|ENode:2| |SSN:2EPL| |Name:Aman  | |Department:Trader   | |Designation:Manager| |Salary:20000| |Phone no:2763578156|
-No of employee nodes is 2
+The string before pattern match is:
+Designed by vtucode
+ 
+The string after pattern match and replace is: 
+Designed by Braham
+ 
+ 
+**************************OUTPUT 2*******************************
+ 
+Enter the main string:Designed by Developer
 
---------Menu--------
-1:Create DLL of Employee Nodes
-2:DisplayStatus
-3:InsertAtEnd
-4:DeleteAtEnd
-5:InsertAtFront
-6:DeleteAtFront
-7:Double Ended Queue Demo using DLL
-8:Exit
-Please enter your choice: 3
+Enter the pat string:vtucode
 
-Enter the ssn,Name,Department,Designation,Salary,PhoneNo of the employee:
-3EPL
-Bikash
-Meeting
-Manager
-30000
-8237462936
+Enter the replace string:Braham
 
---------Menu--------
-1:Create DLL of Employee Nodes
-2:DisplayStatus
-3:InsertAtEnd
-4:DeleteAtEnd
-5:InsertAtFront
-6:DeleteAtFront
-7:Double Ended Queue Demo using DLL
-8:Exit
-Please enter your choice: 2
-
-|ENode:1| |SSN:1EPL| |Name:Braham| |Department:Developer| |Designation:Senior | |Salary:13627| |Phone no:8476283712|
-|ENode:2| |SSN:2EPL| |Name:Aman  | |Department:Trader   | |Designation:Manager| |Salary:20000| |Phone no:2763578156|
-|ENode:3| |SSN:3EPL| |Name:Bikash| |Department:Meeting  | |Designation:Manager| |Salary:30000| |Phone no:8237462936|
-No of employee nodes is 3
-
---------Menu--------
-1:Create DLL of Employee Nodes
-2:DisplayStatus
-3:InsertAtEnd
-4:DeleteAtEnd
-5:InsertAtFront
-6:DeleteAtFront
-7:Double Ended Queue Demo using DLL
-8:Exit
-Please enter your choice: 5
-
-Enter the ssn,Name,Department,Designation,Salary,PhoneNo of the employee:
-4EPL
-Shoaib
-Digital Marketing
-Manager
-40000
-2835826437
-
---------Menu--------
-1:Create DLL of Employee Nodes
-2:DisplayStatus
-3:InsertAtEnd
-4:DeleteAtEnd
-5:InsertAtFront
-6:DeleteAtFront
-7:Double Ended Queue Demo using DLL
-8:Exit
-
-Please enter your choice: 2
-
-|ENode:1| |SSN:4EPL| |Name:Shoaib| |Department:Digital Marketing| |Designation:Manager| |Salary:40000| |Phone no:2835826437| 
-|ENode:2| |SSN:1EPL| |Name:Braham| |Department:Developer        | |Designation:Senior | |Salary:13627| |Phone no:8476283712|
-|ENode:3| |SSN:2EPL| |Name:Aman  | |Department:Trader           | |Designation:Manager| |Salary:20000| |Phone no:2763578156|
-|ENode:4| |SSN:3EPL| |Name:Bikash| |Department:Meeting          | |Designation:Manager| |Salary:30000| |Phone no:8237462936|
-No of employee nodes is 4
-
---------Menu--------
-1:Create DLL of Employee Nodes
-2:DisplayStatus
-3:InsertAtEnd
-4:DeleteAtEnd
-5:InsertAtFront
-6:DeleteAtFront
-7:Double Ended Queue Demo using DLL
-8:Exit
-Please enter your choice: 4
-
-The employee node with the ssn:3EPL is deleted
-
---------Menu--------
-1:Create DLL of Employee Nodes
-2:DisplayStatus
-3:InsertAtEnd
-4:DeleteAtEnd
-5:InsertAtFront
-6:DeleteAtFront
-7:Double Ended Queue Demo using DLL
-8:Exit
-Please enter your choice: 6
-
-The employee node with the ssn:4EPL is deleted
-
---------Menu--------
-1:Create DLL of Employee Nodes
-2:DisplayStatus
-3:InsertAtEnd
-4:DeleteAtEnd
-5:InsertAtFront
-6:DeleteAtFront
-7:Double Ended Queue Demo using DLL
-8:Exit
-Please enter your choice: 2
-
-|ENode:1| |SSN:1EPL| |Name:Braham| |Department:Developer| |Designation:Senior | |Salary:13627| |Phone no:8476283712|
-|ENode:2| |SSN:2EPL| |Name:Aman  | |Department:Trader   | |Designation:Manager| |Salary:20000| |Phone no:2763578156|
-No of employee nodes is 2
-
---------Menu--------
-1:Create DLL of Employee Nodes
-2:DisplayStatus
-3:InsertAtEnd
-4:DeleteAtEnd
-5:InsertAtFront
-6:DeleteAtFront
-7:Double Ended Queue Demo using DLL
-8:Exit
-Please enter your choice: 7
-
-Demo Double Ended Queue Operation
-1:InsertQueueFront
-2: DeleteQueueFront
-3:InsertQueueRear
-4:DeleteQueueRear
-5:DisplayStatus
-6: Exit
-Please enter your choice: 2
-
-The employee node with the ssn:1EPL is deleted
-
-Demo Double Ended Queue Operation
-1:InsertQueueFront
-2: DeleteQueueFront
-3:InsertQueueRear
-4:DeleteQueueRear
-5:DisplayStatus
-6: Exit
-Please enter your choice: 4
-
-The employee node with the ssn:2EPL is deleted
-
-Demo Double Ended Queue Operation
-1:InsertQueueFront
-2: DeleteQueueFront
-3:InsertQueueRear
-4:DeleteQueueRear
-5:DisplayStatus
-6: Exit
-Please enter your choice: 2
-
-Doubly Linked List is empty
-
-Demo Double Ended Queue Operation
-1:InsertQueueFront
-2: DeleteQueueFront
-3:InsertQueueRear
-4:DeleteQueueRear
-5:DisplayStatus
-6: Exit
-Please enter your choice: 6
-
---------Menu--------
-1:Create DLL of Employee Nodes
-2:DisplayStatus
-3:InsertAtEnd
-4:DeleteAtEnd
-5:InsertAtFront
-6:DeleteAtFront
-7:Double Ended Queue Demo using DLL
-8:Exit
-
-Please enter your choice: 8       
+The string before pattern match is:
+Designed by Developer
+ 
+Pattern string is not found
         </pre>
-        
         <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
 </body>
