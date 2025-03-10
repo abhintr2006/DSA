@@ -64,6 +64,262 @@
             color: #fff;
             font-size: 1.1rem;
             transition: 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #ff9800;
+        }
+
+        /* Dropdown Styling */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            list-style: none;
+            padding: 10px 0;
+            display: none;
+            min-width: 200px;
+            border-radius: 8px;
+        }
+
+        .dropdown-menu li {
+            padding: 10px 20px;
+            margin: 0; /* Reset margin */
+        }
+
+        .dropdown-menu li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .dropdown-menu li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ff9800;
+            border-radius: 4px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 150px 10% 80px;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            font-size: 1.2rem;
+            color: #fff;
+            background: #ff9800;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #e68a00;
+        }
+
+        /* Section Styling */
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 50px 5%;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            width: 320px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #ff9800;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #ddd;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1>DSA Learning Hub</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#notes">Study Notes</a></li>
+            <li class="dropdown">
+                <a href="#">Programs & Outputs</a>
+                <ul class="dropdown-menu">
+                    <li><a href="program1.html">Program 1</a></li>
+                    <li><a href="program2.html">Program 2</a></li>
+                    <li><a href="program3.html">Program 3</a></li>
+                    <li><a href="program4.html">Program 4</a></li>
+                    <li><a href="program5A.html">Program 5A</a></li>
+                    <li><a href="program5B.html">Program 5B</a></li>
+                    <li><a href="program6.html">Program 6</a></li>
+                    <li><a href="program7.html">Program 7</a></li>
+                    <li><a href="program8.html">Program 8</a></li>
+                    <li><a href="program9.html">Program 9</a></li>
+                    <li><a href="program10.html">Program 10</a></li>
+                    <li><a href="program11.html">Program 11</a></li>
+                    <li><a href="program12.html">Program 12</a></li>
+                </ul>
+            </li>
+            <li><a href="#" onclick="openCodeCompiler()">Code Compiler</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h2>Master Data Structures & Algorithms</h2>
+        <p>Explore comprehensive study materials and coding programs to ace DSA.</p>
+        <a href="#notes" class="btn">Get Started</a>
+    </section>
+
+    <!-- Study Notes Section -->
+    <section class="container" id="notes">
+        <div class="card">
+            <h3>Module 1</h3>
+            <p>Introduction to Data Structures, complexity analysis, and basics of algorithms.</p>
+        </div>
+        <div class="card">
+            <h3>Module 2</h3>
+            <p>Linked Lists, Stacks, and Queues with implementation examples.</p>
+        </div>
+        <div class="card">
+            <h3>Module 3</h3>
+            <p>Trees, Binary Search Trees, Heaps, and Graphs explained in depth.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 DSA Learning Hub</p>
+    </footer>
+
+    <!-- JavaScript for Navbar Effect -->
+    <script>
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        function openCodeCompiler() {
+            window.open('code-compiler.html', '_blank');
+        }
+    </script>
+
+</body>
+</html> html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Learning Hub</title>
+    <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
+    <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Body Styling */
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ff9800;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: 0.3s;
             cursor: pointer;
         }
 
