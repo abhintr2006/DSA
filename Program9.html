@@ -1,414 +1,193 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 1 - DSA Learning Hub</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Program 2 - String oprations.</title>
+    <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
             padding: 20px;
             text-align: center;
         }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ff9800;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .navbar ul li a:hover {
+            color: #ff9800;
+        }
+
         .container {
             max-width: 800px;
             margin: auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            margin-top: 80px;
         }
+
         pre {
-            background: #222;
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: left;
-            overflow-x: auto;
-        }
+     background: #222;
+     color: #fff;
+     padding: 20px;
+     border-radius: 5px;
+     text-align: left;
+     overflow-x: auto;
+     font-size: 1.1rem;
+     max-height: 600px;
+     white-space: pre-wrap;
+    }
         button {
             margin-top: 20px;
             padding: 10px 20px;
             border: none;
-            background: #007bff;
+            background: #ff9800;
             color: white;
             cursor: pointer;
             border-radius: 5px;
+            transition: 0.3s;
         }
+
         button:hover {
-            background: #0056b3;
+            background: #e68a00;
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+    <h1>DSA Learning Hub</h1>
+    </nav>
     <div class="container">
-        <h1>Program 1: Sample DSA Program</h1>
-        <p><strong>Description:</strong> This program demonstrates a basic implementation of an array traversal.</p>
-        
-        <h2>Code:</h2>
+        <h1>Program 2: String Operations </h1>
+        <p><strong>Description:</strong> This program demonstrates the basic operations in a string.</p>
+        <h2>Program:</h2>
         <pre>
 #include&lt;stdio.h&gt;
-
-#include&lt;stdlib.h&gt;
-
-#include&lt;math.h&gt;
-
-#define COMPARE(x, y)((x == y) ? 0 : (x > y) ? 1 : -1)
-
-struct node
+char str[50], pat[20], rep[20], res[50];
+int c = 0, m = 0, i = 0, j = 0, k, flag = 0;
+void stringmatch()
 {
-    int coef;
-    int xexp, yexp, zexp;
-    struct node * link;
-};
-typedef struct node * NODE;
-
-NODE getnode()
-{
-    NODE x;
-    x = (NODE) malloc(sizeof(struct node));
-    if (x == NULL)
+    while (str[c] != '\0')
     {
-        printf("Running out of memory \n");
-        return NULL;
-    }
-    return x;
-}
-
-NODE attach(int coef, int xexp, int yexp, int zexp, NODE head)
-{
-    NODE temp, cur;
-    temp = getnode();
-    temp -> coef = coef;
-    temp -> xexp = xexp;
-    temp -> yexp = yexp;
-    temp -> zexp = zexp;
-    cur = head -> link;
-    while (cur -> link != head)
-    {
-        cur = cur -> link;
-    }
-    cur -> link = temp;
-    temp -> link = head;
-    return head;
-}
-
-NODE read_poly(NODE head)
-{
-    int i, j, coef, xexp, yexp, zexp, n;
-    printf("\nEnter the no of terms in the polynomial: ");
-    scanf("%d", & n);
-    for (i = 1; i <= n; i++)
-    {
-        printf("\n\tEnter the %d term: ", i);
-        printf("\n\t\tCoef =  ");
-        scanf("%d", & coef);
-        printf("\n\t\tEnter Pow(x) Pow(y) and Pow(z): ");
-        scanf("%d", & xexp);
-        scanf("%d", & yexp);
-        scanf("%d", & zexp);
-        head = attach(coef, xexp, yexp, zexp, head);
-    }
-    return head;
-}
-
-void display(NODE head)
-{
-    NODE temp;
-    if (head -> link == head)
-    {
-        printf("\nPolynomial does not exist.");
-        return;
-    }
-    temp = head -> link;
-
-    while (temp != head)
-    {
-        printf("%dx^%dy^%dz^%d", temp -> coef, temp -> xexp, temp -> yexp, temp -> zexp);
-        temp = temp -> link;
-        if (temp != head)
-            printf(" + ");
-    }
-}
-
-int poly_evaluate(NODE head)
-{
-    int x, y, z, sum = 0;
-    NODE poly;
-
-    printf("\nEnter the value of x,y and z: ");
-    scanf("%d %d %d", & x, & y, & z);
-
-    poly = head -> link;
-    while (poly != head)
-    {
-        sum += poly -> coef * pow(x, poly -> xexp) * pow(y, poly -> yexp) * pow(z, poly -> zexp);
-        poly = poly -> link;
-    }
-    return sum;
-}
-
-NODE poly_sum(NODE head1, NODE head2, NODE head3)
-{
-    NODE a, b;
-    int coef;
-    a = head1 -> link;
-    b = head2 -> link;
-
-    while (a != head1 && b != head2)
-    {
-        while (1)
+        if (str[m] == pat[i])
         {
-            if (a -> xexp == b -> xexp && a -> yexp == b -> yexp && a -> zexp == b -> zexp)
+            i++;
+            m++;
+            if (pat[i] == '\0')
             {
-                coef = a -> coef + b -> coef;
-                head3 = attach(coef, a -> xexp, a -> yexp, a -> zexp, head3);
-                a = a -> link;
-                b = b -> link;
-                break;
-            }
-            if (a -> xexp != 0 || b -> xexp != 0)
-            {
-                switch (COMPARE(a -> xexp, b -> xexp))
+                flag = 1;
+                for (k = 0; rep[k] != '\0'; k++, j++)
                 {
-                case -1:
-                    head3 = attach(b -> coef, b -> xexp, b -> yexp, b -> zexp, head3);
-                    b = b -> link;
-                    break;
-
-                case 0:
-                    if (a -> yexp > b -> yexp)
-                    {
-                        head3 = attach(a -> coef, a -> xexp, a -> yexp, a -> zexp, head3);
-                        a = a -> link;
-                        break;
-                    }
-                    else if (a -> yexp < b -> yexp)
-                    {
-                        head3 = attach(b -> coef, b -> xexp, b -> yexp, b -> zexp, head3);
-                        b = b -> link;
-                        break;
-                    }
-                    else if (a -> zexp > b -> zexp)
-                    {
-                        head3 = attach(a -> coef, a -> xexp, a -> yexp, a -> zexp, head3);
-                        a = a -> link;
-                        break;
-                    }
-                    else if (a -> zexp < b -> zexp)
-                    {
-                        head3 = attach(b -> coef, b -> xexp, b -> yexp, b -> zexp, head3);
-                        b = b -> link;
-                        break;
-                    }
-                case 1:
-                    head3 = attach(a -> coef, a -> xexp, a -> yexp, a -> zexp, head3);
-                    a = a -> link;
-                    break;
+                    res[j] = rep[k];
                 }
-                break;
-            }
-            if (a -> yexp != 0 || b -> yexp != 0)
-            {
-                switch (COMPARE(a -> yexp, b -> yexp))
-                {
-                case -1:
-                    head3 = attach(b -> coef, b -> xexp, b -> yexp, b -> zexp, head3);
-                    b = b -> link;
-                    break;
-                case 0:
-                    if (a -> zexp > b -> zexp)
-                    {
-                        head3 = attach(a -> coef, a -> xexp, a -> yexp, a -> zexp, head3);
-                        a = a -> link;
-                        break;
-                    }
-                    else if (a -> zexp < b -> zexp)
-                    {
-                        head3 = attach(b -> coef, b -> xexp, b -> yexp, b -> zexp, head3);
-                        b = b -> link;
-                        break;
-                    }
-                case 1:
-                    head3 = attach(a -> coef, a -> xexp, a -> yexp, a -> zexp, head3);
-                    a = a -> link;
-                    break;
-                }
-                break;
-            }
-            if (a -> zexp != 0 || b -> zexp != 0)
-            {
-                switch (COMPARE(a -> zexp, b -> zexp))
-                {
-                case -1:
-                    head3 = attach(b -> coef, b -> xexp, b -> yexp, b -> zexp, head3);
-                    b = b -> link;
-                    break;
-                case 1:
-                    head3 = attach(a -> coef, a -> xexp, a -> yexp, a -> zexp, head3);
-                    a = a -> link;
-                    break;
-                }
-                break;
+                i = 0;
+                c = m;
             }
         }
+        else
+        {
+            res[j] = str[c];
+            j++;
+            c++;
+            m = c;
+            i = 0;
+        }
     }
-    while (a != head1)
-    {
-        head3 = attach(a -> coef, a -> xexp, a -> yexp, a -> zexp, head3);
-        a = a -> link;
-    }
-    while (b != head2)
-    {
-        head3 = attach(b -> coef, b -> xexp, b -> yexp, b -> zexp, head3);
-        b = b -> link;
-    }
-    return head3;
+    res[j] = '\0';
 }
-
 void main()
 {
-    NODE head, head1, head2, head3;
-    int res, ch;
-    head = getnode();
-    head1 = getnode();
-    head2 = getnode();
-    head3 = getnode();
-
-    head -> link = head;
-    head1 -> link = head1;
-    head2 -> link = head2;
-    head3 -> link = head3;
-
-    while (1)
-    {
-        printf("\n--------Menu--------");
-        printf("\n1.Represent and Evaluate a Polynomial P(x,y,z)");
-        printf("\n2.Find the sum of two polynomials POLY1(x,y,z)");
-        printf("\nEnter your choice:");
-        scanf("%d", & ch);
-        switch (ch)
-        {
-        case 1:
-            printf("\n----Polynomial evaluation P(x,y,z)----\n");
-            head = read_poly(head);
-            printf("\nRepresentation of Polynomial for evaluation: \n");
-            display(head);
-            res = poly_evaluate(head);
-            printf("\nResult of polynomial evaluation is : %d \n", res);
-            break;
-
-        case 2:
-            printf("\nEnter the POLY1(x,y,z):  \n");
-            head1 = read_poly(head1);
-            printf("\nPolynomial 1 is:  \n");
-            display(head1);
-
-            printf("\nEnter the POLY2(x,y,z):  \n");
-            head2 = read_poly(head2);
-            printf("\nPolynomial 2 is: \n");
-            display(head2);
-
-            printf("\nPolynomial addition result: \n");
-            head3 = poly_sum(head1, head2, head3);
-            display(head3);
-            break;
-        case 3:
-            exit(0);
-        }
-    }
+    printf("Enter the main string:");
+    gets(str);
+    printf("\nEnter the pat string:");
+    gets(pat);
+    printf("\nEnter the replace string:");
+    gets(rep);
+    printf("\nThe string before pattern match is:\n %s", str);
+    stringmatch();
+    if (flag == 1)
+        printf("\nThe string after pattern match and replace is: \n %s ", res);
+    else
+        printf("\nPattern string is not found");
 }
         </pre>
-        
         <h2>Output:</h2>
         <pre>
---------Menu--------
-1.Represent and Evaluate a Polynomial P(x,y,z)
-2.Find the sum of two polynomials POLY1(x,y,z) and POLY2(x,y,z)
-Enter your choice: 1
+**************************OUTPUT 1*******************************
 
-----Polynomial evaluation P(x,y,z)----
-Enter the no of terms in the polynomial: 5
-        Enter the 1 term:
-                Coef =  6
-                Enter Pow(x) Pow(y) and Pow(z): 2          2          1
-        Enter the 2 term:
-                Coef =  -4
-                Enter Pow(x) Pow(y) and Pow(z): 0          1          5
-        Enter the 3 term:
-                Coef =  3
-                Enter Pow(x) Pow(y) and Pow(z): 3          1          1
-        Enter the 4 term:
-                Coef =  2
-                Enter Pow(x) Pow(y) and Pow(z): 1          5          1
-        Enter the 5 term:
-                Coef =  -2
-                Enter Pow(x) Pow(y) and Pow(z): 1          1          3
-                
-Representation of Polynomial for evaluation:
-6x^2y^2z^1 + -4x^0y^1z^5 + 3x^3y^1z^1 + 2x^1y^5z^1 + -2x^1y^1z^3
+Enter the main string:Designed by vtucode
 
-Enter the value of x,y and z: 1  1  1
-Result of polynomial evaluation is : 5
+Enter the pat string:vtucode
 
---------Menu--------
-1.Represent and Evaluate a Polynomial P(x,y,z)
-2.Find the sum of two polynomials POLY1(x,y,z) and POLY2(x,y,z)
-Enter your choice: 2
+Enter the replace string:Braham
 
-Enter the POLY1(x,y,z):
-Enter the no of terms in the polynomial: 5
-        Enter the 1 term:
-                Coef =  6
-                Enter Pow(x) Pow(y) and Pow(z): 4          4          4
-        Enter the 2 term:
-                Coef =  3
-                Enter Pow(x) Pow(y) and Pow(z): 4          3          1
-        Enter the 3 term:
-                Coef =  5
-                Enter Pow(x) Pow(y) and Pow(z): 0          1          1
-        Enter the 4 term:
-                Coef =  10
-                Enter Pow(x) Pow(y) and Pow(z): 0          1          0
-        Enter the 5 term:
-                Coef =  5
-                Enter Pow(x) Pow(y) and Pow(z): 0          0          0
-                
-Polynomial 1 is:
-6x^4y^4z^4 + 3x^4y^3z^1 + 5x^0y^1z^1 + 10x^0y^1z^0 + 5x^0y^0z^0
+The string before pattern match is:
+Designed by vtucode
+ 
+The string after pattern match and replace is: 
+Designed by Braham
+ 
+ 
+**************************OUTPUT 2*******************************
+ 
+Enter the main string:Designed by Developer
 
+Enter the pat string:vtucode
 
-Enter the POLY2(x,y,z):
-Enter the no of terms in the polynomial: 5
-        Enter the 1 term:
-                Coef =  8
-                Enter Pow(x) Pow(y) and Pow(z): 4          4          4
-        Enter the 2 term:
-                Coef =  4
-                Enter Pow(x) Pow(y) and Pow(z): 4          2          1
-        Enter the 3 term:
-                Coef =  30
-                Enter Pow(x) Pow(y) and Pow(z): 0          1          0
-        Enter the 4 term:
-                Coef =  20
-                Enter Pow(x) Pow(y) and Pow(z): 0          0          1
-        Enter the 5 term:
-                Coef =  3
-                Enter Pow(x) Pow(y) and Pow(z): 0          0          0
-                
-Polynomial 2 is:
-8x^4y^4z^4 + 4x^4y^2z^1 + 30x^0y^1z^0 + 20x^0y^0z^1 + 3x^0y^0z^0
+Enter the replace string:Braham
 
-Polynomial addition result:
-14x^4y^4z^4 + 3x^4y^3z^1 + 4x^4y^2z^1 + 5x^0y^1z^1 + 40x^0y^1z^0 + 20x^0y^0z^1 + 8x^0y^0z^0
-
---------Menu--------
-1.Represent and Evaluate a Polynomial P(x,y,z)
-2.Find the sum of two polynomials POLY1(x,y,z) and POLY2(x,y,z)
-Enter your choice:3        </pre>
-        
+The string before pattern match is:
+Designed by Developer
+ 
+Pattern string is not found
+        </pre>
         <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
 </body>
