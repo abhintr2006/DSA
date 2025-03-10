@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 2 - String oprations.</title>
+    <title>Program 8 - Doubly Linked List</title>
     <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
@@ -105,88 +105,462 @@
     <h1>DSA Learning Hub</h1>
     </nav>
     <div class="container">
-        <h1>Program 2: String Operations </h1>
-        <p><strong>Description:</strong> This program demonstrates the basic operations in a string.</p>
+        <h1>Program 8: Doubly Linked List.</h1>
+        <p><strong>Description:</strong> This program demonstrates the basic operations of a Doubly Linked List.</p>
         <h2>Program:</h2>
         <pre>
 #include&lt;stdio.h&gt;
-char str[50], pat[20], rep[20], res[50];
-int c = 0, m = 0, i = 0, j = 0, k, flag = 0;
-void stringmatch()
+#include&lt;stdlib.h&gt;
+struct node
 {
-    while (str[c] != '\0')
+    char ssn[25], name[25], dept[10], designation[25];
+    int sal;
+    long int phone;
+    struct node * llink;
+    struct node * rlink;
+};
+typedef struct node * NODE;
+
+NODE first = NULL;
+int count = 0;
+
+NODE create()
+{
+    NODE enode;
+    enode = (NODE) malloc(sizeof(struct node));
+    if (enode == NULL)
     {
-        if (str[m] == pat[i])
+        printf("\n Running out of memory ");
+        exit(0);
+    }
+    printf("\n Enter the ssn,Name,Department,Designation,Salary,PhoneNo of the employee: \n");
+    scanf("%s %s %s %s %d %ld", enode -> ssn, enode -> name, enode -> dept, enode -> designation, & enode -> sal, & enode -> phone);
+    enode -> llink = NULL;
+    enode -> rlink = NULL;
+    count++;
+    return enode;
+}
+
+NODE insertfront()
+{
+    NODE temp;
+    temp = create();
+    if (first == NULL)
+    {
+        return temp;
+    }
+    temp -> rlink = first;
+    first -> llink = temp;
+    return temp;
+}
+
+void display()
+{
+    NODE cur;
+    int nodeno = 1;
+    cur = first;
+    if (cur == NULL)
+        printf("\nNo Contents to display in DLL ");
+    while (cur != NULL)
+    {
+        printf("\nENode:%d|SSN:%s| |Name:%s| |Department:%s| |Designation:%s| |Salary:%d| |Phone no:%ld|", nodeno, cur -> ssn, cur -> name, cur -> dept, cur -> designation, cur -> sal, cur -> phone);
+        cur = cur -> rlink;
+        nodeno++;
+    }
+    printf("\nNo of employee nodes is %d", count);
+}
+
+NODE deletefront()
+{
+    NODE temp;
+    if (first == NULL)
+    {
+        printf("\nDoubly Linked List is empty ");
+        return NULL;
+    }
+    if (first -> rlink == NULL)
+    {
+        printf("\nThe employee node with the ssn:%s is deleted ", first -> ssn);
+        free(first);
+        count--;
+        return NULL;
+    }
+    temp = first;
+    first = first -> rlink;
+    temp -> rlink = NULL;
+    first -> llink = NULL;
+    printf("\nThe employee node with the ssn:%s is deleted ", temp -> ssn);
+    free(temp);
+    count--;
+    return first;
+}
+
+NODE insertend()
+{
+    NODE cur, temp;
+    temp = create();
+
+    if (first == NULL)
+    {
+        return temp;
+    }
+    cur = first;
+    while (cur -> rlink != NULL)
+    {
+        cur = cur -> rlink;
+    }
+
+    cur -> rlink = temp;
+    temp -> llink = cur;
+    return first;
+}
+
+NODE deleteend()
+{
+    NODE prev, cur;
+    if (first == NULL)
+    {
+        printf("\nDoubly Linked List is empty ");
+        return NULL;
+    }
+
+    if (first -> rlink == NULL)
+    {
+        printf("\nThe employee node with the ssn:%s is deleted ", first -> ssn);
+        free(first);
+        count--;
+        return NULL;
+    }
+
+    prev = NULL;
+    cur = first;
+
+    while (cur -> rlink != NULL)
+    {
+        prev = cur;
+        cur = cur -> rlink;
+    }
+
+    cur -> llink = NULL;
+    printf("\nThe employee node with the ssn:%s is deleted ", cur -> ssn);
+    free(cur);
+    prev -> rlink = NULL;
+    count--;
+    return first;
+}
+
+void deqdemo()
+{
+    int ch;
+    while (1)
+    {
+        printf("\nDemo Double Ended Queue Operation ");
+        printf("\n1:InsertQueueFront\n 2: DeleteQueueFront\n 3:InsertQueueRear\n 4:DeleteQueueRear\n 5:DisplayStatus\n 6: Exit \n");
+        scanf("%d", & ch);
+
+        switch (ch)
         {
-            i++;
-            m++;
-            if (pat[i] == '\0')
-            {
-                flag = 1;
-                for (k = 0; rep[k] != '\0'; k++, j++)
-                {
-                    res[j] = rep[k];
-                }
-                i = 0;
-                c = m;
-            }
-        }
-        else
-        {
-            res[j] = str[c];
-            j++;
-            c++;
-            m = c;
-            i = 0;
+        case 1:
+            first = insertfront();
+            break;
+        case 2:
+            first = deletefront();
+            break;
+        case 3:
+            first = insertend();
+            break;
+        case 4:
+            first = deleteend();
+            break;
+        case 5:
+            display();
+            break;
+        default:
+            return;
         }
     }
-    res[j] = '\0';
 }
+
 void main()
 {
-    printf("Enter the main string:");
-    gets(str);
-    printf("\nEnter the pat string:");
-    gets(pat);
-    printf("\nEnter the replace string:");
-    gets(rep);
-    printf("\nThe string before pattern match is:\n %s", str);
-    stringmatch();
-    if (flag == 1)
-        printf("\nThe string after pattern match and replace is: \n %s ", res);
-    else
-        printf("\nPattern string is not found");
+    int ch, i, n;
+    while (1)
+    {
+        printf("\n\n--------Menu--------");
+        printf("\n1:Create DLL of Employee Nodes ");
+        printf("\n2:DisplayStatus");
+        printf("\n3:InsertAtEnd");
+        printf("\n4:DeleteAtEnd");
+        printf("\n5:InsertAtFront");
+        printf("\n6:DeleteAtFront");
+        printf("\n7:Double Ended Queue Demo using DLL ");
+        printf("\n8:Exit \n");
+        printf("\nPlease enter your choice: ");
+        scanf("%d", & ch);
+
+        switch (ch)
+        {
+        case 1:
+            printf("\nEnter the no of Employees: ");
+            scanf("%d", & n);
+            for (i = 1; i <= n; i++)
+                first = insertend();
+            break;
+
+        case 2:
+            display();
+            break;
+
+        case 3:
+            first = insertend();
+            break;
+
+        case 4:
+            first = deleteend();
+            break;
+
+        case 5:
+            first = insertfront();
+            break;
+
+        case 6:
+            first = deletefront();
+            break;
+
+        case 7:
+            deqdemo();
+            break;
+
+        case 8:
+            exit(0);
+        default:
+            printf("\nPlease Enter the valid choice ");
+        }
+    }
 }
         </pre>
         <h2>Output:</h2>
         <pre>
-**************************OUTPUT 1*******************************
+--------Menu--------
+1:Create DLL of Employee Nodes
+2:DisplayStatus
+3:InsertAtEnd
+4:DeleteAtEnd
+5:InsertAtFront
+6:DeleteAtFront
+7:Double Ended Queue Demo using DLL
+8:Exit
+Please enter your choice: 1
+Enter the no of Employees: 2
 
-Enter the main string:Designed by vtucode
+Enter the ssn,Name,Department,Designation,Salary,PhoneNo of the employee:
+1EPL
+Braham
+Developer
+Senior
+13627
+8476283712
 
-Enter the pat string:vtucode
+Enter the ssn,Name,Department,Designation,Salary,PhoneNo of the employee:
+2EPL
+Aman
+Trader
+Manager
+20000
+2763578156
 
-Enter the replace string:Braham
+--------Menu--------
+1:Create DLL of Employee Nodes
+2:DisplayStatus
+3:InsertAtEnd
+4:DeleteAtEnd
+5:InsertAtFront
+6:DeleteAtFront
+7:Double Ended Queue Demo using DLL
+8:Exit
+Please enter your choice: 2
 
-The string before pattern match is:
-Designed by vtucode
- 
-The string after pattern match and replace is: 
-Designed by Braham
- 
- 
-**************************OUTPUT 2*******************************
- 
-Enter the main string:Designed by Developer
+|ENode:1| |SSN:1EPL| |Name:Braham| |Department:Developer| |Designation:Senior | |Salary:13627| |Phone no:8476283712|
+|ENode:2| |SSN:2EPL| |Name:Aman  | |Department:Trader   | |Designation:Manager| |Salary:20000| |Phone no:2763578156|
+No of employee nodes is 2
 
-Enter the pat string:vtucode
+--------Menu--------
+1:Create DLL of Employee Nodes
+2:DisplayStatus
+3:InsertAtEnd
+4:DeleteAtEnd
+5:InsertAtFront
+6:DeleteAtFront
+7:Double Ended Queue Demo using DLL
+8:Exit
+Please enter your choice: 3
 
-Enter the replace string:Braham
+Enter the ssn,Name,Department,Designation,Salary,PhoneNo of the employee:
+3EPL
+Bikash
+Meeting
+Manager
+30000
+8237462936
 
-The string before pattern match is:
-Designed by Developer
- 
-Pattern string is not found
+--------Menu--------
+1:Create DLL of Employee Nodes
+2:DisplayStatus
+3:InsertAtEnd
+4:DeleteAtEnd
+5:InsertAtFront
+6:DeleteAtFront
+7:Double Ended Queue Demo using DLL
+8:Exit
+Please enter your choice: 2
+
+|ENode:1| |SSN:1EPL| |Name:Braham| |Department:Developer| |Designation:Senior | |Salary:13627| |Phone no:8476283712|
+|ENode:2| |SSN:2EPL| |Name:Aman  | |Department:Trader   | |Designation:Manager| |Salary:20000| |Phone no:2763578156|
+|ENode:3| |SSN:3EPL| |Name:Bikash| |Department:Meeting  | |Designation:Manager| |Salary:30000| |Phone no:8237462936|
+No of employee nodes is 3
+
+--------Menu--------
+1:Create DLL of Employee Nodes
+2:DisplayStatus
+3:InsertAtEnd
+4:DeleteAtEnd
+5:InsertAtFront
+6:DeleteAtFront
+7:Double Ended Queue Demo using DLL
+8:Exit
+Please enter your choice: 5
+
+Enter the ssn,Name,Department,Designation,Salary,PhoneNo of the employee:
+4EPL
+Shoaib
+Digital Marketing
+Manager
+40000
+2835826437
+
+--------Menu--------
+1:Create DLL of Employee Nodes
+2:DisplayStatus
+3:InsertAtEnd
+4:DeleteAtEnd
+5:InsertAtFront
+6:DeleteAtFront
+7:Double Ended Queue Demo using DLL
+8:Exit
+
+Please enter your choice: 2
+
+|ENode:1| |SSN:4EPL| |Name:Shoaib| |Department:Digital Marketing| |Designation:Manager| |Salary:40000| |Phone no:2835826437| 
+|ENode:2| |SSN:1EPL| |Name:Braham| |Department:Developer        | |Designation:Senior | |Salary:13627| |Phone no:8476283712|
+|ENode:3| |SSN:2EPL| |Name:Aman  | |Department:Trader           | |Designation:Manager| |Salary:20000| |Phone no:2763578156|
+|ENode:4| |SSN:3EPL| |Name:Bikash| |Department:Meeting          | |Designation:Manager| |Salary:30000| |Phone no:8237462936|
+No of employee nodes is 4
+
+--------Menu--------
+1:Create DLL of Employee Nodes
+2:DisplayStatus
+3:InsertAtEnd
+4:DeleteAtEnd
+5:InsertAtFront
+6:DeleteAtFront
+7:Double Ended Queue Demo using DLL
+8:Exit
+Please enter your choice: 4
+
+The employee node with the ssn:3EPL is deleted
+
+--------Menu--------
+1:Create DLL of Employee Nodes
+2:DisplayStatus
+3:InsertAtEnd
+4:DeleteAtEnd
+5:InsertAtFront
+6:DeleteAtFront
+7:Double Ended Queue Demo using DLL
+8:Exit
+Please enter your choice: 6
+
+The employee node with the ssn:4EPL is deleted
+
+--------Menu--------
+1:Create DLL of Employee Nodes
+2:DisplayStatus
+3:InsertAtEnd
+4:DeleteAtEnd
+5:InsertAtFront
+6:DeleteAtFront
+7:Double Ended Queue Demo using DLL
+8:Exit
+Please enter your choice: 2
+
+|ENode:1| |SSN:1EPL| |Name:Braham| |Department:Developer| |Designation:Senior | |Salary:13627| |Phone no:8476283712|
+|ENode:2| |SSN:2EPL| |Name:Aman  | |Department:Trader   | |Designation:Manager| |Salary:20000| |Phone no:2763578156|
+No of employee nodes is 2
+
+--------Menu--------
+1:Create DLL of Employee Nodes
+2:DisplayStatus
+3:InsertAtEnd
+4:DeleteAtEnd
+5:InsertAtFront
+6:DeleteAtFront
+7:Double Ended Queue Demo using DLL
+8:Exit
+Please enter your choice: 7
+
+Demo Double Ended Queue Operation
+1:InsertQueueFront
+2: DeleteQueueFront
+3:InsertQueueRear
+4:DeleteQueueRear
+5:DisplayStatus
+6: Exit
+Please enter your choice: 2
+
+The employee node with the ssn:1EPL is deleted
+
+Demo Double Ended Queue Operation
+1:InsertQueueFront
+2: DeleteQueueFront
+3:InsertQueueRear
+4:DeleteQueueRear
+5:DisplayStatus
+6: Exit
+Please enter your choice: 4
+
+The employee node with the ssn:2EPL is deleted
+
+Demo Double Ended Queue Operation
+1:InsertQueueFront
+2: DeleteQueueFront
+3:InsertQueueRear
+4:DeleteQueueRear
+5:DisplayStatus
+6: Exit
+Please enter your choice: 2
+
+Doubly Linked List is empty
+
+Demo Double Ended Queue Operation
+1:InsertQueueFront
+2: DeleteQueueFront
+3:InsertQueueRear
+4:DeleteQueueRear
+5:DisplayStatus
+6: Exit
+Please enter your choice: 6
+
+--------Menu--------
+1:Create DLL of Employee Nodes
+2:DisplayStatus
+3:InsertAtEnd
+4:DeleteAtEnd
+5:InsertAtFront
+6:DeleteAtFront
+7:Double Ended Queue Demo using DLL
+8:Exit
+
+Please enter your choice: 8
         </pre>
         <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
