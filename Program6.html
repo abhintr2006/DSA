@@ -1,236 +1,193 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 1 - DSA Learning Hub</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Program 2 - String oprations.</title>
+    <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
             padding: 20px;
             text-align: center;
         }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ff9800;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .navbar ul li a:hover {
+            color: #ff9800;
+        }
+
         .container {
             max-width: 800px;
             margin: auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            margin-top: 80px;
         }
+
         pre {
-            background: #222;
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: left;
-            overflow-x: auto;
-        }
+     background: #222;
+     color: #fff;
+     padding: 20px;
+     border-radius: 5px;
+     text-align: left;
+     overflow-x: auto;
+     font-size: 1.1rem;
+     max-height: 600px;
+     white-space: pre-wrap;
+    }
         button {
             margin-top: 20px;
             padding: 10px 20px;
             border: none;
-            background: #007bff;
+            background: #ff9800;
             color: white;
             cursor: pointer;
             border-radius: 5px;
+            transition: 0.3s;
         }
+
         button:hover {
-            background: #0056b3;
+            background: #e68a00;
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+    <h1>DSA Learning Hub</h1>
+    </nav>
     <div class="container">
-        <h1>Program 1: Sample DSA Program</h1>
-        <p><strong>Description:</strong> This program demonstrates a basic implementation of an array traversal.</p>
-        
-        <h2>Code:</h2>
+        <h1>Program 2: String Operations </h1>
+        <p><strong>Description:</strong> This program demonstrates the basic operations in a string.</p>
+        <h2>Program:</h2>
         <pre>
 #include&lt;stdio.h&gt;
-
-#include&lt;stdlib.h&gt;
-
-#define MAX 5
-
-char circular_queue[MAX];
-int front = -1, rear = -1;
-
-int isEmpty()
+char str[50], pat[20], rep[20], res[50];
+int c = 0, m = 0, i = 0, j = 0, k, flag = 0;
+void stringmatch()
 {
-    if (front == -1 && rear == -1)
-        return 1;
-    else
-        return 0;
-}
-
-int isFull()
-{
-    if ((rear + 1) % MAX == front)
-        return 1;
-    else
-        return 0;
-}
-
-void insertElement(char element)
-{
-    if (isFull())
+    while (str[c] != '\0')
     {
-        printf("Circular Queue Overflow\n");
-        return;
-    }
-    else if (isEmpty())
-    {
-        front = rear = 0;
-    }
-    else
-    {
-        rear = (rear + 1) % MAX;
-    }
-    circular_queue[rear] = element;
-}
-
-void deleteElement()
-{
-    if (isEmpty())
-    {
-        printf("Circular Queue Underflow\n");
-        return;
-    }
-    else if (front == rear)
-    {
-        front = rear = -1;
-    }
-    else
-    {
-        front = (front + 1) % MAX;
-    }
-}
-
-void display()
-{
-    int i;
-    if (isEmpty())
-    {
-        printf("Circular Queue is empty\n");
-        return;
-    }
-    printf("Circular Queue elements: ");
-    i = front;
-    do
-    {
-        printf("%c ", circular_queue[i]);
-        i = (i + 1) % MAX;
-    }
-    while (i != (rear + 1) % MAX);
-    printf("\n");
-}
-
-int main()
-{
-    int choice;
-    char element;
-    do
-    {
-        printf("\n\n---- Circular Queue Menu ----\n");
-        printf("1. Insert an Element\n");
-        printf("2. Delete an Element\n");
-        printf("3. Display Circular Queue\n");
-        printf("4. Exit\n");
-        printf("Enter your choice: ");
-        scanf("%d", &choice);
-
-        switch(choice)
+        if (str[m] == pat[i])
         {
-        case 1:
-            printf("Enter element to be inserted: ");
-            scanf(" %c", &element);
-            insertElement(element);
-            break;
-        case 2:
-            deleteElement();
-            break;
-        case 3:
-            display();
-            break;
-        case 4:
-            printf("Exiting...\n");
-            break;
-        default:
-            printf("Invalid choice! Please enter a valid option.\n");
+            i++;
+            m++;
+            if (pat[i] == '\0')
+            {
+                flag = 1;
+                for (k = 0; rep[k] != '\0'; k++, j++)
+                {
+                    res[j] = rep[k];
+                }
+                i = 0;
+                c = m;
+            }
+        }
+        else
+        {
+            res[j] = str[c];
+            j++;
+            c++;
+            m = c;
+            i = 0;
         }
     }
-    while(choice != 4);
-
-    return 0;
+    res[j] = '\0';
+}
+void main()
+{
+    printf("Enter the main string:");
+    gets(str);
+    printf("\nEnter the pat string:");
+    gets(pat);
+    printf("\nEnter the replace string:");
+    gets(rep);
+    printf("\nThe string before pattern match is:\n %s", str);
+    stringmatch();
+    if (flag == 1)
+        printf("\nThe string after pattern match and replace is: \n %s ", res);
+    else
+        printf("\nPattern string is not found");
 }
         </pre>
-        
         <h2>Output:</h2>
         <pre>
----- Circular Queue Menu ----
-1. Insert an Element
-2. Delete an Element
-3. Display Circular Queue
-4. Exit
-Enter your choice: 1
-Enter element to be inserted: A
+**************************OUTPUT 1*******************************
 
+Enter the main string:Designed by vtucode
 
----- Circular Queue Menu ----
-1. Insert an Element
-2. Delete an Element
-3. Display Circular Queue
-4. Exit
-Enter your choice: 1
-Enter element to be inserted: B
+Enter the pat string:vtucode
 
+Enter the replace string:Braham
 
----- Circular Queue Menu ----
-1. Insert an Element
-2. Delete an Element
-3. Display Circular Queue
-4. Exit
-Enter your choice: 1
-Enter element to be inserted: C
+The string before pattern match is:
+Designed by vtucode
+ 
+The string after pattern match and replace is: 
+Designed by Braham
+ 
+ 
+**************************OUTPUT 2*******************************
+ 
+Enter the main string:Designed by Developer
 
+Enter the pat string:vtucode
 
----- Circular Queue Menu ----
-1. Insert an Element
-2. Delete an Element
-3. Display Circular Queue
-4. Exit
-Enter your choice: 3
-Circular Queue elements: A B C 
+Enter the replace string:Braham
 
-
----- Circular Queue Menu ----
-1. Insert an Element
-2. Delete an Element
-3. Display Circular Queue
-4. Exit
-Enter your choice: 2
-
-
----- Circular Queue Menu ----
-1. Insert an Element
-2. Delete an Element
-3. Display Circular Queue
-4. Exit
-Enter your choice: 3
-Circular Queue elements: B C 
-
-
----- Circular Queue Menu ----
-1. Insert an Element
-2. Delete an Element
-3. Display Circular Queue
-4. Exit
-Enter your choice: 4
-Exiting...        </pre>
-        
+The string before pattern match is:
+Designed by Developer
+ 
+Pattern string is not found
+        </pre>
         <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
 </body>
