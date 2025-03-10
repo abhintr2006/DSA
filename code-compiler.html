@@ -30,7 +30,7 @@
 
         .navbar {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 20px 5%;
             background: rgba(255, 255, 255, 0.1);
@@ -104,7 +104,6 @@
 <body>
     <nav class="navbar">
         <h1>DSA Learning Hub</h1>
-        <button id="theme-toggle">Toggle Theme</button>
     </nav>
     
     <div class="container">
@@ -131,10 +130,6 @@
                 outputElement.textContent = "Error: " + error.message;
             }
         }
-        
-        document.getElementById('theme-toggle').addEventListener('click', function () {
-            document.body.classList.toggle('dark-mode');
-        });
     </script>
 </body>
 </html>
