@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 2 - String oprations.</title>
+    <title>Program 5A - Evaluation of Suffix expression</title>
     <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
@@ -94,7 +94,6 @@
             border-radius: 5px;
             transition: 0.3s;
         }
-
         button:hover {
             background: #e68a00;
         }
@@ -105,88 +104,81 @@
     <h1>DSA Learning Hub</h1>
     </nav>
     <div class="container">
-        <h1>Program 2: String Operations </h1>
-        <p><strong>Description:</strong> This program demonstrates the basic operations in a string.</p>
+        <h1>Program 5A: Evaluation of Suffix expression </h1>
+        <p><strong>Description:</strong> This program demonstrates the evaluation of suffix expression.</p>
         <h2>Program:</h2>
         <pre>
 #include&lt;stdio.h&gt;
-char str[50], pat[20], rep[20], res[50];
-int c = 0, m = 0, i = 0, j = 0, k, flag = 0;
-void stringmatch()
+#include&lt;stdlib.h&gt;
+#include&lt;math.h&gt;
+int i, top = -1;
+int op1, op2, res, s[20];
+char postfix[90], symb;
+            
+void push(int item)
 {
-    while (str[c] != '\0')
+    top = top + 1;
+    s[top] = item;
+}
+
+int pop()
+{
+    int item;
+    item = s[top];
+    top = top - 1;
+    return item;
+}
+
+void main()
+{
+    printf("\nEnter a valid postfix expression:\n");
+    scanf("%s", postfix);
+    for (i = 0; postfix[i] != '\0'; i++)
     {
-        if (str[m] == pat[i])
+        symb = postfix[i];
+        if (isdigit(symb))
         {
-            i++;
-            m++;
-            if (pat[i] == '\0')
-            {
-                flag = 1;
-                for (k = 0; rep[k] != '\0'; k++, j++)
-                {
-                    res[j] = rep[k];
-                }
-                i = 0;
-                c = m;
-            }
+            push(symb - '0');
         }
         else
         {
-            res[j] = str[c];
-            j++;
-            c++;
-            m = c;
-            i = 0;
+            op2 = pop();
+            op1 = pop();
+            switch (symb)
+            {
+            case '+':
+                push(op1 + op2);
+                break;
+            case '-':
+                push(op1 - op2);
+                break;
+            case '*':
+                push(op1 * op2);
+                break;
+            case '/':
+                push(op1 / op2);
+                break;
+            case '%':
+                push(op1 % op2);
+                break;
+            case '$':
+            case '^':
+                push(pow(op1, op2));
+                break;
+            default:
+                push(0);
+            }
         }
     }
-    res[j] = '\0';
-}
-void main()
-{
-    printf("Enter the main string:");
-    gets(str);
-    printf("\nEnter the pat string:");
-    gets(pat);
-    printf("\nEnter the replace string:");
-    gets(rep);
-    printf("\nThe string before pattern match is:\n %s", str);
-    stringmatch();
-    if (flag == 1)
-        printf("\nThe string after pattern match and replace is: \n %s ", res);
-    else
-        printf("\nPattern string is not found");
+    res = pop();
+    printf("\n Result = %d", res);
 }
         </pre>
         <h2>Output:</h2>
         <pre>
-**************************OUTPUT 1*******************************
-
-Enter the main string:Designed by vtucode
-
-Enter the pat string:vtucode
-
-Enter the replace string:Braham
-
-The string before pattern match is:
-Designed by vtucode
- 
-The string after pattern match and replace is: 
-Designed by Braham
- 
- 
-**************************OUTPUT 2*******************************
- 
-Enter the main string:Designed by Developer
-
-Enter the pat string:vtucode
-
-Enter the replace string:Braham
-
-The string before pattern match is:
-Designed by Developer
- 
-Pattern string is not found
+Enter a valid postfix expression:
+623+-382/+*2$3+
+Result = 52
         </pre>
         <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
