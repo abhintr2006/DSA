@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 2 - String oprations.</title>
+    <title>Program 5B - Tower of Hanoi problem with n disks </title>
     <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
@@ -105,88 +105,40 @@
     <h1>DSA Learning Hub</h1>
     </nav>
     <div class="container">
-        <h1>Program 2: String Operations </h1>
-        <p><strong>Description:</strong> This program demonstrates the basic operations in a string.</p>
+        <h1>Program 5B: Tower of Hanoi problem with n disks. </h1>
+        <p><strong>Description:</strong> This program solves The Tower of Hanoi problem with n disks.</p>
         <h2>Program:</h2>
         <pre>
 #include&lt;stdio.h&gt;
-char str[50], pat[20], rep[20], res[50];
-int c = 0, m = 0, i = 0, j = 0, k, flag = 0;
-void stringmatch()
-{
-    while (str[c] != '\0')
-    {
-        if (str[m] == pat[i])
-        {
-            i++;
-            m++;
-            if (pat[i] == '\0')
-            {
-                flag = 1;
-                for (k = 0; rep[k] != '\0'; k++, j++)
-                {
-                    res[j] = rep[k];
-                }
-                i = 0;
-                c = m;
-            }
-        }
-        else
-        {
-            res[j] = str[c];
-            j++;
-            c++;
-            m = c;
-            i = 0;
-        }
-    }
-    res[j] = '\0';
+
+void tower(int n, int source, int temp, int destination){
+    if (n == 0)
+        return;
+    tower(n - 1, source, destination, temp);
+    printf("\nMove disc %d from %c to %c", n, source, destination);
+    tower(n - 1, temp, source, destination);
 }
-void main()
-{
-    printf("Enter the main string:");
-    gets(str);
-    printf("\nEnter the pat string:");
-    gets(pat);
-    printf("\nEnter the replace string:");
-    gets(rep);
-    printf("\nThe string before pattern match is:\n %s", str);
-    stringmatch();
-    if (flag == 1)
-        printf("\nThe string after pattern match and replace is: \n %s ", res);
-    else
-        printf("\nPattern string is not found");
+void main(){
+    int n;
+    printf("\nEnter the number of discs: \n");
+    scanf("%d", & n);
+    tower(n, 'A', 'B', 'C');
+    printf("\n\nTotal Number of moves are: %d", (int) pow(2, n) - 1);
 }
         </pre>
         <h2>Output:</h2>
         <pre>
-**************************OUTPUT 1*******************************
+Enter the number of discs: 3
 
-Enter the main string:Designed by vtucode
+Move disc 1 from A to C
+Move disc 2 from A to B
+Move disc 1 from C to B
+Move disc 3 from A to C
+Move disc 1 from B to A
+Move disc 2 from B to C
+Move disc 1 from A to C
 
-Enter the pat string:vtucode
-
-Enter the replace string:Braham
-
-The string before pattern match is:
-Designed by vtucode
- 
-The string after pattern match and replace is: 
-Designed by Braham
- 
- 
-**************************OUTPUT 2*******************************
- 
-Enter the main string:Designed by Developer
-
-Enter the pat string:vtucode
-
-Enter the replace string:Braham
-
-The string before pattern match is:
-Designed by Developer
- 
-Pattern string is not found
+Total Number of moves are: 7
         </pre>
         <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
