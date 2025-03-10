@@ -22,7 +22,7 @@
         }
         .navbar {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 20px 5%;
             background: rgba(255, 255, 255, 0.1);
@@ -37,28 +37,19 @@
             font-size: 1.8rem;
             font-weight: 600;
             color: #ff9800;
-        }
-
-        .navbar ul {
-            list-style: none;
-            display: flex;
-        }
-
-        .navbar ul li {
-            margin: 0 15px;
-            position: relative;
-        }
-
-        .navbar ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 1.1rem;
-            transition: 0.3s;
             cursor: pointer;
+            transition: 0.3s;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
         }
 
-        .navbar ul li a:hover {
-            color: #ff9800;
+        .navbar h1:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .home-button {
+            text-decoration: none;
         }
 
         .container {
@@ -73,16 +64,17 @@
         }
 
         pre {
-     background: #222;
-     color: #fff;
-     padding: 20px;
-     border-radius: 5px;
-     text-align: left;
-     overflow-x: auto;
-     font-size: 1.1rem;
-     max-height: 600px;
-     white-space: pre-wrap;
-    }
+            background: #222;
+            color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: left;
+            overflow-x: auto;
+            font-size: 1.1rem;
+            max-height: 600px;
+            white-space: pre-wrap;
+        }
+
         button {
             margin-top: 20px;
             padding: 10px 20px;
@@ -101,18 +93,15 @@
 </head>
 <body>
     <nav class="navbar">
-    <h1>DSA Learning Hub</h1>       
-        <ul>
-            <li><a href="index.html">Home</a></li>
-        </ul>
+        <a href="index.html" class="home-button"><h1>DSA Learning Hub</h1></a>
     </nav>
     <div class="container">
         <h1>Program 1: Calendar Program</h1>
         <p><strong>Description:</strong> This program demonstrates a basic implementation of a Calendar.</p>
         <h2>Program:</h2>
         <pre>
-#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
+#include<stdio.h>
+#include<stdlib.h>
 struct Day {
     char *dayName;
     int date;
