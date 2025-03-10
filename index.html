@@ -25,6 +25,12 @@
             transition: background 0.3s ease;
         }
 
+        /* Dark Mode */
+        body.dark-mode {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: #dddddd;
+        }
+
         /* Navbar */
         .navbar {
             display: flex;
@@ -186,7 +192,7 @@
             </li>
             <li><a href="#" onclick="openCodeCompiler()">Code Compiler</a></li>
         </ul>
-        <button id="theme-toggle">Toggle Theme</button>
+        <button id="theme-toggle">🌙 Dark Mode</button>
     </nav>
     <section class="hero" id="home">
         <h2>Master Data Structures & Algorithms</h2>
@@ -196,9 +202,31 @@
     <footer>
         <p>&copy; 2025 DSA Learning Hub</p>
     </footer>
+
+    <!-- Script to handle theme toggling and store user preference -->
     <script>
-        document.getElementById('theme-toggle').addEventListener('click', function () {
-            document.body.classList.toggle('dark-mode');
+        document.addEventListener("DOMContentLoaded", function() {
+            const themeToggle = document.getElementById("theme-toggle");
+            const body = document.body;
+
+            // Check local storage for theme preference
+            if (localStorage.getItem("theme") === "dark") {
+                body.classList.add("dark-mode");
+                themeToggle.textContent = "☀️ Light Mode";
+            }
+
+            // Toggle Dark/Light Mode
+            themeToggle.addEventListener("click", function() {
+                body.classList.toggle("dark-mode");
+
+                if (body.classList.contains("dark-mode")) {
+                    localStorage.setItem("theme", "dark");
+                    themeToggle.textContent = "☀️ Light Mode";
+                } else {
+                    localStorage.setItem("theme", "light");
+                    themeToggle.textContent = "🌙 Dark Mode";
+                }
+            });
         });
     </script>
 </body>
