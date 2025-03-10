@@ -3,23 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 1 -Calendar Program </title>
-    <link rel="stylesheet" href="style.css">
+    <title>Program 1 - Calendar Program</title>
+    <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
             padding: 20px;
             text-align: center;
         }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ff9800;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .navbar ul li a:hover {
+            color: #ff9800;
+        }
+
         .container {
             max-width: 800px;
             margin: auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            margin-top: 80px;
         }
+
         pre {
             background: #222;
             color: #fff;
@@ -28,27 +83,33 @@
             text-align: left;
             overflow-x: auto;
         }
+
         button {
             margin-top: 20px;
             padding: 10px 20px;
             border: none;
-            background: #007bff;
+            background: #ff9800;
             color: white;
             cursor: pointer;
             border-radius: 5px;
+            transition: 0.3s;
         }
+
         button:hover {
-            background: #0056b3;
+            background: #e68a00;
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <h1>DSA Learning Hub</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+        </ul>
+    </nav>
     <div class="container">
-        <h1>Program 1: 1. Develop a Program in C for the following:
-a) Declare a calendar as an array of 7 elements (A dynamically Created array) to represent 7 days of a week. Each Element of the array is a structure having three fields. 
-The first field is the name of the Day (A dynamically allocated String), The second field is the date of the Day (A integer), the third field is the description of the activity for a particular day (A dynamically allocated String).
-b) Write functions create(), read() and display(); to create the calendar, to read the data from the keyboard and to print weeks activity details report on screen.</h1>
-        <p><strong>Description:</strong> This program demonstrates a basic implementation of an Calender.</p>
+        <h1>Program 1: Calendar Program</h1>
+        <p><strong>Description:</strong> This program demonstrates a basic implementation of a Calendar.</p>
         <h2>Code:</h2>
         <pre>
 #include&lt;stdio.h&gt;
@@ -66,7 +127,8 @@ void create(struct Day *day) {
     printf("Enter the date: ");
     scanf("%d", &day->date);
     printf("Enter the activity for the day: ");
-    scanf(" %[^\n]s", day->activity);
+    scanf(" %[^
+]s", day->activity);
 }
 void read(struct Day *calendar, int size) {
     for (int i = 0; i < size; i++) {
@@ -109,79 +171,11 @@ int main() {
         <h2>Output:</h2>
         <pre>
 Enter the number of days in the week: 7
-            
-Enter details for Day 1:
-Enter the day name: Sunday
-Enter the date: 1
-Enter the activity for the day: Learning
-
-Enter details for Day 2:
-Enter the day name: Monday
-Enter the date: 2
-Enter the activity for the day: Coding
-
-Enter details for Day 3:
-Enter the day name: Tuesday
-Enter the date: 3
-Enter the activity for the day: Testing
-
-Enter details for Day 4:
-Enter the day name: Wednesday
-Enter the date: 4
-Enter the activity for the day: Debugging
-
-Enter details for Day 5:
-Enter the day name: Thrusday
-Enter the date: 5
-Enter the activity for the day: Publishing
-
-Enter details for Day 6:
-Enter the day name: Friday
-Enter the date: 6
-Enter the activity for the day: Marketing
-
-Enter details for Day 7:
-Enter the day name: Saturday
-Enter the date: 7
-Enter the activity for the day: Earning
-
-Week's Activity Details:
-Day 1:
-Day Name: Sunday
-Date: 1
-Activity: Learning
-
-Day 2:
 Day Name: Monday
-Date: 2
+Date: 1
 Activity: Coding
-
-Day 3:
-Day Name: Tuesday
-Date: 3
-Activity: Testing
-
-Day 4:
-Day Name: Wednesday
-Date: 4
-Activity: Debugging
-
-Day 5:
-Day Name: Thrusday
-Date: 5
-Activity: Publishing
-
-Day 6:
-Day Name: Friday
-Date: 6
-Activity: Marketing
-
-Day 7:
-Day Name: Saturday
-Date: 7
-Activity: Earning
+...
         </pre>
-        
         <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
 </body>
