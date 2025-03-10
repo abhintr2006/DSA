@@ -1,186 +1,193 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program 1 - DSA Learning Hub</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Program 2 - String oprations.</title>
+    <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4f4f4, #ddd);
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
             padding: 20px;
             text-align: center;
         }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ff9800;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .navbar ul li a:hover {
+            color: #ff9800;
+        }
+
         .container {
             max-width: 800px;
             margin: auto;
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            margin-top: 80px;
         }
+
         pre {
-            background: #222;
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: left;
-            overflow-x: auto;
-        }
+     background: #222;
+     color: #fff;
+     padding: 20px;
+     border-radius: 5px;
+     text-align: left;
+     overflow-x: auto;
+     font-size: 1.1rem;
+     max-height: 600px;
+     white-space: pre-wrap;
+    }
         button {
             margin-top: 20px;
             padding: 10px 20px;
             border: none;
-            background: #007bff;
+            background: #ff9800;
             color: white;
             cursor: pointer;
             border-radius: 5px;
+            transition: 0.3s;
         }
+
         button:hover {
-            background: #0056b3;
+            background: #e68a00;
         }
     </style>
 </head>
 <body>
+    <nav class="navbar">
+    <h1>DSA Learning Hub</h1>
+    </nav>
     <div class="container">
-        <h1>Program 1: Sample DSA Program</h1>
-        <p><strong>Description:</strong> This program demonstrates a basic implementation of an array traversal.</p>
-        
-        <h2>Code:</h2>
+        <h1>Program 2: String Operations </h1>
+        <p><strong>Description:</strong> This program demonstrates the basic operations in a string.</p>
+        <h2>Program:</h2>
         <pre>
 #include&lt;stdio.h&gt;
-
-#include&lt;stdlib.h&gt;
-
-void evaluate();
-void push(char);
-char pop();
-int prec(char);
-
-char infix[30], postfix[30], stack[30];
-int top = -1;
-
-void main()
+char str[50], pat[20], rep[20], res[50];
+int c = 0, m = 0, i = 0, j = 0, k, flag = 0;
+void stringmatch()
 {
-    printf("\n Enter the valid infix expression:");
-    scanf("%s", infix);
-    evaluate();
-    printf("\nThe entered infix expression is :\n %s \n", infix);
-    printf("\nThe corresponding postfix expression is :\n %s \n", postfix);
-}
-
-void evaluate()
-{
-    int i = 0, j = 0;
-    char symb, temp;
-
-    push('#');
-
-    for (i = 0; infix[i] != '\0'; i++)
+    while (str[c] != '\0')
     {
-        symb = infix[i];
-        switch (symb)
+        if (str[m] == pat[i])
         {
-        case '(':
-            push(symb);
-            break;
-
-        case ')':
-            temp = pop();
-            while (temp != '(')
+            i++;
+            m++;
+            if (pat[i] == '\0')
             {
-                postfix[j] = temp;
-                j++;
-                temp = pop();
+                flag = 1;
+                for (k = 0; rep[k] != '\0'; k++, j++)
+                {
+                    res[j] = rep[k];
+                }
+                i = 0;
+                c = m;
             }
-            break;
-        case '+':
-        case '-':
-        case '*':
-        case '/':
-        case '%':
-        case '^':
-        case '$':
-            while (prec(stack[top]) >= prec(symb))
-            {
-                temp = pop();
-                postfix[j] = temp;
-                j++;
-            }
-            push(symb);
-            break;
-        default:
-            postfix[j] = symb;
+        }
+        else
+        {
+            res[j] = str[c];
             j++;
+            c++;
+            m = c;
+            i = 0;
         }
     }
-    while (top > 0)
-    {
-        temp = pop();
-        postfix[j] = temp;
-        j++;
-    }
-    postfix[j] = '\0';
+    res[j] = '\0';
 }
-
-void push(char item)
+void main()
 {
-    top = top + 1;
-    stack[top] = item;
-}
-
-char pop()
-{
-    char item;
-    item = stack[top];
-    top = top - 1;
-    return item;
-}
-
-int prec(char symb)
-{
-    int p;
-    switch (symb)
-    {
-    case '#':
-        p = -1;
-        break;
-
-    case '(':
-    case ')':
-        p = 0;
-        break;
-
-    case '+':
-    case '-':
-        p = 1;
-        break;
-
-    case '*':
-    case '/':
-    case '%':
-        p = 2;
-        break;
-
-    case '^':
-    case '$':
-        p = 3;
-        break;
-    }
-    return p;
+    printf("Enter the main string:");
+    gets(str);
+    printf("\nEnter the pat string:");
+    gets(pat);
+    printf("\nEnter the replace string:");
+    gets(rep);
+    printf("\nThe string before pattern match is:\n %s", str);
+    stringmatch();
+    if (flag == 1)
+        printf("\nThe string after pattern match and replace is: \n %s ", res);
+    else
+        printf("\nPattern string is not found");
 }
         </pre>
-        
         <h2>Output:</h2>
         <pre>
-Enter the valid infix expression:(a+b)*c/d^5%1
-The entered infix expression is :
- (a+b)*c/d^5%1 
+**************************OUTPUT 1*******************************
 
-The corresponding postfix expression is :
- ab+c*d5^/1%         </pre>
-        
+Enter the main string:Designed by vtucode
+
+Enter the pat string:vtucode
+
+Enter the replace string:Braham
+
+The string before pattern match is:
+Designed by vtucode
+ 
+The string after pattern match and replace is: 
+Designed by Braham
+ 
+ 
+**************************OUTPUT 2*******************************
+ 
+Enter the main string:Designed by Developer
+
+Enter the pat string:vtucode
+
+Enter the replace string:Braham
+
+The string before pattern match is:
+Designed by Developer
+ 
+Pattern string is not found
+        </pre>
         <button onclick="window.location.href='index.html'">⬅ Back to Home</button>
     </div>
 </body>
