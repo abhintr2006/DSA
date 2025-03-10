@@ -56,6 +56,7 @@
 
         .navbar ul li {
             margin: 0 15px;
+            position: relative;
         }
 
         .navbar ul li a {
@@ -67,6 +68,41 @@
 
         .navbar ul li a:hover {
             color: #ff9800;
+        }
+
+        /* Dropdown Styling */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            list-style: none;
+            padding: 10px 0;
+            display: none;
+            min-width: 200px;
+            border-radius: 8px;
+        }
+
+        .dropdown-menu li {
+            padding: 10px 20px;
+        }
+
+        .dropdown-menu li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .dropdown-menu li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ff9800;
+            border-radius: 4px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
         }
 
         /* Hero Section */
@@ -155,6 +191,24 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#notes">Study Notes</a></li>
             <li><a href="#programs">Programs</a></li>
+            <li class="dropdown">
+                <a href="#">Programs & Outputs ▾</a>
+                <ul class="dropdown-menu">
+                    <li><a href="program1.html">Program 1</a></li>
+                    <li><a href="program2.html">Program 2</a></li>
+                    <li><a href="program3.html">Program 3</a></li>
+                    <li><a href="program4.html">Program 4</a></li>
+                    <li><a href="program5A.html">Program 5A</a></li>
+                    <li><a href="program5B.html">Program 5B</a></li>
+                    <li><a href="program6.html">Program 6</a></li>
+                    <li><a href="program7.html">Program 7</a></li>
+                    <li><a href="program8.html">Program 8</a></li>
+                    <li><a href="program9.html">Program 9</a></li>
+                    <li><a href="program10.html">Program 10</a></li>
+                    <li><a href="program11.html">Program 11</a></li>
+                    <li><a href="program12.html">Program 12</a></li>
+                </ul>
+            </li>
             <li><a href="#" onclick="openCodeCompiler()">Code Compiler</a></li>
         </ul>
     </nav>
@@ -179,22 +233,6 @@
         <div class="card">
             <h3>Module 3</h3>
             <p>Trees, Binary Search Trees, Heaps, and Graphs explained in depth.</p>
-        </div>
-    </section>
-
-    <!-- Programs Section -->
-    <section class="container" id="programs">
-        <div class="card">
-            <h3>Sorting Algorithms</h3>
-            <p>Bubble Sort, Merge Sort, Quick Sort, and more with implementation.</p>
-        </div>
-        <div class="card">
-            <h3>Graph Algorithms</h3>
-            <p>BFS, DFS, Dijkstra's, Floyd Warshall, and Minimum Spanning Tree.</p>
-        </div>
-        <div class="card">
-            <h3>Dynamic Programming</h3>
-            <p>Knapsack, LCS, Fibonacci, and advanced DP concepts.</p>
         </div>
     </section>
 
