@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DSA Learning Hub</title>
+  <button id="menu-toggle">☰</button>
+<title>DSA Learning Hub</title>
   <style>
     /* Import Google Font */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
@@ -18,13 +19,31 @@
     }
 
     /* responsive design*/
-   @media (max-width: 768px) {
-  body {
-    font-size: 16px;
-  }
-  .container {
+   /* Hide menu links on small screens */
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
     width: 100%;
-    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 10px 0;
+  }
+
+  .navbar ul.show {
+    display: flex;
+  }
+
+  #menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
   }
 }
 
@@ -457,6 +476,9 @@
     function openCodeCompiler() {
       alert('Code Compiler functionality will be added here!');
     }
+document.getElementById("menu-toggle").addEventListener("click", function() {
+  document.querySelector(".navbar ul").classList.toggle("show");
+});
   </script>
 </body>
 </html>
