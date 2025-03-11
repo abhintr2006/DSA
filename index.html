@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>DSA Learning Hub</title>
   <style>
     /* Import Google Font */
@@ -16,6 +16,17 @@
       font-family: 'Poppins', sans-serif;
       scroll-behavior: smooth;
     }
+
+    /* responsive design*/
+   @media (max-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
+}
 
     /* Dark Mode */
   .dark-mode {
@@ -47,6 +58,20 @@
     background: #ddd;
     color: #000;
   }
+ 
+  /* Flexible grid*/
+  .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+  /* Optimize Images and Media*/
+  video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
 
   /* Links Hover */
   .light-mode .navbar ul li a:hover {
