@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <button id="menu-toggle">☰</button>
+<button id="menu-toggle">☰</button>
 <title>DSA Learning Hub</title>
   <style>
     /* Import Google Font */
@@ -40,6 +41,102 @@
     backdrop-filter: blur(10px);
     padding: 10px 0;
   }
+
+  @media (max-width: 768px) {
+  .navbar ul li {
+    padding: 8px 0; /* Reduce spacing */
+  }
+
+  .navbar ul li a {
+    font-size: 1rem; /* Smaller font */
+  }
+}
+  @media (max-width: 768px) {
+  .dropdown-menu {
+    width: 90%; /* Make dropdown smaller */
+    left: 5%; /* Center it */
+  }
+}
+
+ /* Default Navbar */
+/* Default Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Hide menu links on small screens */
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .navbar ul.show {
+    display: flex;
+  }
+
+  .navbar ul li {
+    padding: 10px;
+  }
+
+  #menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+/* Show menu icon only on mobile */
+#menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  #menu-toggle {
+    display: block;
+  }
+}
+
+/* Make Navbar Smaller on Mobile */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px 5%; /* Reduce padding */
+    height: 50px; /* Reduce height */
+  }
+
+  .navbar h1 {
+    font-size: 1.2rem; /* Make title smaller */
+  }
+
+  #menu-toggle {
+    font-size: 1.5rem; /* Adjust menu icon size */
+  }
+
+  .navbar ul {
+    top: 50px; /* Adjust menu dropdown position */
+  }
+}
+
+ 
 
   button, .btn {
   padding: 15px 20px;
@@ -79,6 +176,20 @@
     cursor: pointer;
   }
 }
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  width: 100%;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
+
 
     /* Dark Mode */
   .dark-mode {
@@ -516,6 +627,31 @@ document.querySelector(".dropdown > a").addEventListener("click", function(event
   event.preventDefault(); // Prevents navigating to "#"
   document.querySelector(".dropdown-menu").classList.toggle("show");
 });
+
+ document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.getElementById("menu-toggle");
+  const navbarMenu = document.querySelector(".navbar ul");
+  const dropdownToggle = document.querySelector(".dropdown > a");
+
+  // Toggle main menu on mobile
+  menuToggle.addEventListener("click", function () {
+    navbarMenu.classList.toggle("show");
+  });
+
+  // Toggle dropdown menu on mobile
+  dropdownToggle.addEventListener("click", function (event) {
+    event.preventDefault(); // Prevents navigating to "#"
+    document.querySelector(".dropdown-menu").classList.toggle("show");
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", function (event) {
+    if (!navbarMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+      navbarMenu.classList.remove("show");
+    }
+  });
+});
+
   </script>
 </body>
 </html>
