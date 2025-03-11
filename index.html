@@ -69,7 +69,11 @@
       color: #ff9800;
     }
 
-    /* Dropdown Menu */
+    /* Dropdown Menu - Fixed */
+    .dropdown {
+      position: relative;
+    }
+
     .dropdown-menu {
       display: none;
       position: absolute;
@@ -81,13 +85,15 @@
       padding: 10px 0;
       min-width: 200px;
       border-radius: 8px;
+      z-index: 1000; /* Ensures it appears above other elements */
     }
 
     .dropdown-menu li {
       padding: 10px 20px;
     }
 
-    .dropdown:hover .dropdown-menu {
+    .dropdown:hover .dropdown-menu,
+    .dropdown-menu:hover {
       display: block;
     }
 
@@ -162,27 +168,21 @@
     </ul>
     <button id="theme-toggle">🌙 Dark Mode</button>
   </nav>
+
   <section class="hero" id="home">
     <h2>Master Data Structures & Algorithms</h2>
     <p>Explore comprehensive study materials and coding programs to ace DSA.</p>
     <a href="#notes" class="btn">Get Started</a>
   </section>
+
   <footer>
     <p>&copy; 2025 DSA Learning Hub</p>
   </footer>
+
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const themeToggle = document.getElementById("theme-toggle");
       const body = document.body;
-
-      // Toggle Dark/Light Mode
-      themeToggle.addEventListener("click", function() {
-        const isLightMode = body.classList.contains("light-mode");
-        body.classList.toggle("light-mode", !isLightMode);
-        body.classList.toggle("dark-mode", isLightMode);
-        themeToggle.textContent = isLightMode ? "🌙 Dark Mode" : "☀️ Light Mode";
-        localStorage.setItem("theme", isLightMode ? "dark" : "light");
-      });
 
       // Load saved theme
       const savedTheme = localStorage.getItem("theme");
@@ -190,7 +190,20 @@
         body.classList.add("dark-mode");
         body.classList.remove("light-mode");
         themeToggle.textContent = "☀️ Light Mode";
+      } else {
+        body.classList.add("light-mode");
+        body.classList.remove("dark-mode");
+        themeToggle.textContent = "🌙 Dark Mode";
       }
+
+      // Toggle Dark/Light Mode
+      themeToggle.addEventListener("click", function() {
+        const isDarkMode = body.classList.contains("dark-mode");
+        body.classList.toggle("light-mode", isDarkMode);
+        body.classList.toggle("dark-mode", !isDarkMode);
+        themeToggle.textContent = isDarkMode ? "🌙 Dark Mode" : "☀️ Light Mode";
+        localStorage.setItem("theme", isDarkMode ? "light" : "dark");
+      });
     });
   </script>
 </body>
