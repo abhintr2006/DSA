@@ -20,7 +20,7 @@
     body {
       background: linear-gradient(135deg, #0f172a, #1e293b);
       color: #ffffff;
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: background 0.3s ease, color 0.3s ease; /* Transition for background and text color */
     }
 
     /* Light Mode */
@@ -41,17 +41,14 @@
       width: 100%;
       top: 0;
       z-index: 1000;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .navbar.scrolled {
-      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease-in-out; /* Transition for navbar background */
     }
 
     .navbar h1 {
       font-size: 1.8rem;
       font-weight: 600;
       color: #ff9800;
+      transition: color 0.3s ease; /* Transition for navbar title color */
     }
 
     .navbar ul {
@@ -68,8 +65,7 @@
       text-decoration: none;
       color: #444; /* Darkened link color in light mode */
       font-size: 1.1rem;
-      transition: 0.3s;
-      cursor: pointer;
+      transition: color 0.3s ease; /* Transition for link color */
     }
 
     .navbar ul li a:hover {
@@ -113,7 +109,7 @@
       color: #444; /* Darkened link color in light mode */
       text-decoration: none;
       display: block;
-      transition: 0.3s;
+      transition: color 0.3s ease; /* Transition for dropdown link color */
     }
 
     /* Hero Section */
@@ -126,12 +122,14 @@
       font-size: 3rem;
       font-weight: 700;
       margin-bottom: 10px;
+      transition: color 0.3s ease; /* Transition for hero heading color */
     }
 
     .hero p {
       font-size: 1.3rem;
       color: #666; /* Darkened paragraph color in light mode */
       margin-bottom: 30px;
+      transition: color 0.3s ease; /* Transition for hero paragraph color */
     }
 
     .btn {
@@ -142,7 +140,7 @@
       background: #ff9800;
       border-radius: 8px;
       text-decoration: none;
-      transition: 0.3s;
+      transition: background 0.3s;
     }
 
     .btn:hover {
