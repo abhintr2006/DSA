@@ -194,6 +194,28 @@
     .social-media a:hover img {
       transform: scale(1.1);
     }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    .navbar.dark-mode {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown-menu.dark-mode {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn.dark-mode {
+      background: #ff9800;
+    }
+
+    footer.dark-mode {
+      background: rgba(255, 255, 255, 0.1);
+    }
   </style>
 </head>
 <body class="light-mode">
@@ -256,10 +278,14 @@
     document.addEventListener("DOMContentLoaded", function() {
       const themeToggle = document.getElementById("theme-toggle");
       const body = document.body;
+      const navbar = document.querySelector('.navbar');
+      const dropdownMenus = document.querySelectorAll('.dropdown-menu');
 
       // Check local storage for theme preference
       const currentTheme = localStorage.getItem("theme") || "light";
       body.classList.add(`${currentTheme}-mode`);
+      navbar.classList.toggle('dark-mode', currentTheme === "dark");
+      dropdownMenus.forEach(menu => menu.classList.toggle('dark-mode', currentTheme === "dark"));
       themeToggle.textContent = currentTheme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
 
       // Toggle Dark/Light Mode
@@ -267,6 +293,8 @@
         const isLightMode = body.classList.contains("light-mode");
         body.classList.toggle("light-mode", !isLightMode);
         body.classList.toggle("dark-mode", isLightMode);
+        navbar.classList.toggle('dark-mode', isLightMode);
+        dropdownMenus.forEach(menu => menu.classList.toggle('dark-mode', isLightMode));
         localStorage.setItem("theme", isLightMode ? "dark" : "light");
         themeToggle.textContent = isLightMode ? "☀️ Light Mode" : "🌙 Dark Mode";
       });
