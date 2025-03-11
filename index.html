@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,16 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DSA Learning Hub</title>
   <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    /* Import Google Font */
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-
-    /* Root Variables for Dynamic Colors */
-    :root {
-      --navbar-bg: rgba(255, 255, 255, 0.1); /* Default color */
-      --navbar-text: #ffffff; /* Default text color */
-    }
-
     /* Reset Styles */
     * {
       margin: 0;
@@ -28,37 +21,35 @@
     body {
       background: linear-gradient(135deg, #0f172a, #1e293b);
       color: #ffffff;
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: background 0.3s ease, color 0.3s ease; /* Transition for background and text color */
     }
 
+    /* Light Mode */
     body.light-mode {
       background: #f0f0f0;
-      color: #333;
+      color: #444; /* Darkened text color for better readability */
     }
 
     /* Navbar */
     .navbar {
-      background: var(--navbar-bg);
-      color: var(--navbar-text);
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 20px 5%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 1000;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .navbar.scrolled {
-      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease-in-out; /* Transition for navbar background */
     }
 
     .navbar h1 {
       font-size: 1.8rem;
       font-weight: 600;
       color: #ff9800;
+      transition: color 0.3s ease; /* Transition for navbar title color */
     }
 
     .navbar ul {
@@ -73,10 +64,9 @@
 
     .navbar ul li a {
       text-decoration: none;
-      color: #fff;
+      color: #444; /* Darkened link color in light mode */
       font-size: 1.1rem;
-      transition: 0.3s;
-      cursor: pointer;
+      transition: color 0.3s ease; /* Transition for link color */
     }
 
     .navbar ul li a:hover {
@@ -117,12 +107,13 @@
     }
 
     .dropdown-menu li a {
-      color: #fff;
+      color: #444; /* Darkened link color in light mode */
       text-decoration: none;
       display: block;
-      transition: 0.3s;
+      transition: color 0.3s ease; /* Transition for dropdown link color */
     }
 
+    /* Hero Section */
     .hero {
       text-align: center;
       padding: 150px 10% 80px;
@@ -132,12 +123,14 @@
       font-size: 3rem;
       font-weight: 700;
       margin-bottom: 10px;
+      transition: color 0.3s ease; /* Transition for hero heading color */
     }
 
     .hero p {
       font-size: 1.3rem;
-      color: #ddd;
+      color: #666; /* Darkened paragraph color in light mode */
       margin-bottom: 30px;
+      transition: color 0.3s ease; /* Transition for hero paragraph color */
     }
 
     .btn {
@@ -148,13 +141,14 @@
       background: #ff9800;
       border-radius: 8px;
       text-decoration: none;
-      transition: 0.3s;
+      transition: background 0.3s;
     }
 
     .btn:hover {
       background: #e68a00;
     }
 
+    /* Footer */
     footer {
       text-align: center;
       padding: 20px;
@@ -163,6 +157,7 @@
       margin-top: 50px;
     }
 
+    /* Social Media Styling */
     .social-media {
       margin-top: 15px;
       display: flex;
@@ -198,86 +193,126 @@
     .social-media a:hover img {
       transform: scale(1.1);
     }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background: #0f172a;
+      color: #ffffff;
+    }
+
+    .navbar.dark-mode {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown-menu.dark-mode {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .btn.dark-mode {
+      background: #ff9800;
+    }
+
+    footer.dark-mode {
+      background: rgba(255, 255, 255, 0.1);
+    }
   </style>
 </head>
 <body class="light-mode">
-  <nav class="navbar" aria-label="Primary Navigation">
+  <nav class="navbar">
     <h1>DSA Learning Hub</h1>
     <ul>
-      <li><a href="#home" aria-label="Go to Home">Home</a></li>
-      <li><a href="#notes" aria-label="View Study Notes">Study Notes</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#notes">Study Notes</a></li>
       <li class="dropdown">
-        <a href="#" aria-haspopup="true" aria-expanded="false">Programs & Outputs ▾</a>
-        <ul class="dropdown-menu" aria-label="Program Links">
+        <a href="#">Programs & Outputs ▾</a>
+        <ul class="dropdown-menu">
           <li><a href="program1.html">Program 1</a></li>
-          <!-- More links here -->
+          <li><a href="program2.html">Program 2</a></li>
+          <li><a href="program3.html">Program 3</a></li>
+          <li><a href="program4.html">Program 4</a></li>
+          <li><a href="program5A.html">Program 5A</a></li>
+          <li><a href="program5B.html">Program 5B</a></li>
+          <li><a href="program6.html">Program 6</a></li>
+          <li><a href="program7.html">Program 7</a></li>
+          <li><a href="program8.html">Program 8</a></li>
+          <li><a href="program9.html">Program 9</a></li>
+          <li><a href="program10.html">Program 10</a></li>
+          <li><a href="program11.html">Program 11</a></li>
+          <li><a href="program12.html">Program 12</a></li>
         </ul>
       </li>
-      <li><a href="code-compiler.html" aria-label="Open Code Compiler">Code Compiler</a></li>
+      <li><a href="code-compiler.html">Code Compiler</a></li>
     </ul>
     <button id="theme-toggle">🌙 Dark Mode</button>
   </nav>
 
+  <!-- Hero Section -->
   <section class="hero" id="home">
     <h2>Master Data Structures & Algorithms</h2>
     <p>Explore comprehensive study materials and coding programs to ace DSA.</p>
     <a href="#notes" class="btn">Get Started</a>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 DSA Learning Hub</p>
     <div class="social-media">
       <a href="https://www.linkedin.com" target="_blank">
         <img src="images/linkedin-icon.png" alt="LinkedIn">
       </a>
-      <!-- Other social icons -->
+      <a href="https://www.instagram.com" target="_blank">
+        <img src="images/instagram-icon.png" alt="Instagram">
+      </a>
+      <a href="https://twitter.com" target="_blank">
+        <img src="images/twitter-icon.png" alt="Twitter">
+      </a>
+      <a href="https://www.facebook.com" target="_blank">
+        <img src="images/facebook-icon.png" alt="Facebook">
+      </a>
     </div>
   </footer>
 
+  <!-- Script to handle theme toggling and store user preference -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const themeToggle = document.getElementById("theme-toggle");
       const body = document.body;
+      const navbar = document.querySelector('.navbar');
+      const dropdownMenus = document.querySelectorAll('.dropdown-menu');
 
       // Check local storage for theme preference
-      if (localStorage.getItem("theme") === "dark") {
-        body.classList.add("dark-mode");
-        body.classList.remove("light-mode");
-        themeToggle.textContent = "☀️ Light Mode";
-      } else if (localStorage.getItem("theme") === "light") {
-        body.classList.add("light-mode");
-        body.classList.remove("dark-mode");
-        themeToggle.textContent = "🌙 Dark Mode";
-      }
+      const currentTheme = localStorage.getItem("theme") || "light";
+      body.classList.add(`${currentTheme}-mode`);
+      navbar.classList.toggle('dark-mode', currentTheme === "dark");
+      dropdownMenus.forEach(menu => menu.classList.toggle('dark-mode', currentTheme === "dark"));
+      themeToggle.textContent = currentTheme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
 
       // Toggle Dark/Light Mode
       themeToggle.addEventListener("click", function() {
-        if (body.classList.contains("light-mode")) {
-          body.classList.remove("light-mode");
-          body.classList.add("dark-mode");
-          localStorage.setItem("theme", "dark");
-          themeToggle.textContent = "☀️ Light Mode";
-        } else {
-          body.classList.remove("dark-mode");
-          body.classList.add("light-mode");
-          localStorage.setItem("theme", "light");
-          themeToggle.textContent = "🌙 Dark Mode";
-        }
+        const isLightMode = body.classList.contains("light-mode");
+        body.classList.toggle("light-mode", !isLightMode);
+        body.classList.toggle("dark-mode", isLightMode);
+        navbar.classList.toggle('dark-mode', isLightMode);
+        dropdownMenus.forEach(menu => menu.classList.toggle('dark-mode', isLightMode));
+        localStorage.setItem("theme", isLightMode ? "dark" : "light");
+        themeToggle.textContent = isLightMode ? "☀️ Light Mode" : "🌙 Dark Mode";
       });
+    });
 
-      // Add a button to change navbar color
-      const colorToggle = document.createElement('button');
-      colorToggle.innerText = 'Change Taskbar Color';
-      colorToggle.style.position = 'fixed';
-      colorToggle.style.bottom = '10px';
-      colorToggle.style.right = '10px';
-      colorToggle.style.padding = '10px';
-      colorToggle.style.backgroundColor = '#ff9800';
-      colorToggle.style.color = '#fff';
-      colorToggle.style.border = 'none';
-      colorToggle.style.borderRadius = '5px';
-      colorToggle.style.cursor = 'pointer';
-      document.body.appendChild(colorToggle);
+    // Open the dropdown menu when clicking on it
+    document.querySelector(".dropdown").addEventListener("click", function() {
+      const dropdownMenu = this.querySelector(".dropdown-menu");
+      dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+    });
 
-      colorToggle.addEventListener('click', function() {
-        const newColor = prompt('Enter a new color for the taskbar (e.g., #ff9800 or rgba(0, 0, 0
+    // Close dropdown when clicking outside of it
+    window.addEventListener("click", function(event) {
+      const dropdown = document.querySelector(".dropdown");
+      const dropdownMenu = document.querySelector(".dropdown-menu");
+      if (!dropdown.contains(event.target)) {
+        dropdownMenu.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
