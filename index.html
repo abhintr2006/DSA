@@ -1,152 +1,191 @@
-/* Reset Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-  scroll-behavior: smooth;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DSA Learning Hub</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-/* Dark Mode */
-.dark-mode {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: #ffffff;
-}
+  <style>
+    /* Reset Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
 
-/* Light Mode */
-.light-mode {
-  background: #ffffff;
-  color: #222;
-}
+    /* Dark Mode */
+    .dark-mode {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #ffffff;
+    }
 
-/* Navbar Styling */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 5%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  transition: all 0.3s ease-in-out;
-}
+    /* Light Mode */
+    .light-mode {
+      background: #ffffff;
+      color: #222;
+    }
 
-.navbar h1 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #ff9800;
-}
+    /* Navbar Styling */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease-in-out;
+    }
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-}
+    .navbar h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #ff9800;
+    }
 
-.navbar ul li {
-  margin: 0 15px;
-  position: relative;
-}
+    .navbar ul {
+      list-style: none;
+      display: flex;
+    }
 
-.navbar ul li a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.1rem;
-  transition: color 0.3s;
-}
+    .navbar ul li {
+      margin: 0 15px;
+      position: relative;
+    }
 
-.navbar ul li a:hover {
-  color: #ff9800;
-}
+    .navbar ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.1rem;
+      transition: 0.3s;
+    }
 
-/* Dropdown Menu */
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  list-style: none;
-  padding: 10px 0;
-  min-width: 200px;
-  border-radius: 8px;
-}
+    .navbar ul li a:hover {
+      color: #ff9800;
+    }
 
-.dropdown-menu li {
-  padding: 10px 20px;
-}
+    /* Dropdown Menu */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      list-style: none;
+      padding: 10px 0;
+      min-width: 200px;
+      border-radius: 8px;
+    }
 
-.dropdown-menu li a {
-  color: #fff;
-  text-decoration: none;
-  display: block;
-  transition: color 0.3s;
-}
+    .dropdown-menu li {
+      padding: 10px 20px;
+    }
 
-.dropdown-menu li a:hover {
-  color: #ff9800;
-}
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
 
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 150px 10% 80px;
+    }
 
-/* Hero Section */
-.hero {
-  text-align: center;
-  padding: 150px 10% 80px;
-}
+    .hero h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
 
-.hero h2 {
-  font-size: 3rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
+    .hero p {
+      font-size: 1.3rem;
+      color: #ddd;
+      margin-bottom: 30px;
+    }
 
-.hero p {
-  font-size: 1.3rem;
-  color: #ddd;
-  margin-bottom: 30px;
-}
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      color: #fff;
+      background: #ff9800;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-.btn {
-  display: inline-block;
-  padding: 12px 25px;
-  font-size: 1.2rem;
-  color: #fff;
-  background: #ff9800;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s;
-}
+    .btn:hover {
+      background: #e68a00;
+    }
 
-.btn:hover {
-  background: #e68a00;
-}
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body class="light-mode">
+  <nav class="navbar">
+    <h1>DSA Learning Hub</h1>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#notes">Study Notes</a></li>
+      <li class="dropdown">
+        <a href="#">Programs & Outputs ▾</a>
+        <ul class="dropdown-menu">
+          <li><a href="program1.html">Program 1</a></li>
+          <li><a href="program2.html">Program 2</a></li>
+          <li><a href="program3.html">Program 3</a></li>
+        </ul>
+      </li>
+      <li><a href="code-compiler.html">Code Compiler</a></li>
+    </ul>
+    <button id="theme-toggle">🌙 Dark Mode</button>
+  </nav>
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  margin-top: 50px;
-  color: #fff;
-}
+  <section class="hero" id="home">
+    <h2>Master Data Structures & Algorithms</h2>
+    <p>Explore comprehensive study materials and coding programs to ace DSA.</p>
+    <a href="#notes" class="btn">Get Started</a>
+  </section>
 
-/* Theme Toggle Button */
-#theme-toggle {
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: color 0.3s;
-}
+  <footer>
+    <p>&copy; 2025 DSA Learning Hub</p>
+  </footer>
 
-#theme-toggle:hover {
-  color: #ff9800;
-}
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const themeToggle = document.getElementById("theme-toggle");
+      const body = document.body;
+
+      // Toggle Dark/Light Mode
+      themeToggle.addEventListener("click", function() {
+        const isLightMode = body.classList.contains("light-mode");
+        body.classList.toggle("light-mode", !isLightMode);
+        body.classList.toggle("dark-mode", isLightMode);
+        themeToggle.textContent = isLightMode ? "🌙 Dark Mode" : "☀️ Light Mode";
+        localStorage.setItem("theme", isLightMode ? "dark" : "light");
+      });
+
+      // Load saved theme
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        body.classList.add("dark-mode");
+        body.classList.remove("light-mode");
+        themeToggle.textContent = "☀️ Light Mode";
+      }
+    });
+  </script>
+</body>
+</html>
