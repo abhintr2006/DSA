@@ -211,9 +211,8 @@
       padding: 50px;
       flex-wrap: wrap;
     }
-
+    
     .card {
-      background: white;
       padding: 20px;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -222,7 +221,17 @@
       text-align: center;
       margin: 10px;
     }
-
+    
+    .light-mode .card {
+      background: white;
+      color: #222;
+    }
+    
+    .dark-mode .card {
+      background: #1e293b;
+      color: #fff;
+    }
+    
     .card:hover {
       transform: translateY(-10px);
     }
@@ -230,12 +239,11 @@
     .card h3 {
       margin: 0 0 10px;
     }
-
+    
     .card p {
-      color: #555;
+      color: inherit;
     }
 
-    /* Back to Top Button */
     .back-to-top {
       position: fixed;
       bottom: 20px;
@@ -254,7 +262,6 @@
     .back-to-top:hover {
       background: #0056b3;
     }
-
     /* Footer */
     footer {
       text-align: center;
