@@ -1,318 +1,122 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DSA Learning Hub</title>
-  <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    /* Reset Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-      scroll-behavior: smooth;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Cards with Back to Top</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
 
-    /* Body Styling */
-    body {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #ffffff;
-      transition: background 0.3s ease, color 0.3s ease; /* Transition for background and text color */
-    }
+        /* Service Cards */
+        .cards {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px;
+            flex-wrap: wrap;
+        }
 
-    /* Light Mode */
-    body.light-mode {
-      background: #f0f0f0;
-      color: #444; /* Darkened text color for better readability */
-    }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            transition: transform 0.3s ease;
+            text-align: center;
+            margin: 10px;
+        }
 
-    /* Navbar */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 5%;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
-      transition: all 0.3s ease-in-out; /* Transition for navbar background */
-    }
+        .card:hover {
+            transform: translateY(-10px);
+        }
 
-    .navbar h1 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #ff9800;
-      transition: color 0.3s ease; /* Transition for navbar title color */
-    }
+        .card h3 {
+            margin: 0 0 10px;
+        }
 
-    .navbar ul {
-      list-style: none;
-      display: flex;
-    }
+        .card p {
+            color: #555;
+        }
 
-    .navbar ul li {
-      margin: 0 15px;
-      position: relative;
-    }
+        /* Customize scrollbar */
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
 
-    .navbar ul li a {
-      text-decoration: none;
-      color: #444; /* Darkened link color in light mode */
-      font-size: 1.1rem;
-      transition: color 0.3s ease; /* Transition for link color */
-    }
+        body::-webkit-scrollbar-thumb {
+            background-color: #444;
+            border-radius: 5px;
+        }
 
-    .navbar ul li a:hover {
-      color: #ff9800;
-    }
+        body::-webkit-scrollbar-track {
+            background: #ccc;
+        }
 
-    /* Theme Toggle Button */
-    #theme-toggle {
-      padding: 5px 10px;
-      background: #555;
-      color: white;
-      border: none;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background 0.3s ease;
-    }
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 20px;
+            display: none;
+            z-index: 1000;
+            transition: background 0.3s ease;
+            text-align: center;
+        }
 
-    #theme-toggle:hover {
-      background: #ff9800;
-    }
-
-    /* Dropdown Menu */
-    .dropdown-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      list-style: none;
-      padding: 10px 0;
-      display: none;
-      min-width: 200px;
-      border-radius: 8px;
-    }
-
-    .dropdown-menu li {
-      padding: 10px 20px;
-    }
-
-    .dropdown-menu li a {
-      color: #444; /* Darkened link color in light mode */
-      text-decoration: none;
-      display: block;
-      transition: color 0.3s ease; /* Transition for dropdown link color */
-    }
-
-    /* Hero Section */
-    .hero {
-      text-align: center;
-      padding: 150px 10% 80px;
-    }
-
-    .hero h2 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      transition: color 0.3s ease; /* Transition for hero heading color */
-    }
-
-    .hero p {
-      font-size: 1.3rem;
-      color: #666; /* Darkened paragraph color in light mode */
-      margin-bottom: 30px;
-      transition: color 0.3s ease; /* Transition for hero paragraph color */
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      font-size: 1.2rem;
-      color: #fff;
-      background: #ff9800;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background: #e68a00;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      margin-top: 50px;
-    }
-
-    /* Social Media Styling */
-    .social-media {
-      margin-top: 15px;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
-
-    .social-media a {
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(5px);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease, background 0.3s ease;
-    }
-
-    .social-media a img {
-      width: 24px;
-      height: 24px;
-      filter: invert(1);
-      transition: transform 0.3s ease;
-    }
-
-    .social-media a:hover {
-      transform: scale(1.2);
-      background: #ff9800;
-    }
-
-    .social-media a:hover img {
-      transform: scale(1.1);
-    }
-
-    /* Dark Mode Styles */
-    body.dark-mode {
-      background: #0f172a;
-      color: #ffffff;
-    }
-
-    .navbar.dark-mode {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .dropdown-menu.dark-mode {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .btn.dark-mode {
-      background: #ff9800;
-    }
-
-    footer.dark-mode {
-      background: rgba(255, 255, 255, 0.1);
-    }
-  </style>
+        .back-to-top:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
-<body class="light-mode">
-  <nav class="navbar">
-    <h1>DSA Learning Hub</h1>
-    <ul>
-      <li><a href="#home">Home</a></li>
-      <li><a href="#notes">Study Notes</a></li>
-      <li class="dropdown">
-        <a href="#">Programs & Outputs ▾</a>
-        <ul class="dropdown-menu">
-          <li><a href="program1.html">Program 1</a></li>
-          <li><a href="program2.html">Program 2</a></li>
-          <li><a href="program3.html">Program 3</a></li>
-          <li><a href="program4.html">Program 4</a></li>
-          <li><a href="program5A.html">Program 5A</a></li>
-          <li><a href="program5B.html">Program 5B</a></li>
-          <li><a href="program6.html">Program 6</a></li>
-          <li><a href="program7.html">Program 7</a></li>
-          <li><a href="program8.html">Program 8</a></li>
-          <li><a href="program9.html">Program 9</a></li>
-          <li><a href="program10.html">Program 10</a></li>
-          <li><a href="program11.html">Program 11</a></li>
-          <li><a href="program12.html">Program 12</a></li>
-        </ul>
-      </li>
-      <li><a href="code-compiler.html">Code Compiler</a></li>
-    </ul>
-    <button id="theme-toggle">🌙 Dark Mode</button>
-  </nav>
+<body>
 
-  <!-- Hero Section -->
-  <section class="hero" id="home">
-    <h2>Master Data Structures & Algorithms</h2>
-    <p>Explore comprehensive study materials and coding programs to ace DSA.</p>
-    <a href="#notes" class="btn">Get Started</a>
-  </section>
+    <section class="cards">
+        <div class="card">
+            <h3>Service 1</h3>
+            <p>Details about this service.</p>
+        </div>
+        <div class="card">
+            <h3>Service 2</h3>
+            <p>Details about this service.</p>
+        </div>
+        <div class="card">
+            <h3>Service 3</h3>
+            <p>Details about this service.</p>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 DSA Learning Hub</p>
-    <div class="social-media">
-      <a href="https://www.linkedin.com" target="_blank">
-        <img src="images/linkedin-icon.png" alt="LinkedIn">
-      </a>
-      <a href="https://www.instagram.com" target="_blank">
-        <img src="images/instagram-icon.png" alt="Instagram">
-      </a>
-      <a href="https://twitter.com" target="_blank">
-        <img src="images/twitter-icon.png" alt="Twitter">
-      </a>
-      <a href="https://www.facebook.com" target="_blank">
-        <img src="images/facebook-icon.png" alt="Facebook">
-      </a>
-    </div>
-  </footer>
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">↑</a>
 
-  <!-- Script to handle theme toggling and store user preference -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const themeToggle = document.getElementById("theme-toggle");
-      const body = document.body;
-      const navbar = document.querySelector('.navbar');
-      const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+    <script>
+        // Show "Back to Top" button on scroll
+        window.onscroll = function() {
+            const backToTopButton = document.getElementById('backToTop');
+            if (window.scrollY > 500) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        };
 
-      // Check local storage for theme preference
-      const currentTheme = localStorage.getItem("theme") || "light";
-      body.classList.add(`${currentTheme}-mode`);
-      navbar.classList.toggle('dark-mode', currentTheme === "dark");
-      dropdownMenus.forEach(menu => menu.classList.toggle('dark-mode', currentTheme === "dark"));
-      themeToggle.textContent = currentTheme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
+        // Smooth scroll to top when clicking the button
+        document.getElementById('backToTop').addEventListener('click', function(event) {
+            event.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
 
-      // Toggle Dark/Light Mode
-      themeToggle.addEventListener("click", function() {
-        const isLightMode = body.classList.contains("light-mode");
-        body.classList.toggle("light-mode", !isLightMode);
-        body.classList.toggle("dark-mode", isLightMode);
-        navbar.classList.toggle('dark-mode', isLightMode);
-        dropdownMenus.forEach(menu => menu.classList.toggle('dark-mode', isLightMode));
-        localStorage.setItem("theme", isLightMode ? "dark" : "light");
-        themeToggle.textContent = isLightMode ? "☀️ Light Mode" : "🌙 Dark Mode";
-      });
-    });
-
-    // Open the dropdown menu when clicking on it
-    document.querySelector(".dropdown").addEventListener("click", function() {
-      const dropdownMenu = this.querySelector(".dropdown-menu");
-      dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
-    });
-
-    // Close dropdown when clicking outside of it
-    window.addEventListener("click", function(event) {
-      const dropdown = document.querySelector(".dropdown");
-      const dropdownMenu = document.querySelector(".dropdown-menu");
-      if (!dropdown.contains(event.target)) {
-        dropdownMenu.style.display = "none";
-      }
-    });
-  </script>
 </body>
 </html>
