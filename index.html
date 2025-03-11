@@ -82,16 +82,23 @@
       top: 100%;
       left: 0;
       min-width: 200px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     }
 
     .dropdown-menu li {
-      padding: 5px 10px;
+      padding: 8px 12px;
     }
 
     .dropdown-menu li a {
       color: #fff;
       display: block;
-      padding: 5px 0;
+      padding: 8px 12px;
+      transition: background 0.3s ease;
+    }
+
+    .dropdown-menu li a:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 3px;
     }
 
     .dropdown:hover .dropdown-menu {
@@ -183,29 +190,5 @@
     <p>Explore comprehensive study materials and coding programs to ace DSA.</p>
     <a href="#notes" class="btn">Get Started</a>
   </section>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const themeToggle = document.getElementById("theme-toggle");
-      const body = document.body;
-
-      if (localStorage.getItem("theme") === "dark") {
-        body.classList.add("dark-mode");
-        body.classList.remove("light-mode");
-        themeToggle.textContent = "☀️ Light Mode";
-      } else {
-        body.classList.add("light-mode");
-        body.classList.remove("dark-mode");
-        themeToggle.textContent = "🌙 Dark Mode";
-      }
-
-      themeToggle.addEventListener("click", function() {
-        body.classList.toggle("light-mode");
-        body.classList.toggle("dark-mode");
-        localStorage.setItem("theme", body.classList.contains("dark-mode") ? "dark" : "light");
-        themeToggle.textContent = body.classList.contains("dark-mode") ? "☀️ Light Mode" : "🌙 Dark Mode";
-      });
-    });
-  </script>
 </body>
 </html>
