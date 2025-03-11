@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <button id="menu-toggle">☰</button>
-<button id="menu-toggle">☰</button>
 <title>DSA Learning Hub</title>
   <style>
     /* Import Google Font */
@@ -78,14 +77,19 @@
   .navbar ul {
     display: none;
     flex-direction: column;
-    position: absolute;
-    top: 60px;
-    left: 0;
     width: 100%;
     background: rgba(255, 255, 255, 0.9);
-    padding: 10px 0;
+    position: absolute;
+    top: 50px;
+    left: 0;
     text-align: center;
+    padding: 10px 0;
   }
+
+  .navbar ul.show {
+    display: flex; /* Ensure it shows when toggled */
+  }
+}
 
   .navbar ul.show {
     display: flex;
@@ -620,9 +624,24 @@
     function openCodeCompiler() {
       alert('Code Compiler functionality will be added here!');
     }
-document.getElementById("menu-toggle").addEventListener("click", function() {
-  document.querySelector(".navbar ul").classList.toggle("show");
+document.addEventListener("DOMContentLoaded", function () {
+  const menuToggle = document.getElementById("menu-toggle");
+  const navbarMenu = document.querySelector(".navbar ul");
+
+  // Toggle menu visibility
+  menuToggle.addEventListener("click", function (event) {
+    event.stopPropagation(); // Prevents event bubbling issues
+    navbarMenu.classList.toggle("show");
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", function (event) {
+    if (!navbarMenu.contains(event.target) && event.target !== menuToggle) {
+      navbarMenu.classList.remove("show");
+    }
+  });
 });
+
 document.querySelector(".dropdown > a").addEventListener("click", function(event) {
   event.preventDefault(); // Prevents navigating to "#"
   document.querySelector(".dropdown-menu").classList.toggle("show");
@@ -631,12 +650,27 @@ document.querySelector(".dropdown > a").addEventListener("click", function(event
  document.addEventListener("DOMContentLoaded", function () {
   const menuToggle = document.getElementById("menu-toggle");
   const navbarMenu = document.querySelector(".navbar ul");
-  const dropdownToggle = document.querySelector(".dropdown > a");
 
-  // Toggle main menu on mobile
-  menuToggle.addEventListener("click", function () {
+  // Toggle menu visibility
+  menuToggle.addEventListener("click", function (event) {
+    event.stopPropagation(); // Prevents event bubbling issues
     navbarMenu.classList.toggle("show");
   });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", function (event) {
+    if (!navbarMenu.contains(event.target) && event.target !== menuToggle) {
+      navbarMenu.classList.remove("show");
+    }
+  });
+});
+document.addEventListener("click", function (event) {
+  const dropdown = document.querySelector(".dropdown-menu");
+  if (!event.target.closest(".dropdown")) {
+    dropdown.classList.remove("show");
+  }
+});
+
 
   // Toggle dropdown menu on mobile
   dropdownToggle.addEventListener("click", function (event) {
