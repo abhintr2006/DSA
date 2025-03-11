@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,27 +7,32 @@
   <title>DSA Learning Hub</title>
   <link rel="icon" href="images/dsa-logo.ico" type="image/x-icon">
   <style>
+    /* Import Google Font */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+    /* Reset Styles */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Poppins', sans-serif;
       scroll-behavior: smooth;
-      transition: background 0.3s ease, color 0.3s ease;
     }
 
+    /* Body Styling */
     body {
       background: linear-gradient(135deg, #0f172a, #1e293b);
       color: #ffffff;
+      transition: background 0.3s ease, color 0.3s ease;
     }
 
+    /* Light Mode */
     body.light-mode {
-      background: #f0f0f0;
-      color: #222;
+      background: #f0f0f0; /* Lighter background */
+      color: #333; /* Dark text color */
     }
 
+    /* Navbar */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -38,6 +44,11 @@
       width: 100%;
       top: 0;
       z-index: 1000;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .navbar h1 {
@@ -60,51 +71,15 @@
       text-decoration: none;
       color: #fff;
       font-size: 1.1rem;
-      transition: color 0.3s ease;
-    }
-
-    body.light-mode .navbar ul li a {
-      color: #222;
+      transition: 0.3s;
+      cursor: pointer;
     }
 
     .navbar ul li a:hover {
       color: #ff9800;
     }
 
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
-      list-style: none;
-      padding: 10px;
-      border-radius: 5px;
-      top: 100%;
-      left: 0;
-      min-width: 200px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    .dropdown-menu li {
-      padding: 8px 12px;
-    }
-
-    .dropdown-menu li a {
-      color: #fff;
-      display: block;
-      padding: 8px 12px;
-      transition: background 0.3s ease;
-    }
-
-    .dropdown-menu li a:hover {
-      background: rgba(255, 255, 255, 0.3);
-      border-radius: 3px;
-    }
-
-    .dropdown:hover .dropdown-menu {
-      display: block;
-    }
-
+    /* Theme Toggle Button */
     #theme-toggle {
       padding: 5px 10px;
       background: #555;
@@ -115,10 +90,37 @@
       transition: background 0.3s ease;
     }
 
+    /* Hover Effect for Theme Toggle */
     #theme-toggle:hover {
       background: #ff9800;
     }
 
+    /* Dropdown Menu */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      list-style: none;
+      padding: 10px 0;
+      display: none;
+      min-width: 200px;
+      border-radius: 8px;
+    }
+
+    .dropdown-menu li {
+      padding: 10px 20px;
+    }
+
+    .dropdown-menu li a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      transition: 0.3s;
+    }
+
+    /* Hero Section */
     .hero {
       text-align: center;
       padding: 150px 10% 80px;
@@ -133,11 +135,7 @@
     .hero p {
       font-size: 1.3rem;
       color: #ddd;
-      transition: color 0.3s ease;
-    }
-
-    body.light-mode .hero p {
-      color: #444;
+      margin-bottom: 30px;
     }
 
     .btn {
@@ -148,11 +146,57 @@
       background: #ff9800;
       border-radius: 8px;
       text-decoration: none;
-      transition: background 0.3s ease;
+      transition: 0.3s;
     }
 
     .btn:hover {
       background: #e68a00;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      margin-top: 50px;
+    }
+
+    /* Enhanced Social Media Styling */
+    .social-media {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-media a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .social-media a img {
+      width: 24px;
+      height: 24px;
+      filter: invert(1);
+      transition: transform 0.3s ease;
+    }
+
+    .social-media a:hover {
+      transform: scale(1.2);
+      background: #ff9800;
+    }
+
+    .social-media a:hover img {
+      transform: scale(1.1);
     }
   </style>
 </head>
@@ -185,10 +229,84 @@
     <button id="theme-toggle">🌙 Dark Mode</button>
   </nav>
 
+  <!-- Hero Section -->
   <section class="hero" id="home">
     <h2>Master Data Structures & Algorithms</h2>
     <p>Explore comprehensive study materials and coding programs to ace DSA.</p>
     <a href="#notes" class="btn">Get Started</a>
   </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 DSA Learning Hub</p>
+    <div class="social-media">
+      <a href="https://www.linkedin.com" target="_blank">
+        <img src="images/linkedin-icon.png" alt="LinkedIn">
+      </a>
+      <a href="https://www.instagram.com" target="_blank">
+        <img src="images/instagram-icon.png" alt="Instagram">
+      </a>
+      <a href="https://twitter.com" target="_blank">
+        <img src="images/twitter-icon.png" alt="X (Twitter)">
+      </a>
+      <a href="https://www.facebook.com" target="_blank">
+        <img src="images/facebook-icon.png" alt="Facebook">
+      </a>
+    </div>
+  </footer>
+
+  <!-- Script to handle theme toggling and store user preference -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const themeToggle = document.getElementById("theme-toggle");
+      const body = document.body;
+
+      // Check local storage for theme preference
+      if (localStorage.getItem("theme") === "dark") {
+        body.classList.add("dark-mode");
+        body.classList.remove("light-mode");
+        themeToggle.textContent = "☀️ Light Mode";
+      } else if (localStorage.getItem("theme") === "light") {
+        body.classList.add("light-mode");
+        body.classList.remove("dark-mode");
+        themeToggle.textContent = "🌙 Dark Mode";
+      }
+
+      // Toggle Dark/Light Mode
+      themeToggle.addEventListener("click", function() {
+        if (body.classList.contains("light-mode")) {
+          body.classList.remove("light-mode");
+          body.classList.add("dark-mode");
+          localStorage.setItem("theme", "dark");
+          themeToggle.textContent = "☀️ Light Mode";
+        } else {
+          body.classList.remove("dark-mode");
+          body.classList.add("light-mode");
+          localStorage.setItem("theme", "light");
+          themeToggle.textContent = "🌙 Dark Mode";
+        }
+      });
+    });
+
+    // Open the dropdown menu when clicking on it
+    document.querySelector(".dropdown").addEventListener("click", function() {
+      const dropdownMenu = this.querySelector(".dropdown-menu");
+      dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+    });
+
+    // Close dropdown when clicking outside of it
+    window.addEventListener("click", function(event) {
+      const dropdown = document.querySelector(".dropdown");
+      const dropdownMenu = document.querySelector(".dropdown-menu");
+      if (!dropdown.contains(event.target)) {
+        dropdownMenu.style.display = "none";
+      }
+    });
+
+    // Function to open the code compiler (placeholder)
+    function openCodeCompiler() {
+      alert('Code Compiler functionality will be added here!');
+    }
+  </script>
 </body>
 </html>
