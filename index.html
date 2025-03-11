@@ -18,7 +18,60 @@
       scroll-behavior: smooth;
     }
 
-    
+    /* Dark Mode */
+  .dark-mode {
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: #ffffff;
+  }
+
+  /* Light Mode */
+  .light-mode {
+    background: #ffffff;
+    color: #222;
+  }
+
+  /* Navbar Adjustments */
+  .light-mode .navbar {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .light-mode .navbar ul li a {
+    color: #222;
+  }
+
+  .light-mode .navbar h1 {
+    color: #ff9800;
+  }
+
+  /* Theme Toggle Button */
+  .light-mode #theme-toggle {
+    background: #ddd;
+    color: #000;
+  }
+
+  /* Links Hover */
+  .light-mode .navbar ul li a:hover {
+    color: #ff9800;
+  }
+
+  /* Dropdown Menu */
+  .light-mode .dropdown-menu {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .light-mode .dropdown-menu li a {
+    color: #000;
+  }
+
+  /* Hero Section */
+  .light-mode .hero p {
+    color: #444;
+  }
+
+  /* Footer */
+  .light-mode footer {
+    background: rgba(0, 0, 0, 0.1);
+  }
     /* Body Styling */
     body {
       background: linear-gradient(135deg, #0f172a, #1e293b);
@@ -259,35 +312,31 @@
   <!-- Script to handle theme toggling and store user preference -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const themeToggle = document.getElementById("theme-toggle");
-      const body = document.body;
+    const themeToggle = document.getElementById("theme-toggle");
+    const body = document.body;
 
-      // Check local storage for theme preference
-      if (localStorage.getItem("theme") === "dark") {
+    function setTheme(mode) {
+      if (mode === "dark") {
         body.classList.add("dark-mode");
         body.classList.remove("light-mode");
         themeToggle.textContent = "☀️ Light Mode";
-      } else if (localStorage.getItem("theme") === "light") {
+      } else {
         body.classList.add("light-mode");
         body.classList.remove("dark-mode");
         themeToggle.textContent = "🌙 Dark Mode";
       }
+      localStorage.setItem("theme", mode);
+    }
 
-      // Toggle Dark/Light Mode
-      themeToggle.addEventListener("click", function() {
-        if (body.classList.contains("light-mode")) {
-          body.classList.remove("light-mode");
-          body.classList.add("dark-mode");
-          localStorage.setItem("theme", "dark");
-          themeToggle.textContent = "☀️ Light Mode";
-        } else {
-          body.classList.remove("dark-mode");
-          body.classList.add("light-mode");
-          localStorage.setItem("theme", "light");
-          themeToggle.textContent = "🌙 Dark Mode";
-        }
-      });
+    // Load saved theme
+    const savedTheme = localStorage.getItem("theme") || "light";
+    setTheme(savedTheme);
+
+    // Toggle on click
+    themeToggle.addEventListener("click", function() {
+      setTheme(body.classList.contains("light-mode") ? "dark" : "light");
     });
+  });
 
     // Open the dropdown menu when clicking on it
     document.querySelector(".dropdown").addEventListener("click", function() {
