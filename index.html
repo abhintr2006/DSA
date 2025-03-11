@@ -204,6 +204,56 @@
     .btn:hover {
       background: #e68a00;
     }
+     /* Service Cards */
+    .cards {
+      display: flex;
+      justify-content: space-around;
+      padding: 50px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 300px;
+      transition: transform 0.3s ease;
+      text-align: center;
+      margin: 10px;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+    }
+
+    .card p {
+      color: #555;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #007BFF;
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 50%;
+      font-size: 20px;
+      display: none;
+      z-index: 1000;
+      transition: background 0.3s ease;
+    }
+
+    .back-to-top:hover {
+      background: #0056b3;
+    }
 
     /* Footer */
     footer {
