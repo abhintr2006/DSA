@@ -17,6 +17,14 @@
       font-family: 'Poppins', sans-serif;
       scroll-behavior: smooth;
     }
+/*drop-down menu*/
+.dropdown-menu {
+  display: none;
+}
+
+.dropdown-menu.show {
+  display: block;
+}
 
     /* responsive design*/
    /* Hide menu links on small screens */
@@ -498,6 +506,10 @@
     }
 document.getElementById("menu-toggle").addEventListener("click", function() {
   document.querySelector(".navbar ul").classList.toggle("show");
+});
+document.querySelector(".dropdown > a").addEventListener("click", function(event) {
+  event.preventDefault(); // Prevents navigating to "#"
+  document.querySelector(".dropdown-menu").classList.toggle("show");
 });
   </script>
 </body>
