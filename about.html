@@ -1,1 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - DSA Learning Hub</title>
+    <style>
+        /* Import Google Font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* Dark Mode Theme */
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #ffffff;
+            transition: background 0.3s ease, color 0.3s ease;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        /* Light Mode */
+        body.light-mode {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ff9800;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #ff9800;
+        }
+
+        /* Theme Toggle Button */
+        #theme-toggle {
+            padding: 8px 15px;
+            background: #555;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        #theme-toggle:hover {
+            background: #ff9800;
+        }
+
+        /* About Me Section */
+        .about-me {
+            max-width: 800px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-me h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #ff9800;
+        }
+
+        .about-me p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #ddd;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin-top: 50px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .navbar ul {
+                margin-top: 10px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .navbar ul li {
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <!-- Navbar -->
+    <nav class="navbar">
+        <h1>DSA Learning Hub</h1>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="code-compiler.html">Code Compiler</a></li>
+        </ul>
+        <button id="theme-toggle">🌙 Dark Mode</button>
+    </nav>
+
+    <!-- About Me Section -->
+    <section class="about-me">
+        <h2>About Me</h2>
+        <p>Welcome to DSA Learning Hub! I'm passionate about Data Structures & Algorithms and helping students learn efficiently. This platform is dedicated to providing structured study materials, coding examples, and interactive programs to make your DSA journey easier. Let's master DSA together! 🚀</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 DSA Learning Hub</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const themeToggle = document.getElementById("theme-toggle");
+            const body = document.body;
+
+            // Check local storage for theme preference
+            if (localStorage.getItem("theme") === "dark") {
+                body.classList.add("dark-mode");
+                body.classList.remove("light-mode");
+                themeToggle.textContent = "☀️ Light Mode";
+            } else if (localStorage.getItem("theme") === "light") {
+                body.classList.add("light-mode");
+                body.classList.remove("dark-mode");
+                themeToggle.textContent = "🌙 Dark Mode";
+            }
+
+            // Toggle Dark/Light Mode
+            themeToggle.addEventListener("click", function() {
+                if (body.classList.contains("light-mode")) {
+                    body.classList.remove("light-mode");
+                    body.classList.add("dark-mode");
+                    localStorage.setItem("theme", "dark");
+                    themeToggle.textContent = "☀️ Light Mode";
+                } else {
+                    body.classList.remove("dark-mode");
+                    body.classList.add("light-mode");
+                    localStorage.setItem("theme", "light");
+                    themeToggle.textContent = "🌙 Dark Mode";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
