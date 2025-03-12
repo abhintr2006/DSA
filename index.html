@@ -54,6 +54,17 @@
             color: #555;
         }
 
+/* Ensure text color changes based on theme */
+.card {
+  background: white;
+  color: #333; /* Default dark text for light mode */
+}
+
+body.dark-mode .card {
+  background: #2c3e50; /* Dark background for dark mode */
+  color: #ffffff; /* Light text color for dark mode */
+}
+
         /* Customize scrollbar */
         body::-webkit-scrollbar {
             width: 8px;
