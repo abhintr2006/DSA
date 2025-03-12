@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,188 +10,266 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
     /* Reset Styles */
-   /* Reset Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-  scroll-behavior: smooth;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+     body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+        }
 
-/* Light Mode */
-body.light-mode {
-  background: #f0f0f0;
-  color: #333;
-}
+        /* Service Cards */
+        .cards {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px;
+            flex-wrap: wrap;
+        }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 5%;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  transition: all 0.3s ease-in-out;
-}
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            transition: transform 0.3s ease;
+            text-align: center;
+            margin: 10px;
+        }
 
-.navbar h1 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: #ff9800;
-}
+        .card:hover {
+            transform: translateY(-10px);
+        }
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-}
+        .card h3 {
+            margin: 0 0 10px;
+        }
 
-.navbar ul li {
-  margin: 0 15px;
-  position: relative;
-}
+        .card p {
+            color: #555;
+        }
 
-.navbar ul li a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.1rem;
-  transition: 0.3s;
-}
+        /* Customize scrollbar */
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
 
-.navbar ul li a:hover {
-  color: #ff9800;
-}
+        body::-webkit-scrollbar-thumb {
+            background-color: #444;
+            border-radius: 5px;
+        }
 
-/* Dropdown Menu */
-.dropdown-menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  list-style: none;
-  padding: 10px 0;
-  display: none;
-  min-width: 200px;
-  border-radius: 8px;
-}
+        body::-webkit-scrollbar-track {
+            background: #ccc;
+        }
 
-.dropdown-menu li {
-  padding: 10px 20px;
-}
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 20px;
+            display: none;
+            z-index: 1000;
+            transition: background 0.3s ease;
+            text-align: center;
+        }
 
-.dropdown-menu li a {
-  color: #fff;
-  text-decoration: none;
-}
+        .back-to-top:hover {
+            background: #0056b3;
+        }
+    
+    /* Body Styling */
+    body {
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #ffffff;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
 
-/* Hero Section */
-.hero {
-  text-align: center;
-  padding: 150px 10% 80px;
-}
+    /* Light Mode */
+    body.light-mode {
+      background: #f0f0f0; /* Lighter background */
+      color: #333; /* Dark text color */
+    }
 
-.hero h2 {
-  font-size: 3rem;
-  font-weight: 700;
-}
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s ease-in-out;
+    }
 
-.hero p {
-  font-size: 1.3rem;
-  color: #555;
-}
+    .navbar.scrolled {
+      background: rgba(255, 255, 255, 0.2);
+    }
 
-.btn {
-  display: inline-block;
-  padding: 12px 25px;
-  font-size: 1.2rem;
-  color: #fff;
-  background: #ff9800;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: 0.3s;
-}
+    .navbar h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #ff9800;
+    }
 
-.btn:hover {
-  background: #e68a00;
-}
+    .navbar ul {
+      list-style: none;
+      display: flex;
+    }
 
-/* Service Cards */
-.cards {
-  display: flex;
-  justify-content: space-around;
-  padding: 50px;
-  flex-wrap: wrap;
-}
+    .navbar ul li {
+      margin: 0 15px;
+      position: relative;
+    }
 
-.card {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 300px;
-  transition: transform 0.3s ease;
-  text-align: center;
-  margin: 10px;
-}
+    .navbar ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 1.1rem;
+      transition: 0.3s;
+      cursor: pointer;
+    }
 
-.card:hover {
-  transform: translateY(-10px);
-}
+    .navbar ul li a:hover {
+      color: #ff9800;
+    }
 
-.card h3 {
-  margin: 0 0 10px;
-}
+    /* Theme Toggle Button */
+    #theme-toggle {
+      padding: 5px 10px;
+      background: #555;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
 
-.card p {
-  color: #555;
-}
+    /* Hover Effect for Theme Toggle */
+    #theme-toggle:hover {
+      background: #ff9800;
+    }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  margin-top: 50px;
-}
+    /* Dropdown Menu */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      list-style: none;
+      padding: 10px 0;
+      display: none;
+      min-width: 200px;
+      border-radius: 8px;
+    }
 
-/* Social Media */
-.social-media {
-  margin-top: 15px;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
+    .dropdown-menu li {
+      padding: 10px 20px;
+    }
 
-.social-media a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(5px);
-  border-radius: 50%;
-  transition: transform 0.3s ease, background 0.3s ease;
-}
+    .dropdown-menu li a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      transition: 0.3s;
+    }
 
-.social-media a img {
-  width: 24px;
-  height: 24px;
-  filter: invert(1);
-}
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 150px 10% 80px;
+    }
 
-.social-media a:hover {
-  transform: scale(1.2);
-  background: #ff9800;
-}
+    .hero h2 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
 
+    .hero p {
+      font-size: 1.3rem;
+      color: #ddd;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      color: #fff;
+      background: #ff9800;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #e68a00;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      margin-top: 50px;
+    }
+
+    /* Enhanced Social Media Styling */
+    .social-media {
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .social-media a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(5px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    .social-media a img {
+      width: 24px;
+      height: 24px;
+      filter: invert(1);
+      transition: transform 0.3s ease;
+    }
+
+    .social-media a:hover {
+      transform: scale(1.2);
+      background: #ff9800;
+    }
+
+    .social-media a:hover img {
+      transform: scale(1.1);
+      
+    }
   </style>
 </head>
 <body class="light-mode">
