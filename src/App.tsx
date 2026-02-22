@@ -892,11 +892,11 @@ function App() {
             </div>
 
             {/* Center: Navigation Links */}
-            <div className="hidden lg:flex flex-1 justify-center items-center space-x-8 text-sm font-medium">
+            <div className="hidden lg:flex flex-1 justify-center items-center space-x-10 text-lg font-medium">
               <button
                 onClick={handleHomeClick}
-                className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
-                <Home size={18} />
+                className="flex items-center space-x-2 hover:text-orange-500 transition-colors">
+                <Home size={20} />
                 <span>Home</span>
               </button>
 
@@ -907,18 +907,18 @@ function App() {
                     setIsProgramsOpen(!isProgramsOpen);
                     setIsNotesOpen(false);
                   }}
-                  className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
-                  <Code2 size={18} />
+                  className="flex items-center space-x-2 hover:text-orange-500 transition-colors">
+                  <Code2 size={20} />
                   <span>Programs</span>
                   <ChevronDown
-                    size={14}
+                    size={16}
                     className={`transform transition-transform ${isProgramsOpen ? "rotate-180" : ""}`}
                   />
                 </button>
 
                 {isProgramsOpen && (
                   <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 rounded-xl shadow-2xl py-2 border ${darkMode ? "bg-gray-900/90 backdrop-blur-xl border-white/10" : "bg-white border-gray-200"}`}>
+                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 rounded-xl shadow-2xl py-2 border ${darkMode ? "bg-gray-900/90 backdrop-blur-xl border-white/10" : "bg-white border-gray-200"}`}>
                     {programs.map((program) => (
                       <button
                         key={program.name}
@@ -941,18 +941,18 @@ function App() {
                     setIsNotesOpen(!isNotesOpen);
                     setIsProgramsOpen(false);
                   }}
-                  className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
-                  <BookOpen size={18} />
+                  className="flex items-center space-x-2 hover:text-orange-500 transition-colors">
+                  <BookOpen size={20} />
                   <span>Notes</span>
                   <ChevronDown
-                    size={14}
+                    size={16}
                     className={`transform transition-transform ${isNotesOpen ? "rotate-180" : ""}`}
                   />
                 </button>
 
                 {isNotesOpen && (
                   <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 rounded-xl shadow-2xl py-2 border ${darkMode ? "bg-gray-900/90 backdrop-blur-xl border-white/10" : "bg-white border-gray-200"}`}>
+                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 rounded-xl shadow-2xl py-2 border ${darkMode ? "bg-gray-900/90 backdrop-blur-xl border-white/10" : "bg-white border-gray-200"}`}>
                     {notes.map((note) => (
                       <a
                         key={note.file}
@@ -970,8 +970,8 @@ function App() {
 
               <button
                 onClick={handleAboutClick}
-                className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
-                <User size={18} />
+                className="flex items-center space-x-2 hover:text-orange-500 transition-colors">
+                <User size={20} />
                 <span>About Us</span>
               </button>
             </div>
@@ -982,10 +982,6 @@ function App() {
                 onClick={toggleTheme}
                 className="p-2.5 rounded-full hover:bg-orange-500/10 transition-colors">
                 {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-
-              <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full font-bold shadow-lg shadow-orange-500/20 transition-all hover:scale-105 active:scale-95">
-                Sign In
               </button>
             </div>
           </div>
