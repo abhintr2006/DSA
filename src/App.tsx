@@ -879,16 +879,20 @@ function App() {
         }`}>
         <div className="w-full px-8">
           <div className="flex items-center h-20">
-            <h1
-              onClick={handleHomeClick}
-              className="text-3xl font-bold cursor-pointer hover:opacity-80 transition-opacity ml-4 mr-10 whitespace-nowrap">
-              <span className={darkMode ? "text-white" : "text-gray-900"}>
-                DSA Study{" "}
-              </span>
-              <span className="text-orange-500">Hub</span>
-            </h1>
+            {/* Left: Branding */}
+            <div className="flex-1">
+              <h1
+                onClick={handleHomeClick}
+                className="text-3xl font-bold cursor-pointer hover:opacity-80 transition-opacity ml-4 whitespace-nowrap">
+                <span className={darkMode ? "text-white" : "text-gray-900"}>
+                  DSA Study{" "}
+                </span>
+                <span className="text-orange-500">Hub</span>
+              </h1>
+            </div>
 
-            <div className="hidden lg:flex items-center space-x-6 text-sm font-medium">
+            {/* Center: Navigation Links */}
+            <div className="hidden lg:flex flex-1 justify-center items-center space-x-8 text-sm font-medium">
               <button
                 onClick={handleHomeClick}
                 className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
@@ -914,7 +918,7 @@ function App() {
 
                 {isProgramsOpen && (
                   <div
-                    className={`absolute top-full left-0 mt-3 w-48 rounded-xl shadow-2xl py-2 border ${darkMode ? "bg-gray-900/90 backdrop-blur-xl border-white/10" : "bg-white border-gray-200"}`}>
+                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 rounded-xl shadow-2xl py-2 border ${darkMode ? "bg-gray-900/90 backdrop-blur-xl border-white/10" : "bg-white border-gray-200"}`}>
                     {programs.map((program) => (
                       <button
                         key={program.name}
@@ -948,7 +952,7 @@ function App() {
 
                 {isNotesOpen && (
                   <div
-                    className={`absolute top-full left-0 mt-3 w-48 rounded-xl shadow-2xl py-2 border ${darkMode ? "bg-gray-900/90 backdrop-blur-xl border-white/10" : "bg-white border-gray-200"}`}>
+                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-48 rounded-xl shadow-2xl py-2 border ${darkMode ? "bg-gray-900/90 backdrop-blur-xl border-white/10" : "bg-white border-gray-200"}`}>
                     {notes.map((note) => (
                       <a
                         key={note.file}
@@ -972,7 +976,8 @@ function App() {
               </button>
             </div>
 
-            <div className="ml-auto flex items-center space-x-5">
+            {/* Right: Actions */}
+            <div className="flex-1 flex items-center justify-end space-x-5">
               <button
                 onClick={toggleTheme}
                 className="p-2.5 rounded-full hover:bg-orange-500/10 transition-colors">
