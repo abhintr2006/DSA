@@ -1253,40 +1253,38 @@ function App() {
               </ul>
 
               {/* Social Icons */}
-              <div className="flex items-center space-x-4 mt-6">
+              <div className="flex items-center space-x-4 mt-8">
                 <a
                   href="https://github.com/abhintr2006/DSA"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg bg-white/10 hover:bg-orange-500 hover:text-white transition-all duration-300">
-                  <Github size={18} />
+                  aria-label="GitHub"
+                  className="group p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-[#24292e] hover:border-[#24292e] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-lg">
+                  <Github size={20} />
                 </a>
                 <a
                   href="#"
-                  className="p-2 rounded-lg bg-white/10 hover:bg-orange-500 hover:text-white transition-all duration-300">
-                  <Linkedin size={18} />
+                  aria-label="LinkedIn"
+                  className="group p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-[#0077b5] hover:border-[#0077b5] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-lg">
+                  <Linkedin size={20} />
                 </a>
                 <a
                   href="#"
-                  className="p-2 rounded-lg bg-white/10 hover:bg-orange-500 hover:text-white transition-all duration-300">
+                  aria-label="X (Twitter)"
+                  className="group p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-black hover:border-black hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-lg">
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
                     viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round">
-                    <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-                    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                    width="20"
+                    height="20"
+                    fill="currentColor">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                   </svg>
                 </a>
                 <a
                   href="#"
-                  className="p-2 rounded-lg bg-white/10 hover:bg-orange-500 hover:text-white transition-all duration-300">
-                  <Instagram size={18} />
+                  aria-label="Instagram"
+                  className="group p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:border-transparent hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-lg">
+                  <Instagram size={20} />
                 </a>
               </div>
             </div>
