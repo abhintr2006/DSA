@@ -1001,12 +1001,15 @@ function App() {
               {/* Pavan */}
               <div
                 className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
-                <img
-                  src="/screenshots/Pavan.jpeg"
-                  alt="G Pavan Kumar"
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover object-top border-4 border-orange-500 shadow-lg"
-                  style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
-                />
+                <div
+                  className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-orange-500 shadow-lg"
+                  style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}>
+                  <img
+                    src="/screenshots/Pavan.jpeg"
+                    alt="G Pavan Kumar"
+                    className="w-full h-full object-cover scale-[1.3]"
+                  />
+                </div>
                 <h4 className="text-xl font-bold mb-1">G Pavan Kumar</h4>
                 <p className="text-sm font-semibold text-orange-500">
                   Frontend & UI/UX Developer
@@ -1046,12 +1049,15 @@ function App() {
               {/* Syed */}
               <div
                 className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
-                <img
-                  src="/screenshots/Syed.jpeg"
-                  alt="Syed"
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover object-top border-4 border-orange-500 shadow-lg"
-                  style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
-                />
+                <div
+                  className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-orange-500 shadow-lg"
+                  style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}>
+                  <img
+                    src="/screenshots/Syed.jpeg"
+                    alt="Syed"
+                    className="w-full h-full object-cover scale-[1.3]"
+                  />
+                </div>
                 <h4 className="text-xl font-bold mb-1">Syed</h4>
                 <p className="text-sm font-semibold text-orange-500">
                   Algorithms & Implementation Specialist
