@@ -870,7 +870,7 @@ function App() {
 
   return (
     <div
-      className={`min-h-screen transition-colors duration-300 ${darkMode ? "bg-gradient-to-br from-gray-900 to-gray-800 text-white" : "bg-gray-50 text-gray-900"}`}>
+      className={`min-h-screen transition-colors duration-300 grid-bg ${darkMode ? "bg-gradient-to-br from-gray-900 to-gray-800 text-white" : "bg-gray-50 text-gray-900 light-grid"}`}>
       <nav
         className={`fixed w-full top-0 z-50 transition-all duration-300 ${
           isNavbarScrolled
@@ -998,21 +998,6 @@ function App() {
 
             {/* Team Grid - All members together */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-              {/* Pranav */}
-              <div
-                className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
-                <img
-                  src="/screenshots/profile.svg"
-                  alt="Pranav Arun"
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover object-top border-4 border-orange-500 shadow-lg"
-                  style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
-                />
-                <h4 className="text-xl font-bold mb-1">Pranav Arun</h4>
-                <p className="text-sm font-semibold text-orange-500">
-                  Core Logic & Logic Integration
-                </p>
-              </div>
-
               {/* Pavan */}
               <div
                 className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
@@ -1025,6 +1010,21 @@ function App() {
                 <h4 className="text-xl font-bold mb-1">G Pavan Kumar</h4>
                 <p className="text-sm font-semibold text-orange-500">
                   Frontend & UI/UX Developer
+                </p>
+              </div>
+
+              {/* Pranav */}
+              <div
+                className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
+                <img
+                  src="/screenshots/profile.svg"
+                  alt="Pranav"
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover object-top border-4 border-orange-500 shadow-lg"
+                  style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
+                />
+                <h4 className="text-xl font-bold mb-1">Pranav</h4>
+                <p className="text-sm font-semibold text-orange-500">
+                  Core Logic & Logic Integration
                 </p>
               </div>
 
