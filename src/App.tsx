@@ -1004,7 +1004,7 @@ function App() {
                 <img
                   src="/screenshots/Pavan.jpeg"
                   alt="G Pavan Kumar"
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-orange-500 shadow-lg"
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover object-top border-4 border-orange-500 shadow-lg"
                   style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
                 />
                 <h4 className="text-xl font-bold mb-1">G Pavan Kumar</h4>
@@ -1049,7 +1049,7 @@ function App() {
                 <img
                   src="/screenshots/Syed.jpeg"
                   alt="Syed"
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-orange-500 shadow-lg"
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover object-top border-4 border-orange-500 shadow-lg"
                   style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
                 />
                 <h4 className="text-xl font-bold mb-1">Syed</h4>
