@@ -1066,6 +1066,47 @@ function App() {
                   tangible and intuitive."
                 </p>
               </div>
+
+              {/* Team Members */}
+              <div
+                className={`mt-8 pt-8 border-t ${darkMode ? "border-white/10" : "border-gray-200"}`}>
+                <h3 className="text-2xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-pink-500">
+                  Project Team
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {[
+                    {
+                      name: "Pavan",
+                      role: "Data Structures And Applications",
+                      img: "Pavan.jpeg",
+                    },
+                    {
+                      name: "Rohith",
+                      role: "Data Structures And Applications",
+                      img: "Rohith.jpeg",
+                    },
+                    {
+                      name: "Syed",
+                      role: "Data Structures And Applications",
+                      img: "Syed.jpeg",
+                    },
+                  ].map((member) => (
+                    <div
+                      key={member.name}
+                      className="flex flex-col items-center">
+                      <img
+                        src={`/screenshots/${member.img}`}
+                        alt={member.name}
+                        className="w-32 h-32 rounded-full mb-4 object-cover object-center border-4 border-orange-500 shadow-[0_0_15px_rgba(249,115,22,0.3)] transition-transform hover:scale-105"
+                      />
+                      <h4 className="text-xl font-bold">{member.name}</h4>
+                      <p className="text-sm opacity-80 mt-1 font-medium">
+                        {member.role}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </section>
