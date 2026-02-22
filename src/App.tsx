@@ -984,37 +984,87 @@ function App() {
         </section>
       )}
 
-      {/* --- ABOUT SECTION --- */}
+      {/* --- ABOUT US SECTION --- */}
       {activeView === "about" && (
         <section className="pt-32 pb-20 px-4">
-          <div className="max-w-5xl mx-auto space-y-12">
-            <h2 className="text-4xl font-bold text-center text-orange-500 hidden pb-8">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-4xl font-bold text-center pb-2 mb-12 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500">
               About Us
             </h2>
-            <div
-              className={`p-8 rounded-lg ${darkMode ? "bg-white/5" : "bg-white shadow-xl"}`}>
-              <div className="text-center mb-8">
+
+            {/* Team Grid - All members together */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+              {/* Pranav */}
+              <div
+                className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
                 <img
                   src="/screenshots/profile.svg"
-                  alt="Profile"
-                  className="w-48 h-48 rounded-full mx-auto mb-6 object-cover object-top border-4 border-orange-500 shadow-xl"
-                  style={{
-                    imageRendering: "auto",
-                    boxShadow: "0 0 20px rgba(249, 115, 22, 0.3)",
-                  }}
+                  alt="Pranav Arun"
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover object-top border-4 border-orange-500 shadow-lg"
+                  style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
                 />
-                <h2 className="text-3xl font-bold mb-2">Pranav Arun</h2>
-                <p className="text-lg opacity-80">
+                <h4 className="text-xl font-bold mb-1">Pranav Arun</h4>
+                <p className="text-sm font-semibold text-orange-500">
                   Core Logic & Logic Integration
                 </p>
               </div>
 
+              {/* Pavan */}
+              <div
+                className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
+                <img
+                  src="/screenshots/Pavan.jpeg"
+                  alt="G Pavan Kumar"
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-orange-500 shadow-lg"
+                  style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
+                />
+                <h4 className="text-xl font-bold mb-1">G Pavan Kumar</h4>
+                <p className="text-sm font-semibold text-orange-500">
+                  Frontend & UI/UX Developer
+                </p>
+              </div>
+
+              {/* Rohith */}
+              <div
+                className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
+                <img
+                  src="/screenshots/Rohith.jpeg"
+                  alt="Rohith"
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-orange-500 shadow-lg"
+                  style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
+                />
+                <h4 className="text-xl font-bold mb-1">Rohith</h4>
+                <p className="text-sm font-semibold text-orange-500">
+                  Team Lead & Project Architect
+                </p>
+              </div>
+
+              {/* Syed */}
+              <div
+                className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
+                <img
+                  src="/screenshots/Syed.jpeg"
+                  alt="Syed"
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-orange-500 shadow-lg"
+                  style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
+                />
+                <h4 className="text-xl font-bold mb-1">Syed</h4>
+                <p className="text-sm font-semibold text-orange-500">
+                  Algorithms & Implementation Specialist
+                </p>
+              </div>
+            </div>
+
+            {/* Shared Info Section */}
+            <div
+              className={`p-8 rounded-xl ${darkMode ? "bg-white/5" : "bg-white shadow-xl"}`}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div className="space-y-4">
+                  <h3 className="text-xl font-semibold mb-2">About Our Team</h3>
                   <div className="flex items-center space-x-3">
                     <Briefcase className="text-orange-500" size={20} />
                     <span>
-                      Student At K.S School Of Engineering and Management
+                      Students At K.S School Of Engineering and Management
                     </span>
                   </div>
                   <div className="flex items-center space-x-3">
@@ -1059,63 +1109,15 @@ function App() {
                 </div>
               </div>
               <div className="mt-8 pt-8 border-t border-gray-200/20">
-                <h3 className="text-xl font-semibold mb-4">
-                  Teaching Philosophy
-                </h3>
+                <h3 className="text-xl font-semibold mb-4">Our Philosophy</h3>
                 <p className="opacity-80 leading-relaxed italic">
                   "Data structures are not just about storing data; they are
                   about organizing information in a way that enables efficient
-                  problem-solving. My goal is to make these abstract concepts
+                  problem-solving. Our goal is to make these abstract concepts
                   tangible and intuitive."
                 </p>
               </div>
             </div>
-
-            {/* Friends / Team Members */}
-            <h3 className="text-3xl font-bold text-center text-orange-500 mt-16 mb-8">
-              Our Team
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div
-                className={`p-6 rounded-lg text-center transition-transform hover:-translate-y-2 ${darkMode ? "bg-white/5" : "bg-white shadow-xl"}`}>
-                <img
-                  src="/screenshots/Pavan.jpeg"
-                  alt="G Pavan Kumar"
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-orange-500 shadow-lg"
-                />
-                <h4 className="text-xl font-bold">G Pavan Kumar</h4>
-                <p className="text-sm font-semibold text-orange-500 mt-1">
-                  Frontend & UI/UX Developer
-                </p>
-              </div>
-
-              <div
-                className={`p-6 rounded-lg text-center transition-transform hover:-translate-y-2 ${darkMode ? "bg-white/5" : "bg-white shadow-xl"}`}>
-                <img
-                  src="/screenshots/Rohith.jpeg"
-                  alt="Rohith"
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-orange-500 shadow-lg"
-                />
-                <h4 className="text-xl font-bold">Rohith</h4>
-                <p className="text-sm font-semibold text-orange-500 mt-1">
-                  Team Lead & Project Architect
-                </p>
-              </div>
-
-              <div
-                className={`p-6 rounded-lg text-center transition-transform hover:-translate-y-2 ${darkMode ? "bg-white/5" : "bg-white shadow-xl"}`}>
-                <img
-                  src="/screenshots/Syed.jpeg"
-                  alt="Syed"
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-orange-500 shadow-lg"
-                />
-                <h4 className="text-xl font-bold">Syed</h4>
-                <p className="text-sm font-semibold text-orange-500 mt-1">
-                  Algorithms & Implementation Specialist
-                </p>
-              </div>
-            </div>
-            {/* End of Team Members */}
           </div>
         </section>
       )}
