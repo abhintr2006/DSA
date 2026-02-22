@@ -5,8 +5,6 @@ import {
   ChevronDown,
   Linkedin,
   Instagram,
-  Twitter,
-  Facebook,
   Code2,
   Home,
   User,
@@ -15,6 +13,18 @@ import {
   Briefcase,
   GraduationCap,
   BookOpen,
+  Github,
+  Route,
+  BarChart3,
+  TreePine,
+  Package,
+  FileText,
+  Cookie,
+  Shield,
+  MessageSquare,
+  Network,
+  Users,
+  Bug,
 } from "lucide-react";
 
 function App() {
@@ -1187,27 +1197,117 @@ function App() {
         </section>
       )}
 
-      {/* --- FOOTER --- */}
+      {/* --- FAT FOOTER --- */}
       <footer
-        className={`py-12 px-4 mt-20 border-t ${darkMode ? "border-white/10" : "border-gray-200"}`}>
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex justify-center space-x-6 mb-8">
-            <button className="hover:text-orange-500 transition-colors">
-              <Linkedin size={24} />
-            </button>
-            <button className="hover:text-orange-500 transition-colors">
-              <Instagram size={24} />
-            </button>
-            <button className="hover:text-orange-500 transition-colors">
-              <Twitter size={24} />
-            </button>
-            <button className="hover:text-orange-500 transition-colors">
-              <Facebook size={24} />
-            </button>
+        className={`mt-20 ${darkMode ? "bg-gray-900/80" : "bg-gray-800"} text-gray-300`}>
+        <div className="max-w-7xl mx-auto px-6 py-14">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Column 1: Branding */}
+            <div>
+              <h3 className="text-2xl font-bold mb-4">
+                <span className="text-white">DSA Study </span>
+                <span className="text-orange-500">Hub</span>
+              </h3>
+              <p className="text-sm leading-relaxed opacity-70">
+                The complete platform to master Data Structures and Algorithms.
+                Interactive visualizations and practice quizzes to help you
+                succeed.
+              </p>
+            </div>
+
+            {/* Column 4: Connect */}
+            <div>
+              <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-5">
+                Connect
+              </h4>
+              <ul className="space-y-3">
+                <li>
+                  <button
+                    onClick={handleAboutClick}
+                    className="flex items-center space-x-2 text-sm hover:text-orange-500 transition-colors">
+                    <Users size={15} />
+                    <span>About Us</span>
+                  </button>
+                </li>
+                <li>
+                  <button className="flex items-center space-x-2 text-sm hover:text-orange-500 transition-colors">
+                    <MessageSquare size={15} />
+                    <span>Contact</span>
+                  </button>
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/abhintr2006/DSA/issues"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-2 text-sm hover:text-orange-500 transition-colors">
+                    <Bug size={15} />
+                    <span>Report Issue</span>
+                  </a>
+                </li>
+              </ul>
+
+              {/* Social Icons */}
+              <div className="flex items-center space-x-4 mt-6">
+                <a
+                  href="https://github.com/abhintr2006/DSA"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg bg-white/10 hover:bg-orange-500 hover:text-white transition-all duration-300">
+                  <Github size={18} />
+                </a>
+                <a
+                  href="#"
+                  className="p-2 rounded-lg bg-white/10 hover:bg-orange-500 hover:text-white transition-all duration-300">
+                  <Linkedin size={18} />
+                </a>
+                <a
+                  href="#"
+                  className="p-2 rounded-lg bg-white/10 hover:bg-orange-500 hover:text-white transition-all duration-300">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round">
+                    <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+                    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+                  </svg>
+                </a>
+                <a
+                  href="#"
+                  className="p-2 rounded-lg bg-white/10 hover:bg-orange-500 hover:text-white transition-all duration-300">
+                  <Instagram size={18} />
+                </a>
+              </div>
+            </div>
           </div>
-          <p className="opacity-60">
-            © 2024 DSA Study Hub - Pranav Arun. All rights reserved.
-          </p>
+        </div>
+
+        {/* Bottom Bar */}
+        <div
+          className={`border-t ${darkMode ? "border-white/10" : "border-gray-700"}`}>
+          <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between">
+            <p className="text-sm opacity-60">© 2026 DSA Study Hub.</p>
+            <div className="flex items-center space-x-6 mt-3 sm:mt-0">
+              <button className="text-sm opacity-60 hover:opacity-100 hover:text-orange-500 transition-all flex items-center space-x-1">
+                <FileText size={13} />
+                <span>Terms</span>
+              </button>
+              <button className="text-sm opacity-60 hover:opacity-100 hover:text-orange-500 transition-all flex items-center space-x-1">
+                <Shield size={13} />
+                <span>Privacy</span>
+              </button>
+              <button className="text-sm opacity-60 hover:opacity-100 hover:text-orange-500 transition-all flex items-center space-x-1">
+                <Cookie size={13} />
+                <span>Cookies</span>
+              </button>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
