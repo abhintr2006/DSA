@@ -13,8 +13,6 @@ Originally created by Pranav Arun.
 
 ## 👥 Contributors
 
-Ordered by USN (1KG23CB Batch):
-
 | USN | Name | Role |
 |-----|------|------|
 | 1KG23CB014 | **G Pavan Kumar** | Frontend & UI/UX Developer |
