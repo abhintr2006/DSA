@@ -14,11 +14,13 @@ import {
   MapPin,
   Briefcase,
   GraduationCap,
+  BookOpen,
 } from "lucide-react";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
   const [isProgramsOpen, setIsProgramsOpen] = useState(false);
+  const [isNotesOpen, setIsNotesOpen] = useState(false);
   const [isNavbarScrolled, setIsNavbarScrolled] = useState(false);
 
   // REFACTOR: Replaced multiple booleans with a single view state
@@ -101,6 +103,7 @@ function App() {
     setGraphNodes([]);
     setHashTable(new Array(10).fill(null));
     setIsProgramsOpen(false);
+    setIsNotesOpen(false);
   };
 
   const handleHomeClick = () => {
@@ -134,8 +137,23 @@ function App() {
       setIsNavbarScrolled(window.scrollY > 20);
     };
 
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (
+        !target.closest(".programs-dropdown") &&
+        !target.closest(".notes-dropdown")
+      ) {
+        setIsProgramsOpen(false);
+        setIsNotesOpen(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("click", handleClickOutside);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("click", handleClickOutside);
+    };
   }, []);
 
   useEffect(() => {
@@ -822,6 +840,14 @@ function App() {
   // console.log(sllList, dllList, bstRoot, graphNodes, hashTable);
   if (false) console.log(graphNodes);
 
+  const notes = [
+    { name: "Module 1", file: "BCS304-module-1.pdf" },
+    { name: "Module 2", file: "BCS304-module-2.pdf" },
+    { name: "Module 3", file: "BCS304-module-3.pdf" },
+    { name: "Module 4", file: "BCS304-module-4.pdf" },
+    { name: "Module 5", file: "BCS304-module-5.pdf" },
+  ];
+
   const programs = [
     { name: "Program 1" },
     { name: "Program 2" },
@@ -861,11 +887,45 @@ function App() {
                 <span>Home</span>
               </button>
 
+              <div className="relative notes-dropdown">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsNotesOpen(!isNotesOpen);
+                    setIsProgramsOpen(false);
+                  }}
+                  className="flex items-center space-x-1 hover:text-orange-500 transition-colors">
+                  <BookOpen size={18} />
+                  <span>Notes</span>
+                  <ChevronDown
+                    size={16}
+                    className={`transform transition-transform ${isNotesOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                {isNotesOpen && (
+                  <div className="absolute top-full right-0 mt-2 w-48 bg-white/10 backdrop-blur-lg rounded-lg shadow-lg py-2 border border-white/20">
+                    {notes.map((note) => (
+                      <a
+                        key={note.file}
+                        href={`/notes/${note.file}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2 hover:bg-orange-500/10 transition-colors"
+                        onClick={() => setIsNotesOpen(false)}>
+                        {note.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+
               <div className="relative programs-dropdown">
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     setIsProgramsOpen(!isProgramsOpen);
+                    setIsNotesOpen(false);
                   }}
                   className="flex items-center space-x-1 hover:text-orange-500 transition-colors">
                   <Code2 size={18} />
