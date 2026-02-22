@@ -936,8 +936,11 @@ function App() {
                 <img
                   src="/screenshots/profile.jpeg"
                   alt="Profile"
-                  className="w-40 h-40 rounded-full mx-auto mb-4 object-cover object-top border-4 border-orange-500/20 shadow-lg"
-                  style={{ imageRendering: "auto" }}
+                  className="w-48 h-48 rounded-full mx-auto mb-6 object-cover object-top border-4 border-orange-500 shadow-xl"
+                  style={{
+                    imageRendering: "auto",
+                    boxShadow: "0 0 20px rgba(249, 115, 22, 0.3)",
+                  }}
                 />
                 <h2 className="text-3xl font-bold mb-2">Pranav Arun</h2>
                 <p className="text-lg opacity-80">
