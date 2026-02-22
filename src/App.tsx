@@ -19,6 +19,12 @@ import {
   Shield,
   MessageSquare,
   Users,
+  Route,
+  BarChart3,
+  TreePine,
+  Package,
+  Layout,
+  Search,
 } from "lucide-react";
 
 function App() {
@@ -877,52 +883,24 @@ function App() {
             ? "bg-white/10 backdrop-blur-lg shadow-lg"
             : "bg-transparent"
         }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <h1 className="text-2xl font-bold text-orange-500">
-              DSA Study Hub
+        <div className="w-full px-8">
+          <div className="flex items-center h-20">
+            <h1
+              onClick={handleHomeClick}
+              className="text-3xl font-bold cursor-pointer hover:opacity-80 transition-opacity ml-4 mr-10 whitespace-nowrap">
+              <span className={darkMode ? "text-white" : "text-gray-900"}>
+                DSA Study{" "}
+              </span>
+              <span className="text-orange-500">Hub</span>
             </h1>
 
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden lg:flex items-center space-x-6 text-sm font-medium">
               <button
                 onClick={handleHomeClick}
-                className="flex items-center space-x-1 hover:text-orange-500 transition-colors">
+                className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
                 <Home size={18} />
                 <span>Home</span>
               </button>
-
-              <div className="relative notes-dropdown">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsNotesOpen(!isNotesOpen);
-                    setIsProgramsOpen(false);
-                  }}
-                  className="flex items-center space-x-1 hover:text-orange-500 transition-colors">
-                  <BookOpen size={18} />
-                  <span>Notes</span>
-                  <ChevronDown
-                    size={16}
-                    className={`transform transition-transform ${isNotesOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-
-                {isNotesOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-48 bg-white/10 backdrop-blur-lg rounded-lg shadow-lg py-2 border border-white/20">
-                    {notes.map((note) => (
-                      <a
-                        key={note.file}
-                        href={`/notes/${note.file}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block px-4 py-2 hover:bg-orange-500/10 transition-colors"
-                        onClick={() => setIsNotesOpen(false)}>
-                        {note.name}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
 
               <div className="relative programs-dropdown">
                 <button
@@ -931,23 +909,25 @@ function App() {
                     setIsProgramsOpen(!isProgramsOpen);
                     setIsNotesOpen(false);
                   }}
-                  className="flex items-center space-x-1 hover:text-orange-500 transition-colors">
+                  className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
                   <Code2 size={18} />
                   <span>Programs</span>
                   <ChevronDown
-                    size={16}
+                    size={14}
                     className={`transform transition-transform ${isProgramsOpen ? "rotate-180" : ""}`}
                   />
                 </button>
 
                 {isProgramsOpen && (
-                  <div className="absolute top-full right-0 mt-2 w-48 bg-white/10 backdrop-blur-lg rounded-lg shadow-lg py-2 border border-white/20">
+                  <div
+                    className={`absolute top-full left-0 mt-3 w-48 rounded-xl shadow-2xl py-2 border ${darkMode ? "bg-gray-900/90 backdrop-blur-xl border-white/10" : "bg-white border-gray-200"}`}>
                     {programs.map((program) => (
                       <button
                         key={program.name}
-                        className="w-full text-left px-4 py-2 hover:bg-orange-500/10 transition-colors"
+                        className="w-full text-left px-4 py-2.5 hover:bg-orange-500/10 hover:text-orange-500 transition-colors"
                         onClick={() => {
                           handleProgramClick(program.name);
+                          setIsProgramsOpen(false);
                         }}>
                         {program.name}
                       </button>
@@ -956,17 +936,95 @@ function App() {
                 )}
               </div>
 
+              <div className="relative notes-dropdown">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsNotesOpen(!isNotesOpen);
+                    setIsProgramsOpen(false);
+                  }}
+                  className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
+                  <BookOpen size={18} />
+                  <span>Notes</span>
+                  <ChevronDown
+                    size={14}
+                    className={`transform transition-transform ${isNotesOpen ? "rotate-180" : ""}`}
+                  />
+                </button>
+
+                {isNotesOpen && (
+                  <div
+                    className={`absolute top-full left-0 mt-3 w-48 rounded-xl shadow-2xl py-2 border ${darkMode ? "bg-gray-900/90 backdrop-blur-xl border-white/10" : "bg-white border-gray-200"}`}>
+                    {notes.map((note) => (
+                      <a
+                        key={note.file}
+                        href={`/notes/${note.file}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2.5 hover:bg-orange-500/10 hover:text-orange-500 transition-colors"
+                        onClick={() => setIsNotesOpen(false)}>
+                        {note.name}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Visualizer Shortcuts */}
+              <button
+                onClick={() => handleProgramClick("Program 12")}
+                className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
+                <Package size={18} />
+                <span>Knapsack</span>
+              </button>
+
+              <button
+                onClick={() => handleProgramClick("Program 11")}
+                className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
+                <Route size={18} />
+                <span>Pathfinder</span>
+              </button>
+
+              <button
+                onClick={() => handleProgramClick("Program 3")}
+                className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
+                <BarChart3 size={18} />
+                <span>Sorter</span>
+              </button>
+
+              <button
+                onClick={() => handleProgramClick("Program 10")}
+                className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
+                <TreePine size={18} />
+                <span>Trees</span>
+              </button>
+
+              <button className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
+                <Layout size={18} />
+                <span>Design</span>
+              </button>
+
               <button
                 onClick={handleAboutClick}
-                className="flex items-center space-x-1 hover:text-orange-500 transition-colors">
+                className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
                 <User size={18} />
                 <span>About Us</span>
+              </button>
+            </div>
+
+            <div className="ml-auto flex items-center space-x-5">
+              <button className="p-2.5 rounded-full hover:bg-orange-500/10 transition-colors">
+                <Search size={20} />
               </button>
 
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-full hover:bg-orange-500/10 transition-colors">
+                className="p-2.5 rounded-full hover:bg-orange-500/10 transition-colors">
                 {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+
+              <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full font-bold shadow-lg shadow-orange-500/20 transition-all hover:scale-105 active:scale-95">
+                Sign In
               </button>
             </div>
           </div>
