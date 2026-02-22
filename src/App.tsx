@@ -19,12 +19,6 @@ import {
   Shield,
   MessageSquare,
   Users,
-  Route,
-  BarChart3,
-  TreePine,
-  Package,
-  Layout,
-  Search,
 } from "lucide-react";
 
 function App() {
@@ -970,40 +964,6 @@ function App() {
                 )}
               </div>
 
-              {/* Visualizer Shortcuts */}
-              <button
-                onClick={() => handleProgramClick("Program 12")}
-                className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
-                <Package size={18} />
-                <span>Knapsack</span>
-              </button>
-
-              <button
-                onClick={() => handleProgramClick("Program 11")}
-                className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
-                <Route size={18} />
-                <span>Pathfinder</span>
-              </button>
-
-              <button
-                onClick={() => handleProgramClick("Program 3")}
-                className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
-                <BarChart3 size={18} />
-                <span>Sorter</span>
-              </button>
-
-              <button
-                onClick={() => handleProgramClick("Program 10")}
-                className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
-                <TreePine size={18} />
-                <span>Trees</span>
-              </button>
-
-              <button className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
-                <Layout size={18} />
-                <span>Design</span>
-              </button>
-
               <button
                 onClick={handleAboutClick}
                 className="flex items-center space-x-1.5 hover:text-orange-500 transition-colors">
@@ -1013,10 +973,6 @@ function App() {
             </div>
 
             <div className="ml-auto flex items-center space-x-5">
-              <button className="p-2.5 rounded-full hover:bg-orange-500/10 transition-colors">
-                <Search size={20} />
-              </button>
-
               <button
                 onClick={toggleTheme}
                 className="p-2.5 rounded-full hover:bg-orange-500/10 transition-colors">
