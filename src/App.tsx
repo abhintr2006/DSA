@@ -823,19 +823,19 @@ function App() {
   if (false) console.log(graphNodes);
 
   const programs = [
-    { name: "Program 1", href: "#program-1" },
-    { name: "Program 2", href: "#program-2" },
-    { name: "Program 3", href: "#program-3" },
-    { name: "Program 4", href: "#program-4" },
-    { name: "Program 5A", href: "#program-5a" },
-    { name: "Program 5B", href: "#program-5b" },
-    { name: "Program 6", href: "#program-6" },
-    { name: "Program 7", href: "#program-7" },
-    { name: "Program 8", href: "#program-8" },
-    { name: "Program 9", href: "#program-9" },
-    { name: "Program 10", href: "#program-10" },
-    { name: "Program 11", href: "#program-11" },
-    { name: "Program 12", href: "#program-12" },
+    { name: "Program 1" },
+    { name: "Program 2" },
+    { name: "Program 3" },
+    { name: "Program 4" },
+    { name: "Program 5A" },
+    { name: "Program 5B" },
+    { name: "Program 6" },
+    { name: "Program 7" },
+    { name: "Program 8" },
+    { name: "Program 9" },
+    { name: "Program 10" },
+    { name: "Program 11" },
+    { name: "Program 12" },
   ];
 
   return (
@@ -879,16 +879,14 @@ function App() {
                 {isProgramsOpen && (
                   <div className="absolute top-full right-0 mt-2 w-48 bg-white/10 backdrop-blur-lg rounded-lg shadow-lg py-2 border border-white/20">
                     {programs.map((program) => (
-                      <a
-                        key={program.href}
-                        href={program.href}
-                        className="block px-4 py-2 hover:bg-orange-500/10 transition-colors"
-                        onClick={(e) => {
-                          e.preventDefault();
+                      <button
+                        key={program.name}
+                        className="w-full text-left px-4 py-2 hover:bg-orange-500/10 transition-colors"
+                        onClick={() => {
                           handleProgramClick(program.name);
                         }}>
                         {program.name}
-                      </a>
+                      </button>
                     ))}
                   </div>
                 )}
@@ -1083,18 +1081,18 @@ function App() {
         className={`py-12 px-4 mt-20 border-t ${darkMode ? "border-white/10" : "border-gray-200"}`}>
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex justify-center space-x-6 mb-8">
-            <a href="#" className="hover:text-orange-500 transition-colors">
+            <button className="hover:text-orange-500 transition-colors">
               <Linkedin size={24} />
-            </a>
-            <a href="#" className="hover:text-orange-500 transition-colors">
+            </button>
+            <button className="hover:text-orange-500 transition-colors">
               <Instagram size={24} />
-            </a>
-            <a href="#" className="hover:text-orange-500 transition-colors">
+            </button>
+            <button className="hover:text-orange-500 transition-colors">
               <Twitter size={24} />
-            </a>
-            <a href="#" className="hover:text-orange-500 transition-colors">
+            </button>
+            <button className="hover:text-orange-500 transition-colors">
               <Facebook size={24} />
-            </a>
+            </button>
           </div>
           <p className="opacity-60">
             © 2024 DSA Study Hub - Pranav Arun. All rights reserved.
