@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [isProgramsOpen, setIsProgramsOpen] = useState(false);
   const [isNavbarScrolled, setIsNavbarScrolled] = useState(false);
 
@@ -123,7 +123,12 @@ function App() {
   // --- Theme & Scroll Effects ---
   useEffect(() => {
     const theme = localStorage.getItem("theme");
-    setDarkMode(theme === "dark");
+    if (theme) {
+      setDarkMode(theme === "dark");
+    } else {
+      setDarkMode(true);
+      localStorage.setItem("theme", "dark");
+    }
 
     const handleScroll = () => {
       setIsNavbarScrolled(window.scrollY > 20);
@@ -519,6 +524,7 @@ function App() {
       setProgramOutput((prev) => [
         ...prev,
         `Graph initialized with ${n} nodes. Adjacency matrix created.`,
+        "Matrix: " + JSON.stringify(matrix),
       ]);
     }
     setUserInput("");
@@ -814,6 +820,7 @@ function App() {
   };
 
   // console.log(sllList, dllList, bstRoot, graphNodes, hashTable);
+  if (false) console.log(graphNodes);
 
   const programs = [
     { name: "Program 1", href: "#program-1" },
@@ -908,7 +915,7 @@ function App() {
       {activeView === "home" && (
         <section className="pt-32 pb-20 px-4 text-center">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-5xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500">
+            <h2 className="text-5xl font-bold mb-6 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500">
               Master Data Structures & Algorithms
             </h2>
             <p className="text-xl mb-8 opacity-90">
@@ -927,7 +934,7 @@ function App() {
               className={`p-8 rounded-lg ${darkMode ? "bg-white/5" : "bg-white shadow-xl"}`}>
               <div className="text-center mb-8">
                 <img
-                  src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&q=80&w=200&h=200"
+                  src="/screenshots/profile.jpeg"
                   alt="Profile"
                   className="w-32 h-32 rounded-full mx-auto mb-4 object-cover"
                 />
@@ -941,19 +948,23 @@ function App() {
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <Briefcase className="text-orange-500" size={20} />
-                    <span>Senior Software Engineer at Tech Corp</span>
+                    <span>
+                      Student At K.S School Of Engineering and Management
+                    </span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <GraduationCap className="text-orange-500" size={20} />
-                    <span>B.E in CSBS at Bengaluru</span>
+                    <span>
+                      B.E in CSBS at K.S School Of Engineering and Management
+                    </span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <MapPin className="text-orange-500" size={20} />
-                    <span>San Francisco, CA</span>
+                    <span>Bengaluru, Karnataka</span>
                   </div>
                   <div className="flex items-center space-x-3">
                     <Mail className="text-orange-500" size={20} />
-                    <span>pranavarun19@gmail.com</span>
+                    <span>pranavarun19@gmail</span>
                   </div>
                 </div>
 
