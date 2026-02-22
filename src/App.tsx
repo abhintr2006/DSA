@@ -934,7 +934,7 @@ function App() {
               className={`p-8 rounded-lg ${darkMode ? "bg-white/5" : "bg-white shadow-xl"}`}>
               <div className="text-center mb-8">
                 <img
-                  src="/screenshots/profile.jpeg"
+                  src="/screenshots/profile.svg"
                   alt="Profile"
                   className="w-48 h-48 rounded-full mx-auto mb-6 object-cover object-top border-4 border-orange-500 shadow-xl"
                   style={{
