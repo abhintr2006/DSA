@@ -1,6 +1,8 @@
 # DSA Study Hub
 
-A comprehensive, interactive platform designed to master Data Structures & Algorithms (DSA). This application provides a visual and interactive environment for simulating various data structure operations and algorithm logic.
+A comprehensive, interactive platform designed to master Data Structures & Applications (DSA). This application provides a visual and interactive environment for simulating various data structure operations and algorithm logic.
+
+Originally created by Pranav Arun.
 
 ## 🚀 Features
 
@@ -16,7 +18,7 @@ Ordered by USN (1KG23CB Batch):
 | USN | Name | Role |
 |-----|------|------|
 | 1KG23CB014 | **G Pavan Kumar** | Frontend & UI/UX Developer |
-| 1KG23CB038 | **Pranav** | Core Logic & Logic Integration |
+| 1KG23CB038 | **Pranav Arun** | Core Logic & Logic Integration |
 | 1KG23CB044 | **Rohith** | Team Lead & Project Architect |
 | 1KG23CB051 | **Suppreth** | Documentation & Quality Assurance |
 | 1KG23CB052 | **Syed** | Algorithms & Implementation Specialist |
