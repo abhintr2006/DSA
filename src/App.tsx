@@ -956,7 +956,7 @@ function App() {
                 onClick={handleAboutClick}
                 className="flex items-center space-x-1 hover:text-orange-500 transition-colors">
                 <User size={18} />
-                <span>About Me</span>
+                <span>About Us</span>
               </button>
 
               <button
@@ -987,7 +987,10 @@ function App() {
       {/* --- ABOUT SECTION --- */}
       {activeView === "about" && (
         <section className="pt-32 pb-20 px-4">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto space-y-12">
+            <h2 className="text-4xl font-bold text-center text-orange-500 hidden pb-8">
+              About Us
+            </h2>
             <div
               className={`p-8 rounded-lg ${darkMode ? "bg-white/5" : "bg-white shadow-xl"}`}>
               <div className="text-center mb-8">
@@ -1002,7 +1005,7 @@ function App() {
                 />
                 <h2 className="text-3xl font-bold mb-2">Pranav Arun</h2>
                 <p className="text-lg opacity-80">
-                  Data Structures & Algorithms Instructor
+                  Core Logic & Logic Integration
                 </p>
               </div>
 
@@ -1067,6 +1070,52 @@ function App() {
                 </p>
               </div>
             </div>
+
+            {/* Friends / Team Members */}
+            <h3 className="text-3xl font-bold text-center text-orange-500 mt-16 mb-8">
+              Our Team
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div
+                className={`p-6 rounded-lg text-center transition-transform hover:-translate-y-2 ${darkMode ? "bg-white/5" : "bg-white shadow-xl"}`}>
+                <img
+                  src="/screenshots/Pavan.jpeg"
+                  alt="G Pavan Kumar"
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-orange-500 shadow-lg"
+                />
+                <h4 className="text-xl font-bold">G Pavan Kumar</h4>
+                <p className="text-sm font-semibold text-orange-500 mt-1">
+                  Frontend & UI/UX Developer
+                </p>
+              </div>
+
+              <div
+                className={`p-6 rounded-lg text-center transition-transform hover:-translate-y-2 ${darkMode ? "bg-white/5" : "bg-white shadow-xl"}`}>
+                <img
+                  src="/screenshots/Rohith.jpeg"
+                  alt="Rohith"
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-orange-500 shadow-lg"
+                />
+                <h4 className="text-xl font-bold">Rohith</h4>
+                <p className="text-sm font-semibold text-orange-500 mt-1">
+                  Team Lead & Project Architect
+                </p>
+              </div>
+
+              <div
+                className={`p-6 rounded-lg text-center transition-transform hover:-translate-y-2 ${darkMode ? "bg-white/5" : "bg-white shadow-xl"}`}>
+                <img
+                  src="/screenshots/Syed.jpeg"
+                  alt="Syed"
+                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-orange-500 shadow-lg"
+                />
+                <h4 className="text-xl font-bold">Syed</h4>
+                <p className="text-sm font-semibold text-orange-500 mt-1">
+                  Algorithms & Implementation Specialist
+                </p>
+              </div>
+            </div>
+            {/* End of Team Members */}
           </div>
         </section>
       )}
