@@ -22,4 +22,3 @@ Ordered by USN (1KG23CB Batch):
 | 1KG23CB052 | **Syed** | Algorithms & Implementation Specialist |
 
 ---
-*Built with React, Tailwind CSS, and Lucide Icons.*
