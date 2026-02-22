@@ -1,25 +1,9 @@
 import { useState, useEffect } from "react";
-import {
-  Moon,
-  Sun,
-  ChevronDown,
-  Linkedin,
-  Instagram,
-  Code2,
-  Home,
-  User,
-  Mail,
-  MapPin,
-  Briefcase,
-  GraduationCap,
-  BookOpen,
-  Github,
-  FileText,
-  Cookie,
-  Shield,
-  MessageSquare,
-  Users,
-} from "lucide-react";
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import AboutUs from "./components/AboutUs";
+import ProgramSimulator from "./components/ProgramSimulator";
+import Footer from "./components/Footer";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -870,449 +854,41 @@ function App() {
 
   return (
     <div
-      className={`min-h-screen transition-colors duration-300 grid-bg ${darkMode ? "bg-gradient-to-br from-gray-900 to-gray-800 text-white" : "bg-gray-50 text-gray-900 light-grid"}`}>
-      <nav
-        className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-          isNavbarScrolled
-            ? "bg-white/10 backdrop-blur-lg shadow-lg"
-            : "bg-transparent"
-        }`}>
-        <div className="w-full px-8">
-          <div className="flex items-center h-20">
-            {/* Left: Branding */}
-            <div className="flex-1">
-              <h1
-                onClick={handleHomeClick}
-                className="text-3xl font-bold cursor-pointer hover:opacity-80 transition-opacity ml-4 whitespace-nowrap">
-                <span className={darkMode ? "text-white" : "text-gray-900"}>
-                  DSA Study{" "}
-                </span>
-                <span className="text-orange-500">Hub</span>
-              </h1>
-            </div>
+      className={`min-h-screen transition-colors duration-300 grid-bg ${
+        darkMode
+          ? "bg-gradient-to-br from-gray-900 to-gray-800 text-white"
+          : "bg-gray-50 text-gray-900 light-grid"
+      }`}>
+      <Navbar
+        darkMode={darkMode}
+        toggleTheme={toggleTheme}
+        isProgramsOpen={isProgramsOpen}
+        setIsProgramsOpen={setIsProgramsOpen}
+        isNotesOpen={isNotesOpen}
+        setIsNotesOpen={setIsNotesOpen}
+        isNavbarScrolled={isNavbarScrolled}
+        handleHomeClick={handleHomeClick}
+        handleAboutClick={handleAboutClick}
+        handleProgramClick={handleProgramClick}
+        programs={programs}
+        notes={notes}
+      />
 
-            {/* Center: Navigation Links */}
-            <div className="hidden lg:flex flex-1 justify-center items-center space-x-10 text-lg font-medium">
-              <button
-                onClick={handleHomeClick}
-                className="flex items-center space-x-2 hover:text-orange-500 transition-colors">
-                <Home size={20} />
-                <span>Home</span>
-              </button>
+      <Hero activeView={activeView} />
 
-              <div className="relative programs-dropdown">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsProgramsOpen(!isProgramsOpen);
-                    setIsNotesOpen(false);
-                  }}
-                  className="flex items-center space-x-2 hover:text-orange-500 transition-colors">
-                  <Code2 size={20} />
-                  <span>Programs</span>
-                  <ChevronDown
-                    size={16}
-                    className={`transform transition-transform ${isProgramsOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
+      <AboutUs activeView={activeView} darkMode={darkMode} />
 
-                {isProgramsOpen && (
-                  <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 rounded-xl shadow-2xl py-2 border ${darkMode ? "bg-gray-900/90 backdrop-blur-xl border-white/10" : "bg-white border-gray-200"}`}>
-                    {programs.map((program) => (
-                      <button
-                        key={program.name}
-                        className="w-full text-left px-4 py-2.5 hover:bg-orange-500/10 hover:text-orange-500 transition-colors"
-                        onClick={() => {
-                          handleProgramClick(program.name);
-                          setIsProgramsOpen(false);
-                        }}>
-                        {program.name}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
+      <ProgramSimulator
+        activeView={activeView}
+        darkMode={darkMode}
+        programOutput={programOutput}
+        userInput={userInput}
+        setUserInput={setUserInput}
+        resetProgramState={resetProgramState}
+        handleInputSubmit={handleInputSubmit}
+      />
 
-              <div className="relative notes-dropdown">
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsNotesOpen(!isNotesOpen);
-                    setIsProgramsOpen(false);
-                  }}
-                  className="flex items-center space-x-2 hover:text-orange-500 transition-colors">
-                  <BookOpen size={20} />
-                  <span>Notes</span>
-                  <ChevronDown
-                    size={16}
-                    className={`transform transition-transform ${isNotesOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-
-                {isNotesOpen && (
-                  <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 rounded-xl shadow-2xl py-2 border ${darkMode ? "bg-gray-900/90 backdrop-blur-xl border-white/10" : "bg-white border-gray-200"}`}>
-                    {notes.map((note) => (
-                      <a
-                        key={note.file}
-                        href={`/notes/${note.file}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block px-4 py-2.5 hover:bg-orange-500/10 hover:text-orange-500 transition-colors"
-                        onClick={() => setIsNotesOpen(false)}>
-                        {note.name}
-                      </a>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              <button
-                onClick={handleAboutClick}
-                className="flex items-center space-x-2 hover:text-orange-500 transition-colors">
-                <User size={20} />
-                <span>About Us</span>
-              </button>
-            </div>
-
-            {/* Right: Actions */}
-            <div className="flex-1 flex items-center justify-end space-x-5">
-              <button
-                onClick={toggleTheme}
-                className="p-2.5 rounded-full hover:bg-orange-500/10 transition-colors">
-                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* --- HERO SECTION --- */}
-      {activeView === "home" && (
-        <section className="pt-32 pb-20 px-4 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-5xl font-bold mb-6 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500">
-              Master Data Structures & Algorithms
-            </h2>
-            <p className="text-xl mb-8 opacity-90">
-              Explore comprehensive study materials and coding programs to ace
-              DSA.
-            </p>
-          </div>
-        </section>
-      )}
-
-      {/* --- ABOUT US SECTION --- */}
-      {activeView === "about" && (
-        <section className="pt-32 pb-20 px-4">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-4xl font-bold text-center pb-2 mb-12 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500">
-              About Us
-            </h2>
-
-            {/* Team Grid - All members together */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-              {/* Pavan */}
-              <div
-                className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
-                <div
-                  className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-orange-500 shadow-lg"
-                  style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}>
-                  <img
-                    src="/screenshots/Pavan.jpeg"
-                    alt="G Pavan Kumar"
-                    className="w-full h-full object-cover scale-[1.3]"
-                  />
-                </div>
-                <h4 className="text-xl font-bold mb-1">G Pavan Kumar</h4>
-                <p className="text-sm font-semibold text-orange-500">
-                  Frontend & UI/UX Developer
-                </p>
-              </div>
-
-              {/* Pranav */}
-              <div
-                className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
-                <img
-                  src="/screenshots/profile.svg"
-                  alt="Pranav"
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover object-top border-4 border-orange-500 shadow-lg"
-                  style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
-                />
-                <h4 className="text-xl font-bold mb-1">Pranav</h4>
-                <p className="text-sm font-semibold text-orange-500">
-                  Core Logic & Logic Integration
-                </p>
-              </div>
-
-              {/* Rohith */}
-              <div
-                className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
-                <img
-                  src="/screenshots/Rohith.jpeg"
-                  alt="Rohith"
-                  className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-orange-500 shadow-lg"
-                  style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
-                />
-                <h4 className="text-xl font-bold mb-1">Rohith</h4>
-                <p className="text-sm font-semibold text-orange-500">
-                  Team Lead & Project Architect
-                </p>
-              </div>
-
-              {/* Syed */}
-              <div
-                className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
-                <div
-                  className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-orange-500 shadow-lg"
-                  style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}>
-                  <img
-                    src="/screenshots/Syed.jpeg"
-                    alt="Syed"
-                    className="w-full h-full object-cover scale-[1.3]"
-                  />
-                </div>
-                <h4 className="text-xl font-bold mb-1">Syed</h4>
-                <p className="text-sm font-semibold text-orange-500">
-                  Algorithms & Implementation Specialist
-                </p>
-              </div>
-            </div>
-
-            {/* Shared Info Section */}
-            <div
-              className={`p-8 rounded-xl ${darkMode ? "bg-white/5" : "bg-white shadow-xl"}`}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold mb-2">About Our Team</h3>
-                  <div className="flex items-center space-x-3">
-                    <Briefcase className="text-orange-500" size={20} />
-                    <span>
-                      Students At K.S School Of Engineering and Management
-                    </span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <GraduationCap className="text-orange-500" size={20} />
-                    <span>
-                      B.E in CSBS at K.S School Of Engineering and Management
-                    </span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <MapPin className="text-orange-500" size={20} />
-                    <span>Bengaluru, Karnataka</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Mail className="text-orange-500" size={20} />
-                    <span>pranavarun19@gmail</span>
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-                  <h3 className="text-xl font-semibold mb-2">Expertise</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {[
-                      "Data Structures",
-                      "Algorithms",
-                      "Problem Solving",
-                      "C++",
-                      "Java",
-                      "Python",
-                      "System Design",
-                    ].map((skill) => (
-                      <span
-                        key={skill}
-                        className={`px-3 py-1 rounded-full ${
-                          darkMode
-                            ? "bg-orange-500/20 text-orange-300"
-                            : "bg-orange-100 text-orange-800"
-                        }`}>
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="mt-8 pt-8 border-t border-gray-200/20">
-                <h3 className="text-xl font-semibold mb-4">Our Philosophy</h3>
-                <p className="opacity-80 leading-relaxed italic">
-                  "Data structures are not just about storing data; they are
-                  about organizing information in a way that enables efficient
-                  problem-solving. Our goal is to make these abstract concepts
-                  tangible and intuitive."
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* --- PROGRAM SIMULATOR SECTION --- */}
-      {activeView.startsWith("program") && (
-        <section className="pt-32 pb-20 px-4">
-          <div className="max-w-4xl mx-auto">
-            <div
-              className={`p-6 rounded-lg ${darkMode ? "bg-gray-900 border border-gray-700" : "bg-white shadow-2xl"}`}>
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-orange-500 capitalize">
-                  {activeView.replace("program", "Program ")}
-                </h2>
-                <button
-                  onClick={resetProgramState}
-                  className="px-4 py-2 text-sm font-medium text-white bg-orange-500 rounded-md hover:bg-orange-600 transition-colors">
-                  Reset
-                </button>
-              </div>
-
-              {/* Simulation Terminal */}
-              <div
-                className={`font-mono p-4 rounded-md mb-6 min-h-[300px] max-h-[500px] overflow-y-auto ${darkMode ? "bg-black text-green-400" : "bg-gray-100 text-gray-800"}`}>
-                {programOutput.length === 0 ? (
-                  <p className="opacity-50">
-                    Program output will appear here...
-                  </p>
-                ) : (
-                  programOutput.map((line, i) => (
-                    <div key={i} className="mb-1 whitespace-pre-wrap">
-                      {line}
-                    </div>
-                  ))
-                )}
-                {/* Auto-scroll target */}
-                <div id="terminal-end"></div>
-              </div>
-
-              {/* Input Area */}
-              <div className="flex space-x-4">
-                <input
-                  type="text"
-                  value={userInput}
-                  onChange={(e) => setUserInput(e.target.value)}
-                  onKeyDown={(e) => e.key === "Enter" && handleInputSubmit()}
-                  placeholder="Enter input here..."
-                  className={`flex-1 p-3 rounded-md border ${
-                    darkMode
-                      ? "bg-gray-800 border-gray-700 text-white placeholder-gray-500"
-                      : "bg-white border-gray-300 text-gray-900"
-                  } focus:ring-2 focus:ring-orange-500 outline-none transition-all`}
-                  autoFocus
-                />
-                <button
-                  onClick={handleInputSubmit}
-                  className="px-6 py-3 bg-orange-500 text-white font-bold rounded-md hover:bg-orange-600 transition-colors shadow-lg">
-                  Submit
-                </button>
-              </div>
-
-              <p className="mt-4 text-sm opacity-60">
-                Type your input and press Enter or click Submit.
-              </p>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* --- FAT FOOTER --- */}
-      <footer
-        className={`mt-20 ${darkMode ? "bg-gray-900/80" : "bg-gray-800"} text-gray-300`}>
-        <div className="max-w-7xl mx-auto px-6 py-14">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {/* Column 1: Branding */}
-            <div>
-              <h3 className="text-2xl font-bold mb-4">
-                <span className="text-white">DSA Study </span>
-                <span className="text-orange-500">Hub</span>
-              </h3>
-              <p className="text-sm leading-relaxed opacity-70">
-                The complete platform to master Data Structures and Algorithms.
-                Interactive visualizations and practice quizzes to help you
-                succeed.
-              </p>
-            </div>
-
-            {/* Column 4: Connect */}
-            <div>
-              <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-5">
-                Connect
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <button
-                    onClick={handleAboutClick}
-                    className="flex items-center space-x-2 text-sm hover:text-orange-500 transition-colors">
-                    <Users size={15} />
-                    <span>About Us</span>
-                  </button>
-                </li>
-                <li>
-                  <button className="flex items-center space-x-2 text-sm hover:text-orange-500 transition-colors">
-                    <MessageSquare size={15} />
-                    <span>Contact</span>
-                  </button>
-                </li>
-              </ul>
-
-              {/* Social Icons */}
-              <div className="flex items-center space-x-4 mt-8">
-                <a
-                  href="https://github.com/abhintr2006/DSA"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                  className="group p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-[#24292e] hover:border-[#24292e] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-lg">
-                  <Github size={20} />
-                </a>
-                <a
-                  href="#"
-                  aria-label="LinkedIn"
-                  className="group p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-[#0077b5] hover:border-[#0077b5] hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-lg">
-                  <Linkedin size={20} />
-                </a>
-                <a
-                  href="#"
-                  aria-label="X (Twitter)"
-                  className="group p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-black hover:border-black hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-lg">
-                  <svg
-                    viewBox="0 0 24 24"
-                    width="20"
-                    height="20"
-                    fill="currentColor">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                  </svg>
-                </a>
-                <a
-                  href="#"
-                  aria-label="Instagram"
-                  className="group p-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:border-transparent hover:text-white transition-all duration-300 hover:-translate-y-1 shadow-lg">
-                  <Instagram size={20} />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div
-          className={`border-t ${darkMode ? "border-white/10" : "border-gray-700"}`}>
-          <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between">
-            <p className="text-sm opacity-60">© 2026 DSA Study Hub.</p>
-            <div className="flex items-center space-x-6 mt-3 sm:mt-0">
-              <button className="text-sm opacity-60 hover:opacity-100 hover:text-orange-500 transition-all flex items-center space-x-1">
-                <FileText size={13} />
-                <span>Terms</span>
-              </button>
-              <button className="text-sm opacity-60 hover:opacity-100 hover:text-orange-500 transition-all flex items-center space-x-1">
-                <Shield size={13} />
-                <span>Privacy</span>
-              </button>
-              <button className="text-sm opacity-60 hover:opacity-100 hover:text-orange-500 transition-all flex items-center space-x-1">
-                <Cookie size={13} />
-                <span>Cookies</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer darkMode={darkMode} handleAboutClick={handleAboutClick} />
     </div>
   );
 }
