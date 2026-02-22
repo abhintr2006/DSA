@@ -10,7 +10,7 @@ const Cookies = ({ activeView, darkMode }: CookiesProps) => {
     <section className="pt-32 pb-20 px-6">
       <div
         className={`max-w-4xl mx-auto p-8 rounded-2xl ${darkMode ? "bg-white/5 border border-white/10" : "bg-white shadow-xl border border-gray-100"}`}>
-        <h2 className="text-4xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500">
+        <h2 className="text-4xl font-bold mb-8 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500">
           Cookie Policy
         </h2>
         <div className="space-y-6 opacity-80 leading-relaxed">
