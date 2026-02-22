@@ -19,7 +19,6 @@ import {
   Shield,
   MessageSquare,
   Users,
-  Bug,
 } from "lucide-react";
 
 function App() {
@@ -1229,16 +1228,6 @@ function App() {
                     <MessageSquare size={15} />
                     <span>Contact</span>
                   </button>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/abhintr2006/DSA/issues"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center space-x-2 text-sm hover:text-orange-500 transition-colors">
-                    <Bug size={15} />
-                    <span>Report Issue</span>
-                  </a>
                 </li>
               </ul>
 
