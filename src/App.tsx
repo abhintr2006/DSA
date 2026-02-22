@@ -4,6 +4,9 @@ import Hero from "./components/Hero";
 import AboutUs from "./components/AboutUs";
 import ProgramSimulator from "./components/ProgramSimulator";
 import Footer from "./components/Footer";
+import Terms from "./components/Terms";
+import Privacy from "./components/Privacy";
+import Cookies from "./components/Cookies";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -109,6 +112,21 @@ function App() {
     // Convert "Program 1" -> "program1" for state consistency
     const viewId = programId.toLowerCase().replace(/\s/g, "");
     setActiveView(viewId);
+  };
+
+  const handleTermsClick = () => {
+    resetProgramState();
+    setActiveView("terms");
+  };
+
+  const handlePrivacyClick = () => {
+    resetProgramState();
+    setActiveView("privacy");
+  };
+
+  const handleCookiesClick = () => {
+    resetProgramState();
+    setActiveView("cookies");
   };
 
   // --- Theme & Scroll Effects ---
@@ -878,6 +896,12 @@ function App() {
 
       <AboutUs activeView={activeView} darkMode={darkMode} />
 
+      <Terms activeView={activeView} darkMode={darkMode} />
+
+      <Privacy activeView={activeView} darkMode={darkMode} />
+
+      <Cookies activeView={activeView} darkMode={darkMode} />
+
       <ProgramSimulator
         activeView={activeView}
         darkMode={darkMode}
@@ -888,7 +912,13 @@ function App() {
         handleInputSubmit={handleInputSubmit}
       />
 
-      <Footer darkMode={darkMode} handleAboutClick={handleAboutClick} />
+      <Footer
+        darkMode={darkMode}
+        handleAboutClick={handleAboutClick}
+        handleTermsClick={handleTermsClick}
+        handlePrivacyClick={handlePrivacyClick}
+        handleCookiesClick={handleCookiesClick}
+      />
     </div>
   );
 }
