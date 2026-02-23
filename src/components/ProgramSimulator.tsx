@@ -20,10 +20,10 @@ const ProgramSimulator = ({
   if (!activeView.startsWith("program")) return null;
 
   return (
-    <section className="pt-32 pb-20 px-4">
+    <section className="pt-24 md:pt-32 pb-20 px-4">
       <div className="max-w-4xl mx-auto">
         <div
-          className={`p-6 rounded-lg ${
+          className={`p-4 md:p-6 rounded-lg ${
             darkMode
               ? "bg-gray-900 border border-gray-700"
               : "bg-white shadow-2xl"
