@@ -10,101 +10,91 @@ const AboutUs = ({ activeView, darkMode }: AboutUsProps) => {
 
   return (
     <section className="pt-32 pb-20 px-4">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold text-center pb-2 mb-12 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500">
           About Us
         </h2>
 
-        {/* Team Grid - Dynamic Flex Layout */}
-        <div className="flex flex-wrap justify-center gap-6 mb-16">
+        {/* Team Grid - Forced Single Line on Desktop */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 xl:gap-6 mb-16">
           {/* Pavan */}
-          <div className="flex-1 min-w-[200px] max-w-[250px]">
+          <div
+            className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
             <div
-              className={`p-6 h-full rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
-              <div
-                className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-orange-500 shadow-lg"
-                style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}>
-                <img
-                  src="/screenshots/Pavan.jpeg"
-                  alt="G Pavan Kumar"
-                  className="w-full h-full object-cover scale-[1.3]"
-                />
-              </div>
-              <h4 className="text-xl font-bold mb-1">G Pavan Kumar</h4>
-              <p className="text-sm font-semibold text-orange-500">
-                Frontend & UI/UX Developer
-              </p>
+              className="w-28 h-28 xl:w-32 xl:h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-orange-500 shadow-lg"
+              style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}>
+              <img
+                src="/screenshots/Pavan.jpeg"
+                alt="G Pavan Kumar"
+                className="w-full h-full object-cover scale-[1.3]"
+              />
             </div>
+            <h4 className="text-lg xl:text-xl font-bold mb-1">G Pavan Kumar</h4>
+            <p className="text-xs xl:text-sm font-semibold text-orange-500">
+              Frontend & UI/UX Developer
+            </p>
           </div>
 
           {/* Pranav */}
-          <div className="flex-1 min-w-[200px] max-w-[250px]">
-            <div
-              className={`p-6 h-full rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
-              <img
-                src="/screenshots/profile.svg"
-                alt="Pranav"
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover object-top border-4 border-orange-500 shadow-lg"
-                style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
-              />
-              <h4 className="text-xl font-bold mb-1">Pranav</h4>
-              <p className="text-sm font-semibold text-orange-500">
-                Core Logic & Logic Integration
-              </p>
-            </div>
+          <div
+            className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
+            <img
+              src="/screenshots/profile.svg"
+              alt="Pranav"
+              className="w-28 h-28 xl:w-32 xl:h-32 rounded-full mx-auto mb-4 object-cover object-top border-4 border-orange-500 shadow-lg"
+              style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
+            />
+            <h4 className="text-lg xl:text-xl font-bold mb-1">Pranav</h4>
+            <p className="text-xs xl:text-sm font-semibold text-orange-500">
+              Core Logic & Logic Integration
+            </p>
           </div>
 
           {/* Rohith */}
-          <div className="flex-1 min-w-[200px] max-w-[250px]">
-            <div
-              className={`p-6 h-full rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
-              <img
-                src="/screenshots/Rohith.jpeg"
-                alt="Rohith"
-                className="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-orange-500 shadow-lg"
-                style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
-              />
-              <h4 className="text-xl font-bold mb-1">Rohith</h4>
-              <p className="text-sm font-semibold text-orange-500">
-                Team Lead & Project Architect
-              </p>
-            </div>
+          <div
+            className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
+            <img
+              src="/screenshots/Rohith.jpeg"
+              alt="Rohith"
+              className="w-28 h-28 xl:w-32 xl:h-32 rounded-full mx-auto mb-4 object-cover border-4 border-orange-500 shadow-lg"
+              style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
+            />
+            <h4 className="text-lg xl:text-xl font-bold mb-1">Rohith</h4>
+            <p className="text-xs xl:text-sm font-semibold text-orange-500">
+              Team Lead & Project Architect
+            </p>
           </div>
 
           {/* Supeeth */}
-          <div className="flex-1 min-w-[200px] max-w-[250px]">
+          <div
+            className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
             <div
-              className={`p-6 h-full rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
-              <div
-                className={`w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center border-4 border-orange-500 shadow-lg ${darkMode ? "bg-white/10" : "bg-gray-100"}`}
-                style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}>
-                <User size={64} className="text-orange-500 opacity-50" />
-              </div>
-              <h4 className="text-xl font-bold mb-1">Supeeth</h4>
-              <p className="text-sm font-semibold text-orange-500">
-                Documentation & Quality Assurance
-              </p>
+              className={`w-28 h-28 xl:w-32 xl:h-32 rounded-full mx-auto mb-4 flex items-center justify-center border-4 border-orange-500 shadow-lg ${darkMode ? "bg-white/10" : "bg-gray-100"}`}
+              style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}>
+              <User size={48} className="text-orange-500 opacity-50" />
             </div>
+            <h4 className="text-lg xl:text-xl font-bold mb-1">Supeeth</h4>
+            <p className="text-xs xl:text-sm font-semibold text-orange-500">
+              Doc & QA
+            </p>
           </div>
 
           {/* Syed */}
-          <div className="flex-1 min-w-[200px] max-w-[250px]">
+          <div
+            className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
             <div
-              className={`p-6 h-full rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
-              <div
-                className="w-32 h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-orange-500 shadow-lg"
-                style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}>
-                <img
-                  src="/screenshots/Syed.jpeg"
-                  alt="Syed"
-                  className="w-full h-full object-cover scale-[1.3]"
-                />
-              </div>
-              <h4 className="text-xl font-bold mb-1">Syed</h4>
-              <p className="text-sm font-semibold text-orange-500">
-                Algorithms & Implementation Specialist
-              </p>
+              className="w-28 h-28 xl:w-32 xl:h-32 rounded-full mx-auto mb-4 overflow-hidden border-4 border-orange-500 shadow-lg"
+              style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}>
+              <img
+                src="/screenshots/Syed.jpeg"
+                alt="Syed"
+                className="w-full h-full object-cover scale-[1.3]"
+              />
             </div>
+            <h4 className="text-lg xl:text-xl font-bold mb-1">Syed</h4>
+            <p className="text-xs xl:text-sm font-semibold text-orange-500">
+              Algo Specialist
+            </p>
           </div>
         </div>
 
