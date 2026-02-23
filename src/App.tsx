@@ -50,6 +50,27 @@ function App() {
     };
   }, []);
 
+  // --- SPA Routing from 404 Redirect ---
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const redirectPath = params.get("redirect");
+    if (redirectPath) {
+      // Decode the redirect path and navigate to the corresponding view
+      const view = decodeURIComponent(redirectPath)
+        .replace(/^\//, "")
+        .toLowerCase()
+        .replace(/\s/g, "");
+
+      if (view) {
+        setActiveView(view);
+      }
+
+      // Clean up the URL by removing the redirect parameter
+      const newUrl = window.location.pathname;
+      window.history.replaceState({}, "", newUrl);
+    }
+  }, []);
+
   const toggleTheme = () => {
     const newMode = !darkMode;
     setDarkMode(newMode);
