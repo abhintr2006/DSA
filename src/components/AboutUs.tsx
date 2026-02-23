@@ -1,4 +1,4 @@
-import { Briefcase, GraduationCap, MapPin, Mail } from "lucide-react";
+import { Briefcase, GraduationCap, MapPin, Mail, User } from "lucide-react";
 
 interface AboutUsProps {
   activeView: string;
@@ -16,7 +16,7 @@ const AboutUs = ({ activeView, darkMode }: AboutUsProps) => {
         </h2>
 
         {/* Team Grid - All members together */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mb-16">
           {/* Pavan */}
           <div
             className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
@@ -62,6 +62,20 @@ const AboutUs = ({ activeView, darkMode }: AboutUsProps) => {
             <h4 className="text-xl font-bold mb-1">Rohith</h4>
             <p className="text-sm font-semibold text-orange-500">
               Team Lead & Project Architect
+            </p>
+          </div>
+
+          {/* Supeeth */}
+          <div
+            className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
+            <div
+              className={`w-32 h-32 rounded-full mx-auto mb-4 flex items-center justify-center border-4 border-orange-500 shadow-lg ${darkMode ? "bg-white/10" : "bg-gray-100"}`}
+              style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}>
+              <User size={64} className="text-orange-500 opacity-50" />
+            </div>
+            <h4 className="text-xl font-bold mb-1">Supeeth</h4>
+            <p className="text-sm font-semibold text-orange-500">
+              Documentation & Quality Assurance
             </p>
           </div>
 
