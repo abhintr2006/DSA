@@ -137,7 +137,7 @@ const Navbar = ({
 
             <button
               onClick={handleAboutClick}
-              className="flex items-center space-x-2 hover:text-orange-500 transition-colors">
+              className="flex items-center space-x-2 hover:text-orange-500 transition-colors whitespace-nowrap">
               <User size={20} />
               <span>About Us</span>
             </button>
