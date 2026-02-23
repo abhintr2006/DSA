@@ -9,7 +9,7 @@ const AboutUs = ({ activeView, darkMode }: AboutUsProps) => {
   if (activeView !== "about") return null;
 
   return (
-    <section className="pt-32 pb-20 px-4">
+    <section className="pt-24 md:pt-32 pb-20 px-4">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-4xl font-bold text-center pb-2 mb-12 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500">
           About Us
