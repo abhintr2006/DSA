@@ -181,19 +181,19 @@ const Navbar = ({
 
         {/* Mobile Menu Overlay */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden pb-6 pt-2 animate-fade-in border-t border-white/5">
+          <div className="lg:hidden pb-6 pt-2 animate-fade-in border-t border-white/5 max-h-[calc(100vh-80px)] overflow-y-auto">
             <div className="flex flex-col space-y-4">
               <button
                 onClick={() => handleLinkClick(handleHomeClick)}
                 className="flex items-center space-x-3 px-4 py-3 hover:bg-orange-500/10 rounded-lg transition-colors">
                 <Home size={20} className="text-orange-500" />
-                <span className="font-medium text-lg">Home</span>
+                <span className="font-medium">Home</span>
               </button>
 
               <div className="px-4 py-2 border-b border-white/5">
                 <div className="flex items-center space-x-3 text-orange-500 mb-3">
                   <Code2 size={20} />
-                  <span className="font-medium text-lg uppercase tracking-wider text-sm opacity-70">
+                  <span className="font-medium uppercase tracking-wider text-xs opacity-70">
                     Programs
                   </span>
                 </div>
@@ -214,7 +214,7 @@ const Navbar = ({
               <div className="px-4 py-2 border-b border-white/5">
                 <div className="flex items-center space-x-3 text-orange-500 mb-3">
                   <BookOpen size={20} />
-                  <span className="font-medium text-lg uppercase tracking-wider text-sm opacity-70">
+                  <span className="font-medium uppercase tracking-wider text-xs opacity-70">
                     Notes
                   </span>
                 </div>
@@ -237,7 +237,7 @@ const Navbar = ({
                 onClick={() => handleLinkClick(handleAboutClick)}
                 className="flex items-center space-x-3 px-4 py-3 hover:bg-orange-500/10 rounded-lg transition-colors">
                 <User size={20} className="text-orange-500" />
-                <span className="font-medium text-lg">About Us</span>
+                <span className="font-medium">About Us</span>
               </button>
             </div>
           </div>
