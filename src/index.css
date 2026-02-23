@@ -25,3 +25,30 @@
     linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
 }
+
+/* Global Dynamic Adjustments */
+* {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Improved spacing for smaller laptops */
+@media (max-width: 1366px) {
+  .max-w-4xl {
+    max-width: 90% !important;
+  }
+  .max-w-5xl {
+    max-width: 95% !important;
+  }
+}

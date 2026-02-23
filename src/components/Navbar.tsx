@@ -47,10 +47,10 @@ const Navbar = ({
       <div className="w-full px-8">
         <div className="flex items-center h-20">
           {/* Left: Branding */}
-          <div className="flex-1">
+          <div className="flex-shrink-0 lg:flex-1">
             <h1
               onClick={handleHomeClick}
-              className="text-3xl font-bold cursor-pointer hover:opacity-80 transition-opacity ml-4 whitespace-nowrap">
+              className="text-2xl md:text-3xl font-bold cursor-pointer hover:opacity-80 transition-opacity whitespace-nowrap overflow-hidden text-ellipsis">
               <span className={darkMode ? "text-white" : "text-gray-900"}>
                 DSA Study{" "}
               </span>
