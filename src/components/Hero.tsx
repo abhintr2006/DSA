@@ -8,7 +8,7 @@ const Hero = ({ activeView }: HeroProps) => {
   return (
     <section className="pt-32 pb-20 px-4 text-center">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-5xl font-bold mb-6 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500">
           Master Data Structures & Algorithms
         </h2>
         <p className="text-xl mb-8 opacity-90">
