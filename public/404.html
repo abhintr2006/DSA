@@ -66,18 +66,11 @@
     </style>
 
     <script>
-      // Optional SPA redirect for GitHub Pages.
-      // If you are relying on GitHub Pages for SPA routing, you can uncomment this block.
-      // Netlify and Nginx handle routing without this script via `_redirects` and `nginx.conf`,
-      // so we present the beautiful 404 page instead.
-      /*
-      const path = window.location.pathname;
-      const search = window.location.search;
-      const hash = window.location.hash;
-      if (path !== '/404.html') {
-          window.location.replace('/' + '?redirect=' + encodeURIComponent(path + search + hash));
+      if (path !== "/404.html") {
+        window.location.replace(
+          "/" + "?redirect=" + encodeURIComponent(path + search + hash),
+        );
       }
-      */
     </script>
   </head>
 
