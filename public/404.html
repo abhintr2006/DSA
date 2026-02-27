@@ -1,18 +1,155 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en" class="dark">
   <head>
-    <meta charset="utf-8">
-    <title>DSA Study Hub</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>404 - Page Not Found | DSA Study Hub</title>
+    <!-- Tailwind CSS (CDN for standalone 404 page) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <script>
-      // This script redirects 404 pages to the main app for SPA routing
-      // Works for GitHub Pages and similar static hosts
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              gray: {
+                800: "#1f2937",
+                900: "#111827",
+              },
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              "pulse-slow": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0)" },
+                "50%": { transform: "translateY(-20px)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Match the main app's premium grid background */
+      body {
+        margin: 0;
+        overflow-x: hidden;
+      }
+      .grid-bg {
+        position: relative;
+      }
+      .grid-bg::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      .glass-card {
+        background: rgba(31, 41, 55, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      }
+      .text-glow {
+        text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+      }
+    </style>
+
+    <script>
+      // Optional SPA redirect for GitHub Pages.
+      // If you are relying on GitHub Pages for SPA routing, you can uncomment this block.
+      // Netlify and Nginx handle routing without this script via `_redirects` and `nginx.conf`,
+      // so we present the beautiful 404 page instead.
+      /*
       const path = window.location.pathname;
       const search = window.location.search;
       const hash = window.location.hash;
-      window.location.replace('/' + '?redirect=' + encodeURIComponent(path + search + hash));
+      if (path !== '/404.html') {
+          window.location.replace('/' + '?redirect=' + encodeURIComponent(path + search + hash));
+      }
+      */
     </script>
   </head>
-  <body>
-    Redirecting...
+
+  <body
+    class="grid-bg min-h-screen flex items-center justify-center bg-gray-900 text-white font-sans antialiased overflow-hidden">
+    <!-- Decorative background elements -->
+    <div
+      class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+    <div
+      class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <main
+      class="relative z-10 w-full max-w-3xl px-6 flex flex-col items-center justify-center text-center">
+      <div
+        class="glass-card rounded-3xl p-12 md:p-20 flex flex-col items-center w-full animate-float">
+        <!-- Large animated 404 Graphic -->
+        <div class="relative w-full flex justify-center items-center mb-8">
+          <div
+            class="text-[120px] md:text-[180px] font-extrabold leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-glow animate-pulse-slow">
+            404
+          </div>
+          <div
+            class="absolute inset-0 flex items-center justify-center opacity-20 pointer-events-none">
+            <i
+              data-lucide="cpu"
+              class="w-64 h-64 text-blue-300 transform -rotate-12 translate-x-4"></i>
+          </div>
+        </div>
+
+        <h1 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
+          Page Not Found
+        </h1>
+
+        <p
+          class="text-gray-400 text-lg md:text-xl max-w-lg mb-10 leading-relaxed">
+          Oops! It seems you've wandered into an undefined route. The resource
+          you're looking for doesn't exist or has been moved.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a
+            href="/"
+            class="group relative inline-flex items-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] overflow-hidden">
+            <div
+              class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out"></div>
+            <i data-lucide="home" class="w-5 h-5 relative z-10"></i>
+            <span class="relative z-10">Return to Home</span>
+          </a>
+
+          <button
+            onclick="window.history.back()"
+            class="group inline-flex items-center gap-2 px-8 py-4 bg-gray-800 hover:bg-gray-700 text-white font-semibold rounded-xl border border-gray-700 hover:border-gray-500 transition-all duration-300">
+            <i
+              data-lucide="arrow-left"
+              class="w-5 h-5 transition-transform group-hover:-translate-x-1"></i>
+            <span>Go Back</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Tech decoration -->
+      <div
+        class="mt-12 text-gray-500 flex items-center gap-4 text-sm font-mono opacity-60">
+        <span>System Error: E_NOT_FOUND</span>
+        <span class="w-1 h-1 bg-blue-500 rounded-full animate-ping"></span>
+        <span>Process Terminated</span>
+      </div>
+    </main>
+
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+    </script>
   </body>
 </html>
