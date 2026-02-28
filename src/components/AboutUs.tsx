@@ -39,7 +39,7 @@ const AboutUs = ({ activeView, darkMode }: AboutUsProps) => {
           <div
             className={`p-6 rounded-xl text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl ${darkMode ? "bg-white/5 hover:bg-white/10" : "bg-white shadow-xl"}`}>
             <img
-              src="/screenshots/profile.svg"
+              src="/screenshots/Pranav.png"
               alt="Pranav"
               className="w-28 h-28 xl:w-32 xl:h-32 rounded-full mx-auto mb-4 object-cover object-top border-4 border-orange-500 shadow-lg"
               style={{ boxShadow: "0 0 15px rgba(249, 115, 22, 0.3)" }}
