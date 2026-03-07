@@ -11,14 +11,18 @@ Originally created by Pranav Arun.
 - **Modern UI**: Theme-toggle support (Dark/Light) with high-fidelity visuals.
 - **Responsive Design**: Seamless experience across devices.
 
+## System Architecture
+
+![System Architecture](./system-architecture.drawio.svg)
+
 ## 👥 Contributors
 
-| USN | Name | Role |
-|-----|------|------|
-| 1KG23CB014 | **G Pavan Kumar** | Frontend & UI/UX Developer |
-| 1KG23CB038 | **Pranav Arun** | Core Logic & Logic Integration |
-| 1KG23CB044 | **Rohith** | Team Lead & Project Architect |
-| 1KG23CB051 | **Suppreth** | Documentation & Quality Assurance |
-| 1KG23CB052 | **Syed** | Algorithms & Implementation Specialist |
+| USN        | Name              | Role                                   |
+| ---------- | ----------------- | -------------------------------------- |
+| 1KG23CB014 | **G Pavan Kumar** | Frontend & UI/UX Developer             |
+| 1KG23CB038 | **Pranav Arun**   | Core Logic & Logic Integration         |
+| 1KG23CB044 | **Rohith**        | Team Lead & Project Architect          |
+| 1KG23CB051 | **Suppreth**      | Documentation & Quality Assurance      |
+| 1KG23CB052 | **Syed**          | Algorithms & Implementation Specialist |
 
 ---
