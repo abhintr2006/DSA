@@ -17,7 +17,7 @@ Originally created by Pranav Arun.
 
 ### Full Stack Linkage
 
-![Full Stack Architecture](./frontend-backend-db.drawio.svg)
+![Full Stack Architecture](./fullstack.svg)
 
 ## 👥 Contributors
 
