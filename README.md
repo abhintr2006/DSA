@@ -15,6 +15,10 @@ Originally created by Pranav Arun.
 
 ![System Architecture](./system-architecture.drawio.svg)
 
+### Full Stack Linkage
+
+![Full Stack Architecture](./frontend-backend-db.drawio.svg)
+
 ## 👥 Contributors
 
 | USN        | Name              | Role                                   |
