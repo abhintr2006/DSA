@@ -1,13 +1,25 @@
 import { useState, useEffect } from "react";
 import { PROGRAM_MENUS } from "../data/constants";
 
+interface CalendarDay {
+  dayName: string;
+  date: number;
+  activity: string;
+}
+
+interface BSTNode {
+  val: number;
+  left: BSTNode | null;
+  right: BSTNode | null;
+}
+
 export const useProgramSimulator = (activeView: string) => {
   const [programOutput, setProgramOutput] = useState<string[]>([]);
   const [userInput, setUserInput] = useState("");
   const [currentStep, setCurrentStep] = useState(0);
 
   // States for various programs
-  const [calendarData, setCalendarData] = useState<any[]>([]);
+  const [calendarData, setCalendarData] = useState<CalendarDay[]>([]);
   const [numDays, setNumDays] = useState(0);
   const [stringMatchData, setStringMatchData] = useState({
     mainString: "",
@@ -20,7 +32,7 @@ export const useProgramSimulator = (activeView: string) => {
   const [cqFront, setCqFront] = useState(-1);
   const [cqRear, setCqRear] = useState(-1);
   const cqSize = 5;
-  const [bstRoot, setBstRoot] = useState<any>(null);
+  const [bstRoot, setBstRoot] = useState<BSTNode | null>(null);
   const [hashTable, setHashTable] = useState<(number | null)[]>(new Array(10).fill(null));
 
   const resetProgramState = () => {
@@ -126,14 +138,14 @@ export const useProgramSimulator = (activeView: string) => {
   };
 
   // BST
-  const insertBST = (root: any, val: number): any => {
+  const insertBST = (root: BSTNode | null, val: number): BSTNode => {
     if (!root) return { val, left: null, right: null };
     if (val < root.val) root.left = insertBST(root.left, val);
     else root.right = insertBST(root.right, val);
     return root;
   };
 
-  const inorder = (root: any, res: number[] = []) => {
+  const inorder = (root: BSTNode | null, res: number[] = []): number[] => {
     if (root) {
       inorder(root.left, res);
       res.push(root.val);
@@ -163,7 +175,7 @@ export const useProgramSimulator = (activeView: string) => {
           const dayIndex = Math.floor((currentStep - 1) / 3);
           const inputType = (currentStep - 1) % 3;
           const newCalendarData = [...calendarData];
-          if (!newCalendarData[dayIndex]) newCalendarData[dayIndex] = {};
+          if (!newCalendarData[dayIndex]) newCalendarData[dayIndex] = { dayName: "", date: 0, activity: "" };
           
           if (inputType === 0) {
             newCalendarData[dayIndex].dayName = userInput;
@@ -266,23 +278,26 @@ export const useProgramSimulator = (activeView: string) => {
         }
         break;
 
-      case "program4":
+      case "program4": {
         const p4Res = evaluateInfixToPostfix(userInput);
         setProgramOutput([`The entered infix expression is: ${userInput}`, `The corresponding postfix expression is: ${p4Res}`]);
         break;
+      }
 
-      case "program5a":
+      case "program5a": {
         const p5aRes = evaluateSuffix(userInput);
         setProgramOutput([`The entered suffix expression is: ${userInput}`, `The result of evaluation is: ${p5aRes}`]);
         break;
+      }
 
-      case "program5b":
+      case "program5b": {
         const disks = parseInt(userInput);
         if (!isNaN(disks) && disks > 0) {
           const moves = towerOfHanoi(disks, "A", "C", "B");
           setProgramOutput([`Tower of Hanoi with ${disks} disks:`, ...moves]);
         }
         break;
+      }
 
       case "program6":
         if (currentStep === 1) {
@@ -317,21 +332,22 @@ export const useProgramSimulator = (activeView: string) => {
         }
         break;
 
-      case "program10":
+      case "program10": {
         const bstVal = parseInt(userInput);
         if (isNaN(bstVal)) setProgramOutput(prev => [...prev, "Inorder traversal: " + inorder(bstRoot).join(", ")]);
         else {
-          setBstRoot(insertBST({ ...bstRoot }, bstVal));
+          setBstRoot(insertBST(bstRoot ? { ...bstRoot } : null, bstVal));
           setProgramOutput(prev => [...prev, `Inserted ${bstVal} into BST`]);
         }
         break;
+      }
 
-      case "program12":
+      case "program12": {
         const hashKey = parseInt(userInput);
         if (!isNaN(hashKey)) {
           let idx = hashKey % 10;
           const newTable = [...hashTable];
-          let startIdx = idx;
+          const startIdx = idx;
           while (newTable[idx] !== null) {
             idx = (idx + 1) % 10;
             if (idx === startIdx) { setProgramOutput(prev => [...prev, "Overflow"]); return; }
@@ -341,6 +357,7 @@ export const useProgramSimulator = (activeView: string) => {
           setProgramOutput(prev => [...prev, `Mapped ${hashKey} to ${idx}`, "Table: " + JSON.stringify(newTable)]);
         }
         break;
+      }
       
       default:
         setProgramOutput(prev => [...prev, `Echo: ${userInput}`]);
