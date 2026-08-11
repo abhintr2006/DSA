@@ -1,9 +1,12 @@
 {
-  "name": "vite-react-typescript-starter",
+  "name": "dsa-visualizer",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "packageManager": "pnpm@11.18.0",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
