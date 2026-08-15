@@ -11,6 +11,18 @@ Originally created by Pranav Arun.
 - **Modern UI**: Theme-toggle support (Dark/Light) with high-fidelity visuals.
 - **Responsive Design**: Seamless experience across devices.
 
+## Screenshots
+
+### Homepage
+Interactive landing page featuring the module-wise notes repository and curriculum navigation.
+
+![Homepage](./public/screenshots/homepage.png)
+
+### Program Simulator
+Real-time visual simulator executing data structure algorithms and step-by-step operations.
+
+![Program Simulator](./public/screenshots/program.png)
+
 ## System Architecture
 
 ![System Architecture](./system-architecture.drawio.svg)
