@@ -1,7 +1,7 @@
 {
   "name": "dsa-visualizer",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "packageManager": "pnpm@11.18.0",
   "engines": {
