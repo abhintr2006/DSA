@@ -87,7 +87,7 @@ function App() {
     <div
       className={`min-h-screen transition-colors duration-300 grid-bg ${
         darkMode
-          ? "bg-gradient-to-br from-gray-900 to-gray-800 text-white"
+          ? "bg-linear-to-br from-gray-900 to-gray-800 text-white"
           : "bg-gray-50 text-gray-900 light-grid"
       }`}>
       <Navbar

@@ -114,10 +114,10 @@ const Footer = ({
               <a
                 href="#"
                 aria-label="Instagram"
-                className={`group p-2.5 rounded-xl border transition-all duration-300 hover:-translate-y-1 shadow-lg ${
+                className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 transform hover:-translate-y-1 hover:shadow-lg ${
                   darkMode
-                    ? "bg-white/5 border-white/10 hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:border-transparent hover:text-white"
-                    : "bg-white border-gray-200 hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:border-transparent hover:text-white"
+                    ? "bg-white/5 border-white/10 hover:bg-linear-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:border-transparent hover:text-white"
+                    : "bg-white border-gray-200 hover:bg-linear-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:border-transparent hover:text-white"
                 }`}>
                 <Instagram size={20} />
               </a>

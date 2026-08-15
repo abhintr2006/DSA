@@ -63,15 +63,16 @@
       .text-glow {
         text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
       }
+      .gradient-404-text {
+        background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+      }
     </style>
 
-    <script>
-      if (path !== "/404.html") {
-        window.location.replace(
-          "/" + "?redirect=" + encodeURIComponent(path + search + hash),
-        );
-      }
-    </script>
   </head>
 
   <body
@@ -86,10 +87,9 @@
       class="relative z-10 w-full max-w-3xl px-6 flex flex-col items-center justify-center text-center">
       <div
         class="glass-card rounded-3xl p-12 md:p-20 flex flex-col items-center w-full animate-float">
-        <!-- Large animated 404 Graphic -->
         <div class="relative w-full flex justify-center items-center mb-8">
           <div
-            class="text-[120px] md:text-[180px] font-extrabold leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-600 text-glow animate-pulse-slow">
+            class="gradient-404-text text-[120px] md:text-[180px] font-extrabold leading-none tracking-tighter text-glow animate-pulse-slow select-none">
             404
           </div>
           <div
